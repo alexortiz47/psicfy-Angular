@@ -7,13 +7,21 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MainPrincipalComponent } from './main-principal/main-principal.component';
 import { FooterComponent } from './footer/footer.component';
+import { EvaluateComponent } from './evaluate/evaluate.component';
+import { RegistroComponent } from './registro/registro.component';
+import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
+import { Error404Component } from './error404/error404.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MainPrincipalComponent,
-    FooterComponent
+    FooterComponent,
+    EvaluateComponent,
+    RegistroComponent,
+    InicioSesionComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,

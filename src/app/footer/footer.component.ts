@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'footer',
+  selector: 'piepag',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })

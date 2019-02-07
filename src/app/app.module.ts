@@ -11,6 +11,7 @@ import { EvaluateComponent } from './evaluate/evaluate.component';
 import { RegistroComponent } from './registro/registro.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { Error404Component } from './error404/error404.component';
+import { CercaComponent } from './cerca/cerca.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { Error404Component } from './error404/error404.component';
     EvaluateComponent,
     RegistroComponent,
     InicioSesionComponent,
-    Error404Component
+    Error404Component,
+    CercaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,27 +1,31 @@
-<header class="container-fluid bg-dark">
+<header class="container-fluid bg-dark p-2">
 
   <nav class="container navbar navbar-expand-lg navbar-dark">
 
-    <img id="logo" src="../../assets/logo.png" alt="logo">
+    <img id="logo" src="../../assets/logo.png" alt="logo" [routerLink]="['inicio']">
 
-    <div class="navbar-collapse" id="navbarNavDropdown">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
       <ul class="navbar-nav ml-auto">
 
-        <li class="nav-item mr-5">
-            <a class="nav-link text-light" href="#" title="Cerca de ti">Evalúate<span class="sr-only">(current)</span></a>
+        <li class="nav-item p-3">
+            <a class="nav-link" title="Evaluate" [routerLink]="['evaluate']">Evalúate</a>
         </li>
 
-        <li class="nav-item mr-5">
-          <a class="nav-link text-light" href="#" title="Cerca de ti">Psicólogos cerca de ti<span class="sr-only">(current)</span></a>
+        <li class="nav-item p-3">
+          <a class="nav-link" title="Cerca" [routerLink]="['cerca']">Psicólogos cerca de ti</a>
         </li>
 
-        <li class="nav-item mr-5">
-            <a class="nav-link text-light" href="#" title="Cerca de ti">¿Eres psicólogo?<span class="sr-only">(current)</span></a>
+        <li class="nav-item p-3">
+            <a class="nav-link" title="Registro" [routerLink]="['registro']">¿Eres psicólogo?</a>
         </li>
 
-        <li class="nav-item dropdown">
-          <a class="btn btn-outline-info" href="#" title="Iniciar sesión">Iniciar sesión</a>
+        <li class="nav-item p-3">
+          <a class="btn btn-outline-info" title="Iniciar sesión" [routerLink]="['login']">Iniciar sesión</a>
         </li>
 
       </ul>

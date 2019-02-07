@@ -1,7 +1,19 @@
-.dropdown-menu {
-  display: block;
+.navbar-nav {
+  text-align: center;
+  margin: 0px;
 }
-
+.nav-item .nav-link {
+  color: white;
+}
+.nav-item .nav-link:hover {
+  color: #17a2b8;
+}
+.nav-item .btn-outline-info:hover {
+  color: white !important;
+}
+.navbar-toggler:hover {
+  background-color: #17a2b8;
+}
 #logo {
 	width: 80px;
 	height: 80px;

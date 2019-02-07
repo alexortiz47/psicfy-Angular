@@ -5,11 +5,13 @@ import { EvaluateComponent } from './evaluate/evaluate.component';
 import { RegistroComponent } from './registro/registro.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { Error404Component } from './error404/error404.component';
+import { CercaComponent } from './cerca/cerca.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: MainPrincipalComponent},
   { path: 'inicio', component: MainPrincipalComponent},
   { path: 'evaluate', component: EvaluateComponent},
+  { path: 'cerca', component: CercaComponent},
   { path: 'registro', component: RegistroComponent},
   { path: 'login', component: InicioSesionComponent},
   { path: '**', component: Error404Component}

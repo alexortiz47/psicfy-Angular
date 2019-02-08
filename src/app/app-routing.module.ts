@@ -13,7 +13,9 @@ const routes: Routes = [
   { path: 'evaluate', component: EvaluateComponent},
   { path: 'cerca', component: CercaComponent},
   { path: 'registro', component: RegistroComponent},
+  { path: 'registro/inicio', component: InicioSesionComponent},
   { path: 'login', component: InicioSesionComponent},
+  { path: 'login/registro', component: RegistroComponent},
   { path: '**', component: Error404Component}
 ];
 

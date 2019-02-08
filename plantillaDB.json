@@ -1,0 +1,55 @@
+{
+    "psicologos": [
+        {
+            "id": 1,
+            "nombre": "Alex",
+            "apellidos": "Ortiz",
+            "numColeg": 133453,
+            "especialidad": "Neurologia"
+        },
+        {
+            "id": 2,
+            "nombre": "Alex",
+            "apellidos": "Ortiz",
+            "numColeg": 133453,
+            "especialidad": "Neurologia"
+        },
+        {
+            "id": 3,
+            "nombre": "Alex",
+            "apellidos": "Ortiz",
+            "numColeg": 133453,
+            "especialidad": "Neurologia"
+        },
+        {
+            "id": 4,
+            "nombre": "Alex",
+            "apellidos": "Ortiz",
+            "numColeg": 133453,
+            "especialidad": "Neurologia"
+        }
+
+    ],
+    "preguntas": [
+        {
+            "id": 1,
+            "titulo": "¿Hola que tal?",
+            "respuesta": 3
+        },
+        {
+            "id": 2,
+            "titulo": "¿Hola que tal?",
+            "respuesta": 3
+        },
+        {
+            "id": 3,
+            "titulo": "¿Hola que tal?",
+            "respuesta": 3
+        },
+        {
+            "id": 4,
+            "titulo": "¿Hola que tal?",
+            "respuesta": 3
+        }
+    ]
+}

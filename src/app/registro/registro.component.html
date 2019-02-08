@@ -1,3 +1,78 @@
-<p>
-  registro works!
-</p>
+<main class="container mt-5">
+
+    <div id="registro" class="row">
+
+      <div class="col-12 my-5">
+
+        <form class="col-8 m-auto">
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="">Nombre:</label>
+              <input type="text" class="form-control" id="nombreRegistro">
+            </div>
+            <div class="form-group col-md-5">
+              <label for="">Apellidos:</label>
+              <input type="text" class="form-control" id="apellidosRegistro">
+            </div>
+            <div class="form-group col-md-3">
+              <label for="">Número colegiado:</label>
+              <input type="text" class="form-control" id="colegiadoRegistro">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-8">
+              <label for="">Domicilio profesional:</label>
+              <input type="text" class="form-control" id="domicilioRegistro">
+            </div>
+
+            <div class="form-group col-md-4">
+              <label for="">Código postal:</label>
+              <input type="text" class="form-control" id="postalRegistro">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <form class="col-12 mb-3">
+              <label for="">Selecciona una especialidad:</label>
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option selected>...</option>
+                <option>Neuropsicología</option>
+                <option>Psicología familiar y de pareja</option>
+                <option>Psicología del deporte</option>
+                <option>Psicología educativa</option>
+                <option>Neuropsicología</option>
+              </select>
+            </form>
+          </div>
+
+          <div class="form-row mb-4">
+            <div class="form-group col-md-6">
+              <label for="">Correo:</label>
+              <input type="email" class="form-control" id="correoRegistro">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="">Contraseña:</label>
+              <input type="password" class="form-control" id="passRegistro">
+            </div>
+          </div>
+
+          <div class="form-row mb-4">
+            <div class="form-group col-md-6">
+              <label for="">Repetir correo:</label>
+              <input type="email" class="form-control" id="correoRegistro2">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="">Repetir contraseña:</label>
+              <input type="password" class="form-control" id="passRegistro2">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-lg btn-block btn-info mb-3">Registrarme Gratis</button>
+          <div class="dropdown-divider"></div>
+          <a id="cuenta" class="dropdown-item" [routerLink]="['inicio']">¿Ya tienes cuenta? Iniciar sesión</a>
+
+        </form>
+      </div>
+    </div>
+  </main>

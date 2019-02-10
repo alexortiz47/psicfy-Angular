@@ -1,25 +1,23 @@
-<main class="registro container mt-5">
+<form class="registro container mt-5" novalidate [formGroup]="registroForm" (ngSubmit)="manejarRegistro()">
 
     <div class="row mt-5 py-5">
 
-      <div class="col-12">
-
-        <form class="col-8 m-auto">
+        <div class="col-10 m-auto">
 
           <div class="form-row">
             <div class="form-group col-md-4">
               <label>Nombre:</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" formControlName="nombre">
             </div>
 
             <div class="form-group col-md-5">
               <label>Apellidos:</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" formControlName="apellidos">
             </div>
 
             <div class="form-group col-md-3">
               <label>Número colegiado:</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" formControlName="numCol">
             </div>
 
           </div>
@@ -28,21 +26,21 @@
 
             <div class="form-group col-md-8">
               <label>Domicilio profesional:</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" formControlName="domicilio">
             </div>
 
             <div class="form-group col-md-4">
               <label>Código postal:</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" formControlName="codPostal">
             </div>
 
           </div>
 
           <div class="form-row">
 
-            <form class="col-12 mb-3">
+            <div class="col-12 mb-3">
               <label>Selecciona una especialidad:</label>
-              <select class="form-control">
+              <select class="form-control" formControlName="especialidad">
                 <option selected>...</option>
                 <option>Neuropsicología</option>
                 <option>Psicología familiar y de pareja</option>
@@ -50,7 +48,7 @@
                 <option>Psicología educativa</option>
                 <option>Neuropsicología</option>
               </select>
-            </form>
+            </div>
 
           </div>
 
@@ -84,9 +82,9 @@
 
           <button type="submit" class="btn btn-lg btn-block btn-info mb-3">Registrarme Gratis</button>
           <div class="dropdown-divider"></div>
-          <a id="cuenta" class="dropdown-item" [routerLink]="['inicio']">¿Ya tienes cuenta? Iniciar sesión</a>
+          <a id="cuenta" class="dropdown-item" [routerLink]="['login']">¿Ya tienes cuenta? Iniciar sesión</a>
 
-        </form>
-      </div>
+        </div>
+
     </div>
-  </main>
+  </form>

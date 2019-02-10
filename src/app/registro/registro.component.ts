@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'registro',
@@ -10,7 +11,7 @@ export class RegistroComponent implements OnInit {
 
   registroForm: FormGroup
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.registroForm = new FormGroup({
@@ -25,6 +26,10 @@ export class RegistroComponent implements OnInit {
 
   manejarRegistro() {
     console.log(this.registroForm.value)
+  }
+
+  irInicio(){
+    this.router.navigate(['/login'])
   }
 
 }

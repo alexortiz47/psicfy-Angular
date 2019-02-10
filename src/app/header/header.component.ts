@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cabecera',
@@ -7,11 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() {
+  constructor(private router: Router) {
 
   }
 
   ngOnInit() {
+  }
+
+  irEvaluate() {
+    this.router.navigate(['evaluate'])
+  }
+
+  irCerca() {
+    this.router.navigate(['cerca'])
+  }
+
+  irRegistro() {
+    this.router.navigate(['registro'])
+  }
+
+  irLogin() {
+    this.router.navigate(['login'])
   }
 
 }

@@ -2,7 +2,7 @@
 
   <nav class="container navbar navbar-expand-lg navbar-dark">
 
-    <img id="logo" src="../../assets/logo.png" alt="logo" [routerLink]="['inicio']">
+    <img id="logo" src="../../assets/logo.png" alt="logo" [routerLink]="['']">
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -13,19 +13,19 @@
       <ul class="navbar-nav ml-auto">
 
         <li class="nav-item p-3">
-            <a class="nav-link" title="Evaluate" [routerLink]="['evaluate']">Evalúate</a>
+            <a class="btn nav-link" title="Evaluate" (click)="irEvaluate()">Evalúate</a>
         </li>
 
         <li class="nav-item p-3">
-          <a class="nav-link" title="Cerca" [routerLink]="['cerca']">Psicólogos cerca de ti</a>
+          <a class="btn nav-link" title="Cerca" (click)="irCerca()">Psicólogos cerca de ti</a>
         </li>
 
         <li class="nav-item p-3">
-            <a class="nav-link" title="Registro" [routerLink]="['registro']">¿Eres psicólogo?</a>
+            <a class="btn nav-link" title="Registro" (click)="irRegistro()">¿Eres psicólogo?</a>
         </li>
 
         <li class="nav-item p-3">
-          <a class="btn btn-outline-info" title="Iniciar sesión" [routerLink]="['login']">Iniciar sesión</a>
+          <a class="btn btn-outline-info text-info" title="Iniciar sesión" (click)="irLogin()">Iniciar sesión</a>
         </li>
 
       </ul>

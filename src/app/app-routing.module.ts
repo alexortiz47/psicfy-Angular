@@ -9,13 +9,10 @@ import { CercaComponent } from './cerca/cerca.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: MainPrincipalComponent},
-  { path: 'inicio', component: MainPrincipalComponent},
   { path: 'evaluate', component: EvaluateComponent},
   { path: 'cerca', component: CercaComponent},
   { path: 'registro', component: RegistroComponent},
-  { path: 'registro/login', component: InicioSesionComponent},
   { path: 'login', component: InicioSesionComponent},
-  { path: 'login/registro', component: RegistroComponent},
   { path: '**', component: Error404Component}
 ];
 

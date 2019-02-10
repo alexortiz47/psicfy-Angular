@@ -14,7 +14,7 @@ export class Error404Component implements OnInit {
   }
 
   irInicio() {
-    this.router.navigate(['/inicio'])
+    this.router.navigate([''])
   }
 
 }

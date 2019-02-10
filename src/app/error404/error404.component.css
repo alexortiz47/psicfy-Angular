@@ -12,3 +12,9 @@
 .error-actions .btn {
   margin-right:10px;
 }
+
+img {
+  width: 600px;
+  height: 400px;
+  margin-bottom: 20px;
+}

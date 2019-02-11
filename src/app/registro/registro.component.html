@@ -6,25 +6,20 @@
 
         <div class="col-10 m-auto">
 
-          <div class="form-row">
-            <div class="form-group col-md-4">
+          <div class="form-row mb-4">
+            <div class="form-group col-md-5">
               <label>Nombre:</label>
               <input type="text" class="form-control" formControlName="nombre">
             </div>
 
-            <div class="form-group col-md-5">
+            <div class="form-group col-md-7">
               <label>Apellidos:</label>
               <input type="text" class="form-control" formControlName="apellidos">
             </div>
 
-            <div class="form-group col-md-3">
-              <label>Número colegiado:</label>
-              <input type="text" class="form-control" formControlName="numCol">
-            </div>
-
           </div>
 
-          <div class="form-row">
+          <div class="form-row mb-4">
 
             <div class="form-group col-md-8">
               <label>Domicilio profesional:</label>
@@ -38,9 +33,9 @@
 
           </div>
 
-          <div class="form-row">
+          <div class="form-row mb-4">
 
-            <div class="col-12 mb-3">
+            <div class="col-md-7 mb-3">
               <label>Selecciona una especialidad:</label>
               <select class="form-control" formControlName="especialidad">
                 <option selected>...</option>
@@ -50,6 +45,11 @@
                 <option>Psicología educativa</option>
                 <option>Neuropsicología</option>
               </select>
+            </div>
+
+            <div class="form-group col-md-5">
+              <label>Número colegiado:</label>
+              <input type="text" class="form-control" formControlName="numCol">
             </div>
 
           </div>

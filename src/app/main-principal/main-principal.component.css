@@ -1,10 +1,10 @@
-#carouselMain {
+.jumbotron {
   background-image: url(../../assets/hero.jpg);
 	background-position: center;
 	background-size: cover;
 	height: 100vh;
-	padding-top: 23%;
-	color: white;
+  padding-top: 20%;
+  color: #212529;
 	text-align: center;
 	margin: 0px;
 }

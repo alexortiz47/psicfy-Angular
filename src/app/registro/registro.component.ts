@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,12 +15,30 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit() {
     this.registroForm = new FormGroup({
-      nombre: new FormControl(''),
-      apellidos: new FormControl(''),
-      numColeg: new FormControl(''),
-      domicilio: new FormControl(''),
-      codPostal: new FormControl(''),
-      especialidad: new FormControl('')
+      nombre: new FormControl('', [
+        Validators.required
+      ]),
+      apellidos: new FormControl('', [
+        Validators.required
+      ]),
+      numColeg: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^([0-9]{3,7})$/)
+      ]),
+      domicilio: new FormControl('', [
+        Validators.required
+      ]),
+      codPostal: new FormControl('', [
+        Validators.required
+      ]),
+      especialidad: new FormControl(''),
+      correo: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
+      ]),
+      password: new FormControl('', [
+        Validators.pattern(/(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$/)
+      ])
     })
   }
 

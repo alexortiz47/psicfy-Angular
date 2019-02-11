@@ -49,7 +49,7 @@
 
             <div class="form-group col-md-5">
               <label>Número colegiado:</label>
-              <input type="text" class="form-control" formControlName="numCol">
+              <input type="text" class="form-control" formControlName="numColeg">
             </div>
 
           </div>
@@ -58,12 +58,14 @@
 
             <div class="form-group col-md-6">
               <label>Correo:</label>
-              <input type="email" class="form-control">
+              <input type="email" class="form-control" formControlName="correo">
+              <p *ngIf="registroForm.controls['correo'].errors?.pattern && registroForm.controls['correo'].dirty">El campo debe ser un email correcto</p>
             </div>
 
             <div class="form-group col-md-6">
               <label>Contraseña:</label>
-              <input type="password" class="form-control">
+              <input type="password" class="form-control" formControlName="password">
+              <p *ngIf="registroForm.controls['password'].errors?.pattern && registroForm.controls['password'].dirty">La contraseña debe tener al menos un numero, una letra y entre 6-15 caracteres</p>
             </div>
 
           </div>
@@ -82,7 +84,7 @@
 
           </div>
 
-          <button type="submit" class="btn btn-lg btn-block btn-info mb-3">Registrarme Gratis</button>
+          <button type="submit" class="btn btn-lg btn-block btn-info mb-3" [disabled]="registroForm.invalid">Registrarme Gratis</button>
           <div class="dropdown-divider"></div>
           <a id="cuenta" class="btn dropdown-item" (click)="irInicio()">¿Ya tienes cuenta? Iniciar sesión</a>
 

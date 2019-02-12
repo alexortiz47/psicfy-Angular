@@ -5,28 +5,32 @@
             "nombre": "Alex",
             "apellidos": "Ortiz",
             "numColeg": 133453,
-            "especialidad": "Neurologia"
+            "especialidad": "Neurologia",
+            "imgUrl": "https://firebasestorage.googleapis.com/v0/b/proyecto-final-neoland-aob.appspot.com/o/user.png?alt=media&token=fc1abec1-0175-4804-9686-580d1aeea607"
         },
         {
             "id": 2,
             "nombre": "Alex",
             "apellidos": "Ortiz",
             "numColeg": 133453,
-            "especialidad": "Neurologia"
+            "especialidad": "Neurologia",
+            "imgUrl": "https://firebasestorage.googleapis.com/v0/b/proyecto-final-neoland-aob.appspot.com/o/user.png?alt=media&token=fc1abec1-0175-4804-9686-580d1aeea607"
         },
         {
             "id": 3,
             "nombre": "Alex",
             "apellidos": "Ortiz",
             "numColeg": 133453,
-            "especialidad": "Neurologia"
+            "especialidad": "Neurologia",
+            "imgUrl": "https://firebasestorage.googleapis.com/v0/b/proyecto-final-neoland-aob.appspot.com/o/user.png?alt=media&token=fc1abec1-0175-4804-9686-580d1aeea607"
         },
         {
             "id": 4,
             "nombre": "Alex",
             "apellidos": "Ortiz",
             "numColeg": 133453,
-            "especialidad": "Neurologia"
+            "especialidad": "Neurologia",
+            "imgUrl": "https://firebasestorage.googleapis.com/v0/b/proyecto-final-neoland-aob.appspot.com/o/user.png?alt=media&token=fc1abec1-0175-4804-9686-580d1aeea607"
         }
 
     ],

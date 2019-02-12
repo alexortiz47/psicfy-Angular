@@ -74,12 +74,14 @@
 
             <div class="form-group col-md-6">
               <label>Repetir correo:</label>
-              <input type="email" class="form-control">
+              <input type="email" class="form-control" formControlName="correo_repeat">
+              <p *ngIf="registroForm.errors?.correo_repeat">El correo no coincide</p>
             </div>
 
             <div class="form-group col-md-6">
               <label>Repetir contraseña:</label>
-              <input type="password" class="form-control">
+              <input type="password" class="form-control" formControlName="password_repeat">
+              <p *ngIf="registroForm.errors?.password_repeat">La contraseña no coincide</p>
             </div>
 
           </div>

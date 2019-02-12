@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PsicologosService } from '../psicologos.service';
+import { Psicologo } from '../models/psicologo.model';
 
 @Component({
   selector: 'cerca',
@@ -8,8 +9,14 @@ import { PsicologosService } from '../psicologos.service';
 })
 export class CercaComponent implements OnInit {
 
+  arrPsico: Psicologo[]
+
   constructor(private psicologosService: PsicologosService) {
-    this.psicologosService.getAllPsicologos().then((res) => console.log(res))
+    this.psicologosService.getAllPsicologos().then((res) => {
+      console.log(res)
+      this.arrPsico = res;
+    })
+
   }
 
   ngOnInit() {

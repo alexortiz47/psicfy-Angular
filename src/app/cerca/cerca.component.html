@@ -1,7 +1,40 @@
 <cabecera></cabecera>
 
-<p>
-  cerca works!
-</p>
+<div class="container my-5">
+  <form class="row mb-5 p-3 border-bottom d-flex justify-content-between">
+    <div class="form-group col-md-3">
+      <label>Código postal:</label>
+      <input type="text" class="form-control">
+    </div>
+    <div class="form-group col-md-6">
+      <label>Selecciona una especialidad:</label>
+      <select class="form-control">
+        <option selected>...</option>
+        <option>Neuropsicología</option>
+        <option>Psicología familiar y de pareja</option>
+        <option>Psicología del deporte</option>
+        <option>Psicología educativa</option>
+        <option>Neuropsicología</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-info btn-block mt-4" type="submit">Buscar</button>
+    </div>
+  </form>
+
+
+  <div class="row p-3">
+    <div class="col-3" *ngFor="let psicologo of arrPsico">
+      <div class="card p-2" style="width: 17rem;">
+        <img [src]=psicologo.imgUrl class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{ psicologo.nombre }}</h5>
+          <h5 class="card-title">{{ psicologo.apellidos }}</h5>
+          <p class="card-text">{{ psicologo.especialidad }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <piepag></piepag>

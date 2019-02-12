@@ -8,10 +8,6 @@ import { PsicologosService } from './psicologos.service';
 })
 export class AppComponent {
 
-  constructor(private psicologosService: PsicologosService) {
-    this.psicologosService.getAllPsicologos().then((res) => console.log(res))
-  }
-
   ngOnInit() {
 
   }

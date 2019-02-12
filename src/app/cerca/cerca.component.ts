@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PsicologosService } from '../psicologos.service';
 
 @Component({
   selector: 'cerca',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CercaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private psicologosService: PsicologosService) {
+    this.psicologosService.getAllPsicologos().then((res) => console.log(res))
+  }
 
   ngOnInit() {
   }

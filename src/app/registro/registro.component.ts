@@ -29,7 +29,8 @@ export class RegistroComponent implements OnInit {
         Validators.required
       ]),
       codPostal: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.pattern(/^(?:0[1-9]\d{3}|[1-4]\d{4}|5[0-2]\d{3})$/)
       ]),
       especialidad: new FormControl(''),
       correo: new FormControl('', [

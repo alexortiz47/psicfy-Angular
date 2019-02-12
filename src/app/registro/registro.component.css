@@ -1,5 +1,5 @@
 .registro {
-  height: 100vh;
+  height: 100%;
 }
 input.ng-valid.ng-dirty {
   border: 1px solid green;

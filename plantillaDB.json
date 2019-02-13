@@ -6,7 +6,13 @@
             "apellidos": "Ortiz Bautista",
             "numColeg": 133453,
             "especialidad": "Psicología del deporte",
-            "imgUrl": "https://firebasestorage.googleapis.com/v0/b/proyecto-final-neoland-aob.appspot.com/o/user.png?alt=media&token=fc1abec1-0175-4804-9686-580d1aeea607"
+            "imgUrl": "https://firebasestorage.googleapis.com/v0/b/proyecto-final-neoland-aob.appspot.com/o/user.png?alt=media&token=fc1abec1-0175-4804-9686-580d1aeea607",
+            "correo": "ejemplo@correo.com",
+            "password": "hola1234",
+            "direccion": "Calle Sangenjo 37",
+            "codPostal": 28034,
+            "latitud": 12344,
+            "longitud": 12345
         },
         {
             "id": 2,
@@ -14,7 +20,13 @@
             "apellidos": "Ros San Juan",
             "numColeg": 143463,
             "especialidad": "Neuropsicología",
-            "imgUrl": "https://firebasestorage.googleapis.com/v0/b/proyecto-final-neoland-aob.appspot.com/o/user.png?alt=media&token=fc1abec1-0175-4804-9686-580d1aeea607"
+            "imgUrl": "https://firebasestorage.googleapis.com/v0/b/proyecto-final-neoland-aob.appspot.com/o/user.png?alt=media&token=fc1abec1-0175-4804-9686-580d1aeea607",
+            "correo": "ejemplo@correo.com",
+            "password": "hola1234",
+            "direccion": "Calle Sangenjo 37",
+            "codPostal": 28034,
+            "latitud": 12344,
+            "longitud": 12345
         },
         {
             "id": 3,
@@ -22,7 +34,13 @@
             "apellidos": "Martinez Gomez",
             "numColeg": 253753,
             "especialidad": "Psicología familiar y de pareja",
-            "imgUrl": "https://firebasestorage.googleapis.com/v0/b/proyecto-final-neoland-aob.appspot.com/o/user.png?alt=media&token=fc1abec1-0175-4804-9686-580d1aeea607"
+            "imgUrl": "https://firebasestorage.googleapis.com/v0/b/proyecto-final-neoland-aob.appspot.com/o/user.png?alt=media&token=fc1abec1-0175-4804-9686-580d1aeea607",
+            "correo": "ejemplo@correo.com",
+            "password": "hola1234",
+            "direccion": "Calle Sangenjo 37",
+            "codPostal": 28034,
+            "latitud": 12344,
+            "longitud": 12345
         },
         {
             "id": 4,
@@ -30,7 +48,13 @@
             "apellidos": "Bautista Molero",
             "numColeg": 313958,
             "especialidad": "Psicología educativa",
-            "imgUrl": "https://firebasestorage.googleapis.com/v0/b/proyecto-final-neoland-aob.appspot.com/o/user.png?alt=media&token=fc1abec1-0175-4804-9686-580d1aeea607"
+            "imgUrl": "https://firebasestorage.googleapis.com/v0/b/proyecto-final-neoland-aob.appspot.com/o/user.png?alt=media&token=fc1abec1-0175-4804-9686-580d1aeea607",
+            "correo": "ejemplo@correo.com",
+            "password": "hola1234",
+            "direccion": "Calle Sangenjo 37",
+            "codPostal": 28034,
+            "latitud": 12344,
+            "longitud": 12345
         }
 
     ],

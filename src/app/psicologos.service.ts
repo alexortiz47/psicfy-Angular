@@ -12,7 +12,7 @@ export class PsicologosService {
   }
 
   getAllPsicologos() {
-    let url = 'https://proyecto-final-neoland-aob.firebaseio.com/psicologos/psicologos/psicologos.json';
+    let url = 'https://proyecto-final-neoland-aob.firebaseio.com/psicologos/.json';
     return this.httpClient.get<Psicologo[]>(url).toPromise()
   }
 }

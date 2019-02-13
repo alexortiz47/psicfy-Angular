@@ -7,12 +7,14 @@ import { Psicologo } from './models/psicologo.model';
 })
 export class PsicologosService {
 
-  constructor(private httpClient: HttpClient) {
+  url: string;
 
+  constructor(private httpClient: HttpClient) {
+    this.url = 'https://proyecto-final-neoland-aob.firebaseio.com/psicologos/.json';
   }
 
   getAllPsicologos() {
-    let url = 'https://proyecto-final-neoland-aob.firebaseio.com/psicologos/.json';
-    return this.httpClient.get<Psicologo[]>(url).toPromise()
+    return this.httpClient.get<Psicologo[]>(this.url).toPromise()
   }
+
 }

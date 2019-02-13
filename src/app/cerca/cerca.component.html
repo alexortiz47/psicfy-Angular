@@ -1,15 +1,11 @@
 <cabecera></cabecera>
 
 <div class="container my-5">
-  <form class="row mb-5 p-3 border-bottom d-flex justify-content-between">
-    <div class="form-group col-md-3">
-      <label>Código postal:</label>
-      <input type="text" class="form-control">
-    </div>
+  <form class="row mb-5 p-3 border-bottom d-flex justify-content-around">
     <div class="form-group col-md-6">
       <label>Selecciona una especialidad:</label>
       <select class="form-control">
-        <option selected>...</option>
+        <option selected>Todos</option>
         <option>Neuropsicología</option>
         <option>Psicología familiar y de pareja</option>
         <option>Psicología del deporte</option>
@@ -24,13 +20,15 @@
 
 
   <div class="row">
-    <div class="col-md-3 mb-3 d-inline-block" *ngFor="let psicologo of arrPsico">
+    <div class="col-md-4 mb-3 d-inline-block" *ngFor="let psicologo of arrPsico">
       <div class="card mx-auto p-2" style="width: 17rem;">
-        <img [src]=psicologo.imgUrl class="card-img-top">
+        <img [src]=psicologo.imgUrl class="card-img-top mx-auto" style="width: 13rem;">
         <div class="card-body">
           <h5 class="card-title">{{ psicologo.nombre }}</h5>
           <h5 class="card-title">{{ psicologo.apellidos }}</h5>
+          <p class="card-text">{{ psicologo.numColeg }}</p>
           <p class="card-text">{{ psicologo.especialidad }}</p>
+          <p class="card-text">{{ psicologo.correo }}</p>
         </div>
       </div>
     </div>

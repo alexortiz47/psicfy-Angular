@@ -13,6 +13,7 @@ import { RegistroComponent } from './registro/registro.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { Error404Component } from './error404/error404.component';
 import { CercaComponent } from './cerca/cerca.component';
+import { LogeadoComponent } from './logeado/logeado.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CercaComponent } from './cerca/cerca.component';
     RegistroComponent,
     InicioSesionComponent,
     Error404Component,
-    CercaComponent
+    CercaComponent,
+    LogeadoComponent
   ],
   imports: [
     BrowserModule,

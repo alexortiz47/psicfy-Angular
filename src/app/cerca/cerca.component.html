@@ -1,22 +1,23 @@
 <cabecera></cabecera>
 
 <div class="container my-5">
-  <form class="row mb-5 p-3 border-bottom d-flex justify-content-around">
-    <div class="form-group col-md-6">
-      <label>Selecciona una especialidad:</label>
-      <select class="form-control">
-        <option selected>Todos</option>
-        <option>Neuropsicología</option>
-        <option>Psicología familiar y de pareja</option>
-        <option>Psicología del deporte</option>
-        <option>Psicología educativa</option>
-        <option>Neuropsicología</option>
-      </select>
-    </div>
-    <div class="col-md-3">
-      <button class="btn btn-info btn-block mt-4" type="submit">Buscar</button>
-    </div>
-  </form>
+    <form class="form-row mb-4">
+        <div class="form-group mb-3">
+          <p>Seleccione una o varias especialidades:</p>
+            <label class="form-check form-check-inline" *ngFor="let esp of arrEspecialidades">
+              <input class="form-check-input" type="checkbox">{{ esp }}
+            </label>
+        </div>
+      </form>
+
+      <form class="form-row mb-4">
+          <div class="form-group mb-3">
+            <p>Seleccione tipo de población:</p>
+            <label class="form-check form-check-inline" *ngFor="let pob of arrPoblaciones">
+              <input class="form-check-input" type="checkbox" value="Infanto-juvenil">{{ pob }}
+            </label>
+          </div>
+      </form>
 
 
   <div class="row">

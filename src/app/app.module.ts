@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { Error404Component } from './error404/error404.component';
 import { CercaComponent } from './cerca/cerca.component';
 import { LogeadoComponent } from './logeado/logeado.component';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { LogeadoComponent } from './logeado/logeado.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

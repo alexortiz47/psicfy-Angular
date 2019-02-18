@@ -31,5 +31,9 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['login'])
   }
 
+  irLogeado() {
+    this.router.navigate(['logeado'])
+  }
+
 }
 

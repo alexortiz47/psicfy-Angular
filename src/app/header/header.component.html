@@ -13,19 +13,23 @@
       <ul class="navbar-nav ml-auto">
 
         <li class="nav-item p-3">
-            <a class="btn nav-link" title="Evaluate" (click)="irEvaluate()">Evalúate</a>
+            <a class="btn text-light" title="Evaluate" (click)="irEvaluate()">Evalúate</a>
         </li>
 
         <li class="nav-item p-3">
-          <a class="btn nav-link" title="Cerca" (click)="irCerca()">Buscar profesional</a>
+          <a class="btn text-light" title="Cerca" (click)="irCerca()">Buscar profesional</a>
         </li>
 
         <li class="nav-item p-3">
-            <a class="btn nav-link" title="Registro" (click)="irRegistro()">Regístrate</a>
+            <a class="btn text-light" title="Registro" (click)="irRegistro()">Regístrate</a>
         </li>
 
         <li class="nav-item p-3">
           <a class="btn btn-outline-info text-info" title="Iniciar sesión" (click)="irLogin()">Iniciar sesión</a>
+        </li>
+
+        <li class="nav-item p-3">
+          <a id="perfil" class="text-light" title="Mi perfil" (click)="irLogeado()"><fa name="user-circle "></fa></a>
         </li>
 
       </ul>

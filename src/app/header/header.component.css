@@ -1,12 +1,13 @@
 .navbar-nav {
   text-align: center;
   margin: 0px;
+  line-height: 2.5rem;
 }
 .nav-item .nav-link {
   color: white;
 }
-.nav-item .nav-link:hover {
-  color: #17a2b8;
+.nav-item a:hover {
+  color: #17a2b8 !important;
 }
 .nav-item .btn-outline-info:hover {
   color: white !important;
@@ -19,7 +20,10 @@
   height: 80px;
   cursor: pointer;
 }
-
 .btn.focus, .btn:focus {
 	box-shadow: none;
+}
+#perfil {
+  font-size: 2.5rem;
+  padding: 0px;
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray} from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,11 +9,32 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent implements OnInit {
 
-  registroForm: FormGroup
+  registroForm: FormGroup;
 
-  constructor(private router: Router) { }
+  arrEspecialidades: string[];
+  arrPoblaciones: string[];
+
+  arrControlsCheckboxesEsp: FormControl[];
+  arrControlsCheckboxesPob: FormControl[]
+
+  constructor(private router: Router) {
+    this.arrEspecialidades = ['Ansiedad', 'Depresión', 'Trastornos del sueño', 'Trastornos alimenticios', 'Pareja y sexualidad', 'Familia', 'Consumo de tóxicos', 'Adicciones', 'Duelo', 'Trastorno por estrés postraumático', 'Violencia de género', 'Discapacidad', 'Trastorno mental grave', 'Coaching'];
+    this.arrPoblaciones = ['Infanto-Juvenil', 'Adultos'];
+  }
 
   ngOnInit() {
+    this.arrControlsCheckboxesEsp = this.arrEspecialidades.map(item =>{
+      return new FormControl(false)
+    })
+    this.arrControlsCheckboxesPob = this.arrPoblaciones.map(item =>{
+      return new FormControl(false)
+    })
+
+    let especialidadesControls = new FormArray(this.arrControlsCheckboxesEsp)
+
+    let poblacionControls = new FormArray(this.arrControlsCheckboxesPob)
+
+
     this.registroForm = new FormGroup({
       nombre: new FormControl('', [
         Validators.required
@@ -23,7 +44,7 @@ export class RegistroComponent implements OnInit {
       ]),
       numColeg: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^([0-9]{3,7})$/)
+        Validators.pattern(/^([0-9]{3,5})[M]$/)
       ]),
       domicilio: new FormControl('', [
         Validators.required
@@ -32,7 +53,10 @@ export class RegistroComponent implements OnInit {
         Validators.required,
         Validators.pattern(/^(?:0[1-9]\d{3}|[1-4]\d{4}|5[0-2]\d{3})$/)
       ]),
-      especialidad: new FormControl(''),
+      latitud: new FormControl(''),
+      longitud: new FormControl(''),
+      especialidades: especialidadesControls,
+      poblacion: poblacionControls,
       correo: new FormControl('', [
         Validators.required,
         Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)

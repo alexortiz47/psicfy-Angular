@@ -5,99 +5,85 @@
     <div class="row mt-5 py-5">
 
         <div class="col-10 m-auto">
-
           <div class="form-row mb-4">
-            <div class="form-group col-md-5">
+            <div class="form-group col-md-3">
               <label>Nombre:</label>
               <input type="text" class="form-control" formControlName="nombre">
             </div>
-
-            <div class="form-group col-md-7">
+            <div class="form-group col-md-6">
               <label>Apellidos:</label>
               <input type="text" class="form-control" formControlName="apellidos">
             </div>
-
+            <div class="form-group col-md-3">
+              <label>Número colegiado:</label>
+              <input type="text" class="form-control" formControlName="numColeg" placeholder="000-00000M">
+            </div>
           </div>
 
           <div class="form-row mb-4">
-
             <div class="form-group col-md-8">
               <label>Domicilio profesional:</label>
-              <input type="text" class="form-control" formControlName="domicilio">
+              <input type="text" class="form-control" formControlName="domicilio" placeholder="Tipo de vía Nombre 23, Madrid">
             </div>
-
             <div class="form-group col-md-4">
               <label>Código postal:</label>
               <input type="text" class="form-control" formControlName="codPostal">
             </div>
-
           </div>
 
           <div class="form-row mb-4">
-
             <div class="form-group col-md-6">
               <label>Latitud:</label>
-              <input type="text" class="form-control" formControlName="domicilio">
+              <input type="text" class="form-control" formControlName="latitud">
             </div>
-
             <div class="form-group col-md-6">
               <label>Longitud:</label>
-              <input type="text" class="form-control" formControlName="codPostal">
+              <input type="text" class="form-control" formControlName="longitud">
             </div>
-
           </div>
 
-          <div class="form-row mb-4">
-
-            <div class="form-group col-md-5">
-              <label>Número colegiado:</label>
-              <input type="text" class="form-control" formControlName="numColeg">
+          <form class="form-row mb-4" [formGroup]="registroForm.controls['especialidades']">
+            <div class="form-group mb-3">
+              <p>Seleccione una o varias especialidades:</p>
+                <label class="form-check form-check-inline" *ngFor="let esp of arrEspecialidades; let i = index">
+                  <input class="form-check-input" type="checkbox" [value]="esp" [formControl]="arrControlsCheckboxesEsp[i]">{{ esp }}
+                </label>
             </div>
+          </form>
 
-            <div class="col-md-7 mb-3">
-              <label>Selecciona una especialidad:</label>
-              <select class="form-control" formControlName="especialidad">
-                <option selected>...</option>
-                <option>Neuropsicología</option>
-                <option>Psicología familiar y de pareja</option>
-                <option>Psicología del deporte</option>
-                <option>Psicología educativa</option>
-                <option>Neuropsicología</option>
-              </select>
-            </div>
-
-          </div>
+          <form class="form-row mb-4" [formGroup]="registroForm.controls['poblacion']">
+              <div class="form-group mb-3">
+                <p>Seleccione tipo de población:</p>
+                <label class="form-check form-check-inline" *ngFor="let pob of arrPoblaciones; let i = index">
+                  <input class="form-check-input" type="checkbox" [value]="pob" [formControl]="arrControlsCheckboxesPob[i]">{{ pob }}
+                </label>
+              </div>
+          </form>
 
           <div class="form-row mb-4">
-
             <div class="form-group col-md-6">
               <label>Correo:</label>
               <input type="email" class="form-control" formControlName="correo">
               <p *ngIf="registroForm.controls['correo'].errors?.pattern && registroForm.controls['correo'].dirty">El campo debe ser un email correcto</p>
             </div>
-
             <div class="form-group col-md-6">
               <label>Contraseña:</label>
               <input type="password" class="form-control" formControlName="password">
               <p *ngIf="registroForm.controls['password'].errors?.pattern && registroForm.controls['password'].dirty">La contraseña debe tener al menos un numero, una letra y entre 6-15 caracteres</p>
             </div>
-
           </div>
 
           <div class="form-row mb-4">
-
             <div class="form-group col-md-6">
               <label>Repetir correo:</label>
               <input type="email" class="form-control" formControlName="correo_repeat">
-              <p *ngIf="registroForm.errors?.correo_repeat">El correo no coincide</p>
+              <p *ngIf="registroForm.errors && registroForm.errors['correo_repeat'] && registroForm.controls['correo_repeat'].dirty" style="color: red">El correo no coincide</p>
             </div>
-
             <div class="form-group col-md-6">
               <label>Repetir contraseña:</label>
               <input type="password" class="form-control" formControlName="password_repeat">
-              <p *ngIf="registroForm.errors?.password_repeat">La contraseña no coincide</p>
+              <p *ngIf="registroForm.errors && registroForm.errors['password_repeat'] && registroForm.controls['password_repeat'].dirty" style="color: red">La contraseña no coincide</p>
             </div>
-
           </div>
 
           <div class="form-row mb-4">
@@ -112,7 +98,6 @@
           <a id="cuenta" class="btn dropdown-item text-center" (click)="irInicio()">¿Ya tienes cuenta? Iniciar sesión</a>
 
         </div>
-
     </div>
 </form>
 

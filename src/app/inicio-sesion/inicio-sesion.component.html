@@ -6,31 +6,24 @@
 
       <div class="col-md-6 m-auto">
 
-        <form class="px-4 py-3">
+        <form class="px-4 py-3" novalidate [formGroup]="loginForm" (ngSubmit)="manejarLogin()">
           <div class="form-group">
             <label>Correo:</label>
-            <input type="email" class="form-control" placeholder="correo@ejemplo.com">
+            <input type="email" class="form-control" formControlName="correo">
           </div>
 
           <div class="form-group">
             <label>Contraseña:</label>
-            <input type="password" class="form-control" placeholder="Contraseña">
+            <input type="password" class="form-control" formControlName="password">
           </div>
 
-          <div class="form-group">
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input">
-              <label class="form-check-label">Recordar datos de cuenta</label>
-            </div>
-          </div>
-
-          <button type="submit" class="btn btn-lg btn-block btn-info">Iniciar Sesion</button>
+          <button type="submit" class="btn btn-lg btn-block btn-info" [disabled]="loginForm.invalid">Iniciar Sesion</button>
 
         </form>
 
         <div class="dropdown-divider"></div>
         <a class="btn dropdown-item text-center" (click)="irRegistro()">¿Aún no tienes cuenta? Regístrate</a>
-        <a class="btn dropdown-item text-center">¿Has olvidado tu contraseña?</a>
+        <!-- <a class="btn dropdown-item text-center">¿Has olvidado tu contraseña?</a> -->
       </div>
     </div>
 </main>

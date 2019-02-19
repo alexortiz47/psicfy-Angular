@@ -19,7 +19,7 @@ export class RegistroComponent implements OnInit {
 
   constructor(private router: Router) {
     this.arrEspecialidades = ['Ansiedad', 'Depresión', 'Trastornos del sueño', 'Trastornos alimenticios', 'Pareja y sexualidad', 'Familia', 'Consumo de tóxicos', 'Adicciones', 'Duelo', 'Trastorno por estrés postraumático', 'Violencia de género', 'Discapacidad', 'Trastorno mental grave', 'Coaching'];
-    this.arrPoblaciones = ['Infanto-Juvenil', 'Adultos'];
+    this.arrPoblaciones = ['Infanto-Juvenil (0-16 años)', 'Adultos (>16 años)'];
   }
 
   ngOnInit() {

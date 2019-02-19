@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -25,7 +25,8 @@ export class InicioSesionComponent implements OnInit {
   }
 
   manejarLogin() {
-    console.log(this.loginForm.value)
+    console.log(this.loginForm.value);
+    this.router.navigate([''])
   }
 
   irRegistro() {

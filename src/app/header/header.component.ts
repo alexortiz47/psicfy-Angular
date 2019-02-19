@@ -8,11 +8,17 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router) {
+  botonRegistroLogin: boolean;
+  botonPerfil: boolean;
 
+  constructor(private router: Router) {
+    this.botonRegistroLogin = true;
+    this.botonPerfil = false;
   }
 
   ngOnInit() {
+    this.botonRegistroLogin == true ? this.botonPerfil = false : this.botonPerfil = true
+
   }
 
   irEvaluate() {

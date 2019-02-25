@@ -16,14 +16,15 @@
             </div>
             <div class="form-group col-md-3">
               <label>Número colegiado:</label>
-              <input type="text" class="form-control" formControlName="numColeg" placeholder="000-00000M">
+              <input type="text" class="form-control" formControlName="numColeg" placeholder="00000M">
+              <p *ngIf="registroForm.controls['numColeg'].errors?.pattern && registroForm.controls['numColeg'].dirty">Sólo Comunidad de Madrid </p>
             </div>
           </div>
 
           <div class="form-row mb-4">
             <div class="form-group col-md-8">
               <label>Domicilio profesional:</label>
-              <input type="text" class="form-control" formControlName="domicilio" placeholder="Tipo de vía Nombre 23, Madrid">
+              <input type="text" class="form-control" formControlName="domicilio">
             </div>
             <div class="form-group col-md-4">
               <label>Código postal:</label>
@@ -34,29 +35,25 @@
           <div class="form-row mb-4">
             <div class="form-group col-md-6">
               <label>Latitud:</label>
-              <input type="text" class="form-control" formControlName="latitud">
+              <input type="text" class="form-control" formControlName="latitud" placeholder="oculto">
             </div>
             <div class="form-group col-md-6">
               <label>Longitud:</label>
-              <input type="text" class="form-control" formControlName="longitud">
+              <input type="text" class="form-control" formControlName="longitud" placeholder="oculto">
             </div>
           </div>
 
           <form class="form-row mb-4" [formGroup]="registroForm.controls['especialidades']">
             <div class="form-group mb-3">
               <p>Seleccione una o varias especialidades:</p>
-                <label class="form-check form-check-inline" *ngFor="let esp of arrEspecialidades; let i = index">
-                  <input class="form-check-input" type="checkbox" [value]="esp" [formControl]="arrControlsCheckboxesEsp[i]">{{ esp }}
-                </label>
+                <label class="form-check form-check-inline" *ngFor="let esp of arrEspecialidades; let i = index"><input class="form-check-input" type="checkbox" [value]="esp" [formControl]="arrControlsCheckboxesEsp[i]">{{ esp }}</label>
             </div>
           </form>
 
           <form class="form-row mb-4" [formGroup]="registroForm.controls['poblacion']">
               <div class="form-group mb-3">
                 <p>Seleccione tipo de población:</p>
-                <label class="form-check form-check-inline" *ngFor="let pob of arrPoblaciones; let i = index">
-                  <input class="form-check-input" type="checkbox" [value]="pob" [formControl]="arrControlsCheckboxesPob[i]">{{ pob }}
-                </label>
+                <label class="form-check form-check-inline" *ngFor="let pob of arrPoblaciones; let i = index"><input class="form-check-input" type="checkbox" [value]="pob" [formControl]="arrControlsCheckboxesPob[i]">{{ pob }}</label>
               </div>
           </form>
 

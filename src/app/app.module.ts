@@ -15,6 +15,7 @@ import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { Error404Component } from './error404/error404.component';
 import { CercaComponent } from './cerca/cerca.component';
 import { LogeadoComponent } from './logeado/logeado.component';
+import { PreguntasComponent } from './preguntas/preguntas.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { LogeadoComponent } from './logeado/logeado.component';
     InicioSesionComponent,
     Error404Component,
     CercaComponent,
-    LogeadoComponent
+    LogeadoComponent,
+    PreguntasComponent
   ],
   imports: [
     BrowserModule,

@@ -1,39 +1,58 @@
 <cabecera></cabecera>
 
 <div class="container my-5">
-    <form class="form-row mb-4">
-        <div class="form-group mb-3">
-          <p>Seleccione una o varias especialidades:</p>
-            <label class="form-check form-check-inline" *ngFor="let esp of arrEspecialidades">
-              <input class="form-check-input" type="checkbox">{{ esp }}
-            </label>
-        </div>
-      </form>
+  <div class="container my-5">
+    <form class="row mb-5 p-3 border-bottom d-flex justify-content-between">
+      <div class="form-group col-md-3">
+        <label>Población:</label>
+        <select class="form-control" (change)="seleccionarPob($event)">
+          <option selected>Todas</option>
+          <option>Infanto-Juvenil (0-16 años)</option>
+          <option>Adultos (>16 años)</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Selecciona una especialidad:</label>
+        <select class="form-control" (change)="seleccionarEsp($event)">
+          <option selected>Todas</option>
+          <option>Ansiedad</option>
+          <option>Depresión</option>
+          <option>Trastornos del sueño</option>
+          <option>Trastornos alimenticios</option>
+          <option>Pareja y sexualidad</option>
+          <option>Familia</option>
+          <option>Consumo de tóxicos</option>
+          <option>Adicciones</option>
+          <option>Duelo</option>
+          <option>Trastorno por estrés postraumático</option>
+          <option>Violencia de género</option>
+          <option>Discapacidad</option>
+          <option>Trastorno mental grave</option>
+          <option>Coaching</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-info btn-block mt-4" type="submit">Buscar</button>
+      </div>
+    </form>
 
-      <form class="form-row mb-4">
-          <div class="form-group mb-3">
-            <p>Seleccione tipo de población:</p>
-            <label class="form-check form-check-inline" *ngFor="let pob of arrPoblaciones">
-              <input class="form-check-input" type="checkbox" value="Infanto-juvenil">{{ pob }}
-            </label>
+
+
+    <div class="row">
+      <div class="col-md-4 mb-3 d-inline-block" *ngFor="let psicologo of arrPsico">
+        <div class="card mx-auto p-2" style="width: 17rem;">
+          <img [src]=psicologo.imgUrl class="card-img-top mx-auto" style="width: 13rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{ psicologo.nombre }}</h5>
+            <h5 class="card-title">{{ psicologo.apellidos }}</h5>
+            <p class="card-text">{{ psicologo.numColeg }}</p>
+            <p class="card-text">{{ psicologo.especialidad }}</p>
+            <p class="card-text">{{ psicologo.poblacion }}</p>
+            <p class="card-text">{{ psicologo.correo }}</p>
           </div>
-      </form>
-
-
-  <div class="row">
-    <div class="col-md-4 mb-3 d-inline-block" *ngFor="let psicologo of arrPsico">
-      <div class="card mx-auto p-2" style="width: 17rem;">
-        <img [src]=psicologo.imgUrl class="card-img-top mx-auto" style="width: 13rem;">
-        <div class="card-body">
-          <h5 class="card-title">{{ psicologo.nombre }}</h5>
-          <h5 class="card-title">{{ psicologo.apellidos }}</h5>
-          <p class="card-text">{{ psicologo.numColeg }}</p>
-          <p class="card-text">{{ psicologo.especialidad }}</p>
-          <p class="card-text">{{ psicologo.correo }}</p>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <piepag></piepag>

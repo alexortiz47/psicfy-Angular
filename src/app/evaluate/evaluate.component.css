@@ -1,0 +1,10 @@
+.iconoVolver{
+  cursor: pointer;
+  font-size: 30px;
+}
+.flecha{
+  color: #212529;
+}
+.flecha:hover{
+  color: #17a2b8;
+}

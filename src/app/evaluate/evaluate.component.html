@@ -1,7 +1,32 @@
 <cabecera></cabecera>
 
-<p>
-  evaluate works!
-</p>
+<div class="container my-5">
+  <div class="paso1" *ngIf="mensaje">
+    <div class="row text-center">
+      <div class="col-12 mb-5">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet facere reprehenderit ducimus quisquam sequi eaque corrupti? Officia quidem minus tempore. Modi excepturi vel aliquid commodi nihil illum eos quam voluptas.
+          </p>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-12 mb-5">
+        <button class="btn btn-info" (click)="iniciarPreguntas()">¡Adelante!</button>
+      </div>
+    </div>
+  </div>
 
-<piepag></piepag>
+  <div class="paso2 row" *ngIf="inicio">
+    <div class="col-8 mx-auto">
+      <div class="iconoVolver" (click)="volverMensajeInicio()">
+          <fa class="flecha" name="arrow-left"></fa>
+      </div>
+      <div class="col-12 mb-5 text-center">
+        <label class=" mr-1 col-11">Introduzca la edad de la persona:</label>
+        <input class="col-1" type="text">
+      </div>
+      <preguntas></preguntas>
+    </div>
+  </div>
+
+</div>
+

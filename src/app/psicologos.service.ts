@@ -10,7 +10,7 @@ export class PsicologosService {
   url: string;
 
   constructor(private httpClient: HttpClient) {
-    this.url = 'https://proyecto-final-neoland-aob.firebaseio.com/psicologos/.json';
+    this.url = 'https://proyecto-final-neoland-aob.firebaseio.com/psicologos.json';
   }
 
   getAllPsicologos() {

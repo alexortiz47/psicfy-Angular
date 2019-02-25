@@ -13,11 +13,11 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router) {
     this.botonRegistroLogin = true;
-    this.botonPerfil = false;
+    this.botonPerfil = true;
   }
 
   ngOnInit() {
-    this.botonRegistroLogin == true ? this.botonPerfil = false : this.botonPerfil = true
+    // this.botonRegistroLogin == true ? this.botonPerfil = false : this.botonPerfil = true
 
   }
 

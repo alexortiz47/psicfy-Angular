@@ -1,7 +1,116 @@
 <cabecera></cabecera>
 
-<p>
-  logeado works!
-</p>
+<form class="registro container mt-5" novalidate [formGroup]="perfilForm" (ngSubmit)="manejarPerfil()">
 
-<piepag></piepag>
+    <div class="row mt-5 py-5">
+
+        <div class="col-10 m-auto">
+          <div class="form-row mb-4">
+            <div class="form-group col-md-2">
+              <img src="../../assets/user.png" alt="">
+            </div>
+            <div class="form-group col-md-3">
+              <h5>Nombre:</h5>
+              <h3>Alejandro</h3>
+            </div>
+            <div class="form-group col-md-4">
+              <h5>Apellidos:</h5>
+              <h3>Ortiz Bautista</h3>
+            </div>
+            <div class="form-group col-md-3">
+              <h5>Numero colegiado:</h5>
+              <h3>32635M</h3>
+            </div>
+          </div>
+
+          <div class="form-row mb-4">
+            <div class="form-group col-md-8">
+              <h5>Domicilio profesional:</h5>
+              <input type="text" class="form-control" formControlName="domicilio" value="Plaza de España, 11">
+            </div>
+            <div class="form-group col-md-4">
+              <h5>Código postal:</h5>
+              <input type="text" class="form-control" formControlName="codPostal">
+            </div>
+          </div>
+
+          <div class="form-row mb-4">
+            <div class="form-group col-md-9">
+              <h5>Especialidades:</h5>
+              <p>Andiedad, Depresión, Trastornos del sueño, Discapacidad, Coaching</p>
+            </div>
+            <div class="form-group col-md-3">
+              <button *ngIf="!especialidades" class="btn btn-outline-dark btn-block" (click)="cambiarEsp()">Cambiar especialidades</button>
+              <button *ngIf="especialidades" class="btn btn-danger btn-block" (click)="cambiarEsp()">No Cambiar especialidades</button>
+            </div>
+          </div>
+
+          <form *ngIf="especialidades" class="form-row mb-4" [formGroup]="perfilForm.controls['especialidades']">
+            <div class="form-group mb-3">
+              <p>Seleccione una o varias especialidades:</p>
+                <label class="form-check form-check-inline" *ngFor="let esp of arrEspecialidades; let i = index">
+                <input class="form-check-input" type="checkbox" [value]="esp" [formControl]="arrControlsCheckboxesEsp[i]">{{ esp }}
+                </label>
+            </div>
+          </form>
+
+          <div class="form-row mb-4">
+            <div class="form-group col-md-9">
+              <h5>Población en la que está especializado:</h5>
+              <p>Infanto-Juvenil (0-16 años)</p>
+            </div>
+            <div class="form-group col-md-3">
+              <button *ngIf="!poblacion" class="btn btn-outline-dark btn-block" (click)="cambiarPob()">Cambiar población</button>
+              <button *ngIf="poblacion" class="btn btn-danger btn-block" (click)="cambiarPob()">No cambiar población</button>
+            </div>
+          </div>
+
+          <form *ngIf="poblacion" class="form-row mb-4" [formGroup]="perfilForm.controls['poblacion']">
+              <div class="form-group mb-3">
+                <p>Seleccione tipo de población:</p>
+                <label class="form-check form-check-inline" *ngFor="let pob of arrPoblaciones; let i = index">
+                <input class="form-check-input" type="checkbox" [value]="pob" [formControl]="arrControlsCheckboxesPob[i]">{{ pob }}
+                </label>
+              </div>
+          </form>
+
+          <div class="form-row mb-4">
+            <div class="form-group col-md-6">
+              <h5>Correo:</h5>
+              <input type="email" class="form-control" formControlName="correo">
+              <p *ngIf="perfilForm.controls['correo'].errors?.pattern && perfilForm.controls['correo'].dirty">El campo debe ser un email correcto</p>
+            </div>
+            <div class="form-group col-md-6">
+              <h5>Contraseña:</h5>
+              <input type="password" class="form-control" formControlName="password">
+              <p *ngIf="perfilForm.controls['password'].errors?.pattern && perfilForm.controls['password'].dirty">La contraseña debe tener al menos un numero, una letra y entre 6-15 caracteres</p>
+            </div>
+          </div>
+
+          <div class="form-row mb-4">
+            <div class="form-group col-md-6">
+              <label>Repetir correo:</label>
+              <input type="email" class="form-control" formControlName="correo_repeat">
+              <p *ngIf="perfilForm.errors && perfilForm.errors['correo_repeat'] && perfilForm.controls['correo_repeat'].dirty" style="color: red">El correo no coincide</p>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Repetir contraseña:</label>
+              <input type="password" class="form-control" formControlName="password_repeat">
+              <p *ngIf="perfilForm.errors && perfilForm.errors['password_repeat'] && perfilForm.controls['password_repeat'].dirty" style="color: red">La contraseña no coincide</p>
+            </div>
+          </div>
+
+          <div class="form-row mb-4 d-flex justify-content-around">
+            <div class="col-md-5">
+              <button type="submit" class="btn btn-lg btn-block btn-success mb-3">Actualizar</button>
+            </div>
+            <div class="col-md-5">
+              <button type="submit" class="btn btn-lg btn-block btn-danger mb-3">Eliminar cuenta</button>
+            </div>
+          </div>
+
+
+
+        </div>
+    </div>
+</form>

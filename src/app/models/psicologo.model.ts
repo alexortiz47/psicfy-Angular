@@ -5,6 +5,7 @@ export class Psicologo {
   apellidos: string;
   numColeg: number;
   especialidad: string;
+  poblacion: string;
   imgUrl: string;
   correo: string;
   password: string;
@@ -13,12 +14,13 @@ export class Psicologo {
   latitud: number;
   longitud: number;
 
-  constructor(pId: number, pNombre: string, pApellidos: string, pNumCol: number, pEspecialidad: string, pImgUrl: string, pCorreo: string, pPassword: string, pDireccion: string, pCodPostal: number, pLatitud: number, pLongitud: number) {
+  constructor(pId: number, pNombre: string, pApellidos: string, pNumCol: number, pEspecialidad: string, pPoblacion: string, pImgUrl: string, pCorreo: string, pPassword: string, pDireccion: string, pCodPostal: number, pLatitud: number, pLongitud: number) {
     this.id = pId;
     this.nombre = pNombre;
     this.apellidos = pApellidos;
     this.numColeg = pNumCol;
-    this.especialidad = pEspecialidad
+    this.especialidad = pEspecialidad;
+    this.poblacion = pPoblacion;
     this.imgUrl = pImgUrl;
     this.correo = pCorreo;
     this.password = pPassword;

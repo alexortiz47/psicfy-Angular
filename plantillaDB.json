@@ -5,7 +5,8 @@
             "nombre": "Alejandro",
             "apellidos": "Ortiz Bautista",
             "numColeg": 133453,
-            "especialidad": "Psicología del deporte",
+            "especialidad": "Ansiedad",
+            "poblacion": "Infanto-Juvenil (0-16 años)",
             "imgUrl": "https://firebasestorage.googleapis.com/v0/b/proyecto-final-neoland-aob.appspot.com/o/user.png?alt=media&token=fc1abec1-0175-4804-9686-580d1aeea607",
             "correo": "ejemplo@correo.com",
             "password": "hola1234",
@@ -19,7 +20,8 @@
             "nombre": "Maria",
             "apellidos": "Ros San Juan",
             "numColeg": 143463,
-            "especialidad": "Neuropsicología",
+            "especialidad": "Depresión",
+            "poblacion": "Adultos (>16 años)",
             "imgUrl": "https://firebasestorage.googleapis.com/v0/b/proyecto-final-neoland-aob.appspot.com/o/user.png?alt=media&token=fc1abec1-0175-4804-9686-580d1aeea607",
             "correo": "ejemplo@correo.com",
             "password": "hola1234",
@@ -33,7 +35,8 @@
             "nombre": "Ricardo",
             "apellidos": "Martinez Gomez",
             "numColeg": 253753,
-            "especialidad": "Psicología familiar y de pareja",
+            "especialidad": "Trastornos del sueño",
+            "poblacion": "Infanto-Juvenil (0-16 años)",
             "imgUrl": "https://firebasestorage.googleapis.com/v0/b/proyecto-final-neoland-aob.appspot.com/o/user.png?alt=media&token=fc1abec1-0175-4804-9686-580d1aeea607",
             "correo": "ejemplo@correo.com",
             "password": "hola1234",
@@ -47,7 +50,8 @@
             "nombre": "Mª Teresa",
             "apellidos": "Bautista Molero",
             "numColeg": 313958,
-            "especialidad": "Psicología educativa",
+            "especialidad": "Trastorno por estrés postraumático",
+            "poblacion": "Adultos (>16 años)",
             "imgUrl": "https://firebasestorage.googleapis.com/v0/b/proyecto-final-neoland-aob.appspot.com/o/user.png?alt=media&token=fc1abec1-0175-4804-9686-580d1aeea607",
             "correo": "ejemplo@correo.com",
             "password": "hola1234",
@@ -61,23 +65,19 @@
     "preguntas": [
         {
             "id": 1,
-            "titulo": "¿Hola que tal?",
-            "respuesta": 3
+            "titulo": "Me he notado con el ánimo deprimido la mayor parte del día"
         },
         {
             "id": 2,
-            "titulo": "¿Hola que tal?",
-            "respuesta": 3
+            "titulo": "He tenido sentimientos de culpa, desesperanza y/o tristeza"
         },
         {
             "id": 3,
-            "titulo": "¿Hola que tal?",
-            "respuesta": 3
+            "titulo": "He dejado de hacer actividades que antes me resultaban agradables"
         },
         {
             "id": 4,
-            "titulo": "¿Hola que tal?",
-            "respuesta": 3
+            "titulo": "He estado preocupado por algo durante la mayor parte del día"
         }
     ]
 }

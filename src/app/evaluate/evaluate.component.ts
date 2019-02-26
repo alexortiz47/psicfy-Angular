@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PreguntasService } from '../preguntas.service';
+import { Pregunta } from '../models/pregunta.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'evaluate',
@@ -7,12 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EvaluateComponent implements OnInit {
 
-  mensaje: boolean;
-  inicio: boolean;
+  mensaje: boolean
+  inicio: boolean
+  arrPreguntas: Pregunta[]
+  arrRespuestas: any[]
+  edad: number
 
-  constructor() {
-    this.mensaje = true;
-    this.inicio = false;
+  constructor(private preguntasService: PreguntasService, private router: Router) {
+    this.preguntasService.getAllPreguntas().then((res) => {
+      this.arrPreguntas = res
+    })
+    this.mensaje = true
+    this.inicio = false
+    this.arrRespuestas = []
   }
 
   ngOnInit() {
@@ -30,6 +40,24 @@ export class EvaluateComponent implements OnInit {
       this.inicio = false;
       this.mensaje = true;
     }
+  }
+
+  respRecibida($event) {
+    let elem = this.arrRespuestas.find((item) => {
+      return item.preguntaId == $event.preguntaId
+    })
+    if(elem){
+      elem.value = $event.value
+    }else{
+      this.arrRespuestas.push($event)
+    }
+
+  }
+
+  enviarRespuestas() {
+    console.log(this.edad)
+    console.log(this.arrRespuestas)
+    this.router.navigate(['resultado'])
   }
 
 }

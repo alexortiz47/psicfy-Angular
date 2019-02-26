@@ -8,3 +8,11 @@ input.ng-valid.ng-dirty {
 input.ng-invalid.ng-dirty {
   border: 1px solid tomato;
 }
+
+.error {
+  color: tomato;
+}
+
+#poblaciones{
+  margin-left: 7rem;
+}

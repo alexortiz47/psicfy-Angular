@@ -17,6 +17,7 @@ import { CercaComponent } from './cerca/cerca.component';
 import { LogeadoComponent } from './logeado/logeado.component';
 import { PreguntaComponent } from './pregunta/pregunta.component';
 import { ResultadoComponent } from './resultado/resultado.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ResultadoComponent } from './resultado/resultado.component';
     CercaComponent,
     LogeadoComponent,
     PreguntaComponent,
-    ResultadoComponent
+    ResultadoComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

@@ -25,8 +25,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['evaluate'])
   }
 
-  irCerca() {
-    this.router.navigate(['cerca'])
+  irBuscar() {
+    this.router.navigate(['buscar'])
   }
 
   irRegistro() {

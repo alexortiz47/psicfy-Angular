@@ -8,15 +8,18 @@ import { Error404Component } from './error404/error404.component';
 import { CercaComponent } from './cerca/cerca.component';
 import { LogeadoComponent } from './logeado/logeado.component';
 import { ResultadoComponent } from './resultado/resultado.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: MainPrincipalComponent},
+  { path: '', redirectTo: 'inicio', pathMatch: 'full'},
+  { path: 'inicio', component: MainPrincipalComponent},
   { path: 'evaluate', component: EvaluateComponent},
   { path: 'resultado', component: ResultadoComponent},
   { path: 'buscar', component: CercaComponent},
   { path: 'registro', component: RegistroComponent},
   { path: 'login', component: InicioSesionComponent},
   { path: 'logeado', component: LogeadoComponent},
+  { path: 'admin/login', component: AdminComponent},
   { path: '**', component: Error404Component}
 ];
 

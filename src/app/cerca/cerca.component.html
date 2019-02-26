@@ -39,17 +39,21 @@
 
 
     <div class="row">
-      <div class="col-md-4 mb-3 d-inline-block" *ngFor="let psicologo of arrPsico">
-        <div class="card mx-auto p-2" style="width: 17rem;">
-          <img [src]=psicologo.imgUrl class="card-img-top mx-auto" style="width: 13rem;">
-          <div class="card-body">
-            <h5 class="card-title">{{ psicologo.nombre }}</h5>
-            <h5 class="card-title">{{ psicologo.apellidos }}</h5>
-            <p class="card-text">{{ psicologo.numColeg }}</p>
-            <p class="card-text">{{ psicologo.especialidad }}</p>
-            <p class="card-text">{{ psicologo.poblacion }}</p>
-            <p class="card-text">{{ psicologo.correo }}</p>
-          </div>
+      <div class="col-md-8 mb-4 mx-auto" *ngFor="let psicologo of arrPsico">
+        <div class="card p-3">
+            <div class="row">
+              <div class="col-5 text-center">
+                <img [src]=psicologo.imgUrl class="imgUsuario card-img-top mx-auto border rounded-circle mb-3">
+                <h4 class="card-title">{{ psicologo.nombre }} {{ psicologo.apellidos }}</h4>
+                <h5 class="card-text">{{ psicologo.numColeg }}</h5>
+              </div>
+              <div class="col-7 card-body">
+                <p class="card-text"><span>Especialista en:</span> {{ psicologo.especialidad }}</p>
+                <p class="card-text"><span>Población:</span> {{ psicologo.poblacion }}</p>
+                <p class="card-text"><span>Direccion:</span> {{ psicologo.direccion }}</p>
+                <p class="card-text"><span>Correo:</span> {{ psicologo.correo }}</p>
+              </div>
+            </div>
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent},
   { path: 'login', component: InicioSesionComponent},
   { path: 'logeado', component: LogeadoComponent},
-  { path: 'admin/login', component: AdminComponent},
+  { path: 'admin', component: AdminComponent},
   { path: '**', component: Error404Component}
 ];
 

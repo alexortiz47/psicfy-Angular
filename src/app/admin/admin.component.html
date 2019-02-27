@@ -1,3 +1,19 @@
-<p>
-  admin works!
-</p>
+<main class="container mt-5">
+  <h2 class="text-center">Acesso Administrador</h2>
+  <div class="row py-5">
+    <div class="col-md-6 m-auto">
+      <form class="px-4 py-3" novalidate [formGroup]="adminForm" (ngSubmit)="manejarLogin()">
+        <div class="form-group">
+          <label>Correo:</label>
+          <input type="email" class="form-control" formControlName="correo">
+        </div>
+        <div class="form-group">
+          <label>Contraseña:</label>
+          <input type="password" class="form-control" formControlName="password">
+        </div>
+        <button type="submit" class="btn btn-lg btn-block btn-info" [disabled]="loginForm.invalid">Iniciar Sesion</button>
+      </form>
+      <!-- <a class="btn dropdown-item text-center">¿Has olvidado tu contraseña?</a> -->
+    </div>
+  </div>
+</main>

@@ -26,11 +26,7 @@ export class AdminComponent implements OnInit {
 
   manejarLogin() {
     console.log(this.adminForm.value);
-    this.router.navigate([''])
-  }
-
-  irRegistro() {
-    this.router.navigate(['/registro'])
+    this.router.navigate(['/admin/inicio'])
   }
 
 }

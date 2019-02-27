@@ -9,6 +9,7 @@ import { CercaComponent } from './cerca/cerca.component';
 import { LogeadoComponent } from './logeado/logeado.component';
 import { ResultadoComponent } from './resultado/resultado.component';
 import { AdminComponent } from './admin/admin.component';
+import { AdminMainComponent } from './admin-main/admin-main.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'inicio', pathMatch: 'full'},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'login', component: InicioSesionComponent},
   { path: 'logeado', component: LogeadoComponent},
   { path: 'admin', component: AdminComponent},
+  { path: 'admin/inicio', component: AdminMainComponent},
   { path: '**', component: Error404Component}
 ];
 

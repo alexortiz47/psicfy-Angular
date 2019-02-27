@@ -17,9 +17,6 @@ export class LogeadoComponent implements OnInit {
   arrEspecialidades: string[];
   arrPoblaciones: string[];
 
-  arrControlsCheckboxesEsp: FormControl[];
-  arrControlsCheckboxesPob: FormControl[]
-
   constructor(private router: Router) {
     this.arrEspecialidades = ['Ansiedad', 'Depresión', 'Trastornos del sueño', 'Trastornos alimenticios', 'Pareja y sexualidad', 'Familia', 'Consumo de tóxicos', 'Adicciones', 'Duelo', 'Trastorno por estrés postraumático', 'Violencia de género', 'Discapacidad', 'Trastorno mental grave', 'Coaching'];
     this.arrPoblaciones = ['Infanto-Juvenil (0-16 años)', 'Adultos (>16 años)'];
@@ -28,18 +25,6 @@ export class LogeadoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.arrControlsCheckboxesEsp = this.arrEspecialidades.map(item =>{
-      return new FormControl(false)
-    })
-    this.arrControlsCheckboxesPob = this.arrPoblaciones.map(item =>{
-      return new FormControl(false)
-    })
-
-    let especialidadesControls = new FormArray(this.arrControlsCheckboxesEsp)
-
-    let poblacionControls = new FormArray(this.arrControlsCheckboxesPob)
-
-
     this.perfilForm = new FormGroup({
       nombre: new FormControl('', [
         Validators.required
@@ -51,18 +36,18 @@ export class LogeadoComponent implements OnInit {
         Validators.required,
         Validators.pattern(/^([0-9]{3,5})[M]$/)
       ]),
-      domicilio: new FormControl('', [
+      domicilio: new FormControl('Plaza de España, 11', [
         Validators.required
       ]),
-      codPostal: new FormControl('', [
+      codPostal: new FormControl('28008', [
         Validators.required,
         Validators.pattern(/^(?:0[1-9]\d{3}|[1-4]\d{4}|5[0-2]\d{3})$/)
       ]),
       latitud: new FormControl(''),
       longitud: new FormControl(''),
-      especialidades: especialidadesControls,
-      poblacion: poblacionControls,
-      correo: new FormControl('', [
+      especialidades: this.buildEspecialidades(),
+      poblacion: this.buildPoblaciones(),
+      correo: new FormControl('alex@gmail.com', [
         Validators.required,
         Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
       ]),
@@ -77,6 +62,7 @@ export class LogeadoComponent implements OnInit {
     ])
   }
 
+  // Validaciones:
   repeatCorreoValidator(group: FormGroup) {
     let correo = group.controls['correo'].value
     let correo_repeat = group.controls['correo_repeat'].value
@@ -91,14 +77,31 @@ export class LogeadoComponent implements OnInit {
     return (password == password_repeat) ? null : { 'password_repeat': 'La contraseña no coincide' }
   }
 
+  // Checkboxes de Especialidades y población:
+  buildEspecialidades() {
+    const values = this.arrEspecialidades.map(item => new FormControl(false))
+    return new FormArray(values)
+  }
+
+  buildPoblaciones() {
+    const values = this.arrPoblaciones.map(item => new FormControl(false))
+    return new FormArray(values)
+  }
+
+  // Evento ngSubmit del formulario de Angular
   manejarPerfil() {
-    console.log(this.perfilForm.value)
+
+    let valueSubmit = Object.assign({}, this.perfilForm.value)
+
+    valueSubmit = Object.assign(valueSubmit, {
+      especialidades: valueSubmit.especialidades.map((v, i) => v ? this.arrEspecialidades[i].toLowerCase().replace(/ /g, '_').normalize('NFD').replace(/[\u0300-\u036f]/g, "") : null).filter(v => v !== null),
+      poblacion: valueSubmit.poblacion.map((v, i) => v ? this.arrPoblaciones[i].toLowerCase().replace(' ', '_').normalize('NFD').replace(/[\u0300-\u036f]/g, "") : null).filter(v => v !== null)
+    })
+    console.log(valueSubmit)
+
   }
 
-  irInicio(){
-    this.router.navigate(['/login'])
-  }
-
+  // Mostrar u ocultar las especialidades y poblacion para cambiarlo
   cambiarEsp() {
     if(!this.especialidades){
       this.especialidades = true;

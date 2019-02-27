@@ -14,26 +14,12 @@ export class RegistroComponent implements OnInit {
   arrEspecialidades: string[];
   arrPoblaciones: string[];
 
-  // arrControlsCheckboxesEsp: FormControl[];
-  // arrControlsCheckboxesPob: FormControl[]
-
   constructor(private router: Router) {
     this.arrEspecialidades = ['Ansiedad', 'Depresión', 'Trastornos del sueño', 'Trastornos alimenticios', 'Pareja y sexualidad', 'Familia', 'Consumo de tóxicos', 'Adicciones', 'Duelo', 'Trastorno por estrés postraumático', 'Violencia de género', 'Discapacidad', 'Trastorno mental grave', 'Coaching'];
     this.arrPoblaciones = ['Infanto-Juvenil (0-16 años)', 'Adultos (>16 años)'];
   }
 
   ngOnInit() {
-    // this.arrControlsCheckboxesEsp = this.arrEspecialidades.map(item =>{
-    //   return new FormControl(false)
-    // })
-    // this.arrControlsCheckboxesPob = this.arrPoblaciones.map(item =>{
-    //   return new FormControl(false)
-    // })
-
-    // let especialidadesControls = new FormArray(this.arrControlsCheckboxesEsp)
-
-    // let poblacionControls = new FormArray(this.arrControlsCheckboxesPob)
-
     this.registroForm = new FormGroup({
       nombre: new FormControl('', [
         Validators.required

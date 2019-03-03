@@ -5,3 +5,8 @@ img {
 #poblaciones{
   margin-left: 7rem;
 }
+@media (max-width: 767px){
+  .nombre{
+    text-align: center;
+  }
+}

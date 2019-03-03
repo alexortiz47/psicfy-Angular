@@ -61,7 +61,7 @@
               <label>Seleccione tipo de poblacion:</label>
               <div id="poblaciones" class="row">
                 <div class="checkbox" formArrayName="poblacion" *ngFor="let pob of arrPoblaciones; let i = index">
-                  <label class="form-check form-check-inline mr-5">
+                  <label class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" [formControlName]="i"> {{pob}}
                   </label>
                 </div>

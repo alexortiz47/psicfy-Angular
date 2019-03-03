@@ -1,6 +1,6 @@
 <cabecera></cabecera>
 
-<form class="mb-3 text-center">
+<form class="mb-3">
   <div class="container my-5">
     <div class="paso1" *ngIf="mensaje">
       <div class="row text-center">
@@ -10,24 +10,24 @@
         </div>
       </div>
       <div class="row text-center">
-        <div class="col-12 mb-5">
+        <div class="col-12">
           <button class="btn btn-info" (click)="iniciarPreguntas()">¡Adelante!</button>
         </div>
       </div>
     </div>
 
-    <div class="paso2 row" *ngIf="inicio">
-      <div class="col-8 mx-auto">
-        <div class="iconoVolver" (click)="volverMensajeInicio()">
+    <div class="paso2 row text-center" *ngIf="inicio">
+      <div class="col-12">
+        <div class="iconoVolver mb-4" (click)="volverMensajeInicio()">
             <fa class="flecha" name="arrow-left"></fa>
         </div>
-        <div class="col-12 mb-5 text-center">
+        <div class="col-12 mb-5">
           <label class=" mr-1 col-11">Introduzca la edad de la persona:</label>
           <input class="col-1" type="text" name="edad" [(ngModel)]="edad">
         </div>
         <pregunta *ngFor="let preg of arrPreguntas" [pregunta]="preg" [preguntaId]="preg.id" (respuesta)="respRecibida($event)"></pregunta>
       </div>
-      <button type="submit" class="col-7 mx-auto btn btn-info btn-block" (click)="enviarRespuestas()">Enviar</button>
+      <button type="submit" class="col-8 mx-auto btn btn-info btn-block" (click)="enviarRespuestas()">Enviar</button>
     </div>
   </div>
 

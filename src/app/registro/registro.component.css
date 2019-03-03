@@ -16,3 +16,9 @@ input.ng-invalid.ng-dirty {
 #poblaciones{
   margin-left: 7rem;
 }
+
+@media (max-width: 767px){
+  #poblaciones{
+    margin-left: 2.4rem;
+  }
+}

@@ -1,5 +1,5 @@
 .jumbotron {
-  background-image: url(../../assets/heroo.png);
+  background-image: url(../../assets/hero.png);
 	background-position: center;
 	background-size: cover;
 	height: 100vh;
@@ -10,4 +10,11 @@
 }
 span {
   color: #17a2b8;
+}
+.img-fluid {
+	width: 100%;
+	height: auto;
+}
+.texto-terapia{
+  font-size: 1.1rem;
 }

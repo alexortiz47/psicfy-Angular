@@ -12,11 +12,11 @@
 
       <ul class="navbar-nav ml-auto">
 
-        <li class="nav-item p-3">
+        <li class="nav-item p-3" *ngIf="botonRegistroLogin">
             <a class="btn text-light" title="Evaluate" (click)="irEvaluate()">Evalúate</a>
         </li>
 
-        <li class="nav-item p-3">
+        <li class="nav-item p-3" *ngIf="botonRegistroLogin">
           <a class="btn text-light" title="Buscar" (click)="irBuscar()">Buscar profesional</a>
         </li>
 
@@ -28,8 +28,13 @@
           <a class="btn btn-outline-info text-info" title="Iniciar sesión" (click)="irLogin()">Iniciar sesión</a>
         </li>
 
-        <li class="nav-item p-3" *ngIf="botonPerfil">
-          <a id="perfil" class="text-light" title="Mi perfil" (click)="irLogeado()"><fa class="logoPerfil" name="user-circle "></fa></a>
+        <li class="nav-item dropdown" *ngIf="botonPerfil">
+          <a class="btn nav-link dropdown-toggle logoPerfil" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><fa id="perfil" name="user-circle "></fa></a>
+          <div class="dropdown-menu">
+            <a class="btn dropdown-item" (click)="irLogeado()">Perfil</a>
+            <div class="dropdown-divider"></div>
+            <a class="btn dropdown-item text-danger" (click)="logOut()">Salir</a>
+          </div>
         </li>
 
       </ul>
@@ -39,3 +44,4 @@
   </nav>
 
 </header>
+<!-- <fa name="user-circle "></fa> -->

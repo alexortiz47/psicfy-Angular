@@ -13,12 +13,14 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router) {
     this.botonRegistroLogin = true;
-    this.botonPerfil = true;
+    this.botonPerfil = false;
   }
 
   ngOnInit() {
-    // this.botonRegistroLogin == true ? this.botonPerfil = false : this.botonPerfil = true
-
+    if(localStorage.token){
+      this.botonRegistroLogin = false
+      this.botonPerfil = true
+    }
   }
 
   irEvaluate() {
@@ -39,6 +41,13 @@ export class HeaderComponent implements OnInit {
 
   irLogeado() {
     this.router.navigate(['logeado'])
+  }
+
+  logOut() {
+    localStorage.removeItem('token')
+    this.botonPerfil = false
+    this.botonRegistroLogin = true
+    this.router.navigate(['inicio'])
   }
 
 }

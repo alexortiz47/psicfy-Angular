@@ -10,7 +10,29 @@ export class PsicologosService {
   url: string;
 
   constructor(private httpClient: HttpClient) {
-    this.url = 'https://proyecto-final-neoland-aob.firebaseio.com/psicologos.json';
+    this.url = 'http://localhost:3000/psicologos';
+  }
+
+  doRegistro(value) {
+    let datosRegistro = {
+      nombre: value.nombre,
+      apellidos: value.apellidos,
+      numColeg: value.numColeg,
+      domicilio: value.domicilio,
+      codPostal: value.codPostal,
+      especialidades: value.especialidades,
+      poblacion: value.poblacion,
+      correo: value.correo,
+      password: value.password,
+      imgUrl: value.imgUrl,
+      latitud: value.latitud,
+      longitud: value.longitud
+    }
+    return this.httpClient.post<Psicologo[]>(`${this.url}/create`, datosRegistro).toPromise()
+  }
+
+  doLogin(values){
+    return this.httpClient.post<any[]>(`${this.url}/checklogin`, values).toPromise()
   }
 
   getAllPsicologos() {

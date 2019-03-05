@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { PsicologosService } from '../psicologos.service';
 
 @Component({
   selector: 'inicio-sesion',
@@ -11,7 +12,7 @@ export class InicioSesionComponent implements OnInit {
 
   loginForm: FormGroup
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private psicologosService: PsicologosService) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -25,8 +26,10 @@ export class InicioSesionComponent implements OnInit {
   }
 
   manejarLogin() {
+    this.psicologosService.doLogin(this.loginForm.value).then((res) => {
+      console.log(res)
+    })
     console.log(this.loginForm.value);
-    this.router.navigate([''])
   }
 
   irRegistro() {

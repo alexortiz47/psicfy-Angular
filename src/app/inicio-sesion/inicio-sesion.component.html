@@ -17,7 +17,11 @@
             <input type="password" class="form-control" formControlName="password">
           </div>
 
-          <button type="submit" class="btn btn-lg btn-block btn-info" [disabled]="loginForm.invalid">Iniciar Sesion</button>
+          <button type="submit" class="btn btn-lg btn-block btn-info mb-3" [disabled]="loginForm.invalid">Iniciar Sesion</button>
+
+          <div class="error text-center" *ngIf='login'>
+            <p>Usuario y/o la contraseña incorrectos</p>
+          </div>
 
         </form>
 

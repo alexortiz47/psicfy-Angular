@@ -32,7 +32,7 @@ export class PsicologosService {
   }
 
   doLogin(values){
-    return this.httpClient.post<any[]>(`${this.url}/checklogin`, values).toPromise()
+    return this.httpClient.post<any>(`${this.url}/checklogin`, values).toPromise()
   }
 
   getAllPsicologos() {

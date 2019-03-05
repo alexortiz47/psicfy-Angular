@@ -11,8 +11,11 @@ import { PsicologosService } from '../psicologos.service';
 export class InicioSesionComponent implements OnInit {
 
   loginForm: FormGroup
+  login: boolean
 
-  constructor(private router: Router, private psicologosService: PsicologosService) { }
+  constructor(private router: Router, private psicologosService: PsicologosService) {
+    this.login = false
+  }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -28,8 +31,16 @@ export class InicioSesionComponent implements OnInit {
   manejarLogin() {
     this.psicologosService.doLogin(this.loginForm.value).then((res) => {
       console.log(res)
+      if(res.error){
+        return this.login = true
+      }else{
+        this.login = false
+        this.router.navigate(['/inicio'])
+        localStorage.setItem('token', res.toString())
+        console.log(res)
+      }
     })
-    console.log(this.loginForm.value);
+    this.loginForm.reset()
   }
 
   irRegistro() {

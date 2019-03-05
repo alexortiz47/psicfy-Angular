@@ -89,6 +89,7 @@ export class RegistroComponent implements OnInit {
       console.log(res)
     })
     console.log(valueSubmit)
+    this.registroForm.reset()
   }
 
   repeatCorreoValidator(group: FormGroup) {

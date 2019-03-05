@@ -36,7 +36,7 @@ import { AdminMainComponent } from './admin-main/admin-main.component';
     PreguntaComponent,
     ResultadoComponent,
     AdminComponent,
-    AdminMainComponent
+    AdminMainComponent,
   ],
   imports: [
     BrowserModule,

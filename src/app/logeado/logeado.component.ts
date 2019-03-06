@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray} from '@angular/forms';
 import { Router } from '@angular/router';
+import { PsicologosService } from '../psicologos.service';
+import { Psicologo } from '../models/psicologo.model';
+import { EspecialidadesService } from '../especialidades.service';
+
 
 @Component({
   selector: 'app-logeado',
@@ -16,50 +20,76 @@ export class LogeadoComponent implements OnInit {
 
   arrEspecialidades: string[];
   arrPoblaciones: string[];
+  arrIdEsp: number[]
+  arrEspPsicologo: any[]
 
-  constructor(private router: Router) {
-    this.arrEspecialidades = ['Ansiedad', 'Depresión', 'Trastornos del sueño', 'Trastornos alimenticios', 'Pareja y sexualidad', 'Familia', 'Consumo de tóxicos', 'Adicciones', 'Duelo', 'Trastorno por estrés postraumático', 'Violencia de género', 'Discapacidad', 'Trastorno mental grave', 'Coaching'];
+  token: string
+  psicologoLogeado: Psicologo
+
+  constructor(private router: Router, private psicologosService: PsicologosService, private especialidadesService: EspecialidadesService) {
+    this.arrEspecialidades = [];
     this.arrPoblaciones = ['Infanto-Juvenil (0-16 años)', 'Adultos (>16 años)'];
     this.especialidades = false;
+    this.arrIdEsp = []
     this.poblacion = false;
+    this.token = localStorage.getItem('token') // Guardamos el token que esta en localstorage
+    this.arrEspPsicologo = []
   }
 
   ngOnInit() {
-    this.perfilForm = new FormGroup({
-      nombre: new FormControl('', [
-        Validators.required
-      ]),
-      apellidos: new FormControl('', [
-        Validators.required
-      ]),
-      numColeg: new FormControl('', [
-        Validators.required,
-        Validators.pattern(/^([0-9]{3,5})[M]$/)
-      ]),
-      domicilio: new FormControl('Plaza de España, 11', [
-        Validators.required
-      ]),
-      codPostal: new FormControl('28008', [
-        Validators.required,
-        Validators.pattern(/^(?:0[1-9]\d{3}|[1-4]\d{4}|5[0-2]\d{3})$/)
-      ]),
-      latitud: new FormControl(''),
-      longitud: new FormControl(''),
-      especialidades: this.buildEspecialidades(),
-      poblacion: this.buildPoblaciones(),
-      correo: new FormControl('alex@gmail.com', [
-        Validators.required,
-        Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
-      ]),
-      correo_repeat: new FormControl(''),
-      password: new FormControl('', [
-        Validators.pattern(/(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$/)
-      ]),
-      password_repeat: new FormControl('')
-    }, [
-      this.repeatPasswordValidator,
-      this.repeatCorreoValidator
-    ])
+    this.especialidadesService.getAllEspecialidades().then((res) => {
+      // console.log(res)
+      res.forEach(item => {
+        this.arrEspecialidades.push(item.nombre)
+        this.arrIdEsp.push(item.id)
+      })
+      this.psicologosService.getByToken(this.token).then((res) => {
+        // console.log(res)
+        this.psicologoLogeado = res
+
+        this.perfilForm = new FormGroup({ // Generamos el formulario aquí, porque es donde se conocen los datos del psicologo
+          nombre: new FormControl('', [
+            Validators.required
+          ]),
+          apellidos: new FormControl('', [
+            Validators.required
+          ]),
+          numColeg: new FormControl('', [
+            Validators.required,
+            Validators.pattern(/^([0-9]{3,5})[M]$/)
+          ]),
+          domicilio: new FormControl(this.psicologoLogeado.domicilio, [
+            Validators.required
+          ]),
+          codPostal: new FormControl(this.psicologoLogeado.codPostal, [
+            Validators.required,
+            Validators.pattern(/^(?:0[1-9]\d{3}|[1-4]\d{4}|5[0-2]\d{3})$/)
+          ]),
+          latitud: new FormControl(''),
+          longitud: new FormControl(''),
+          especialidades: this.buildEspecialidades(),
+          poblacion: this.buildPoblaciones(),
+          correo: new FormControl(this.psicologoLogeado.correo, [
+            Validators.required,
+            Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
+          ]),
+          correo_repeat: new FormControl(''),
+          password: new FormControl('', [
+            Validators.pattern(/(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$/)
+          ]),
+          password_repeat: new FormControl('')
+        }, [
+          this.repeatPasswordValidator,
+          this.repeatCorreoValidator
+        ])
+
+        this.especialidadesService.getEspByPsicologo(this.psicologoLogeado.id).then((res) => {
+          console.log(res)
+          this.arrEspPsicologo = res
+        })
+
+      })
+    })
   }
 
   // Validaciones:
@@ -94,11 +124,12 @@ export class LogeadoComponent implements OnInit {
     let valueSubmit = Object.assign({}, this.perfilForm.value)
 
     valueSubmit = Object.assign(valueSubmit, {
-      especialidades: valueSubmit.especialidades.map((v, i) => v ? this.arrEspecialidades[i].toLowerCase().replace(/ /g, '_').normalize('NFD').replace(/[\u0300-\u036f]/g, "") : null).filter(v => v !== null),
-      poblacion: valueSubmit.poblacion.map((v, i) => v ? this.arrPoblaciones[i].toLowerCase().replace(' ', '_').normalize('NFD').replace(/[\u0300-\u036f]/g, "") : null).filter(v => v !== null)
+      especialidades: valueSubmit.especialidades.map((v, i) => v ? this.arrIdEsp[i] : null).filter(v => v !== null),
+      poblacion: valueSubmit.poblacion.map((v, i) => v ? this.arrPoblaciones[i].normalize('NFD') : null).filter(v => v !== null).join(', ')
     })
     console.log(valueSubmit)
-
+    this.perfilForm.reset()
+    // this.router.navigate(['inicioLog'])
   }
 
   // Mostrar u ocultar las especialidades y poblacion para cambiarlo

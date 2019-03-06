@@ -18,7 +18,7 @@ export class RegistroComponent implements OnInit {
 
   constructor(private router: Router, private psicologosService: PsicologosService, private especialidadesService: EspecialidadesService) {
     this.arrEspecialidades = [];
-    this.arrPoblaciones = ['Infanto-Juvenil (0-16 años)', 'Adultos (>16 años)'];
+    this.arrPoblaciones = ['Infanto-Juvenil (0-16)', 'Adultos (>16)'];
     this.arrIdEsp = []
   }
 
@@ -29,6 +29,7 @@ export class RegistroComponent implements OnInit {
         this.arrEspecialidades.push(item.nombre)
         this.arrIdEsp.push(item.id)
       })
+      // Creamos el formulario aqui porque es donde ya hemos recogido las especialidades de la BD
       this.registroForm = new FormGroup({
         nombre: new FormControl('', [
           Validators.required

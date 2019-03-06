@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PsicologosService } from '../psicologos.service';
 
 @Component({
   selector: 'cabecera',
@@ -8,19 +9,10 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  botonRegistroLogin: boolean;
-  botonPerfil: boolean;
-
-  constructor(private router: Router) {
-    this.botonRegistroLogin = true;
-    this.botonPerfil = false;
+  constructor(private router: Router, public psicologosService: PsicologosService) {
   }
 
   ngOnInit() {
-    if(localStorage.token){
-      this.botonRegistroLogin = false
-      this.botonPerfil = true
-    }
   }
 
   irEvaluate() {
@@ -40,13 +32,12 @@ export class HeaderComponent implements OnInit {
   }
 
   irLogeado() {
-    this.router.navigate(['logeado'])
+    this.router.navigate(['inicioLog'])
   }
 
   logOut() {
     localStorage.removeItem('token')
-    this.botonPerfil = false
-    this.botonRegistroLogin = true
+
     this.router.navigate(['inicio'])
   }
 

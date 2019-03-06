@@ -1,6 +1,6 @@
 <cabecera></cabecera>
 
-<form class="registro container mt-5" novalidate [formGroup]="perfilForm" (ngSubmit)="manejarPerfil()">
+<form *ngIf="perfilForm" class="registro container mt-5" novalidate [formGroup]="perfilForm" (ngSubmit)="manejarPerfil()">
 
     <div class="row mt-5 py-5">
 
@@ -11,15 +11,15 @@
             </div>
             <div class="form-group col-md-3">
               <h5>Nombre:</h5>
-              <h3>Alejandro</h3>
+              <h3>{{ psicologoLogeado.nombre }}</h3>
             </div>
             <div class="form-group col-md-4">
               <h5>Apellidos:</h5>
-              <h3>Ortiz Bautista</h3>
+              <h3>{{ psicologoLogeado.apellidos }}</h3>
             </div>
             <div class="form-group col-md-2">
               <h5>Nº colegiado:</h5>
-              <h3>32635M</h3>
+              <h3>{{ psicologoLogeado.numColeg }}</h3>
             </div>
           </div>
 
@@ -37,7 +37,9 @@
           <div class="form-row mb-4">
             <div class="form-group col-md-9">
               <h5>Especialidades:</h5>
-              <p>Ansiedad, Depresión, Trastornos del sueño, Discapacidad, Coaching</p>
+              <div *ngFor="let esp of arrEspPsicologo">
+                <p class="float-left mr-1">{{ esp.especialidades }}, </p>
+              </div>
             </div>
             <div class="form-group col-md-3">
               <button *ngIf="!especialidades" class="btn btn-outline-dark btn-block" (click)="cambiarEsp()">Cambiar especialidades</button>
@@ -61,7 +63,7 @@
           <div class="form-row mb-4">
             <div class="form-group col-md-9">
               <h5>Población en la que está especializado:</h5>
-              <p>Infanto-Juvenil (0-16 años)</p>
+              <p>{{ psicologoLogeado.poblacion }}</p>
             </div>
             <div class="form-group col-md-3">
               <button *ngIf="!poblacion" class="btn btn-outline-dark btn-block" (click)="cambiarPob()">Cambiar población</button>
@@ -89,7 +91,7 @@
               <p *ngIf="perfilForm.controls['correo'].errors?.pattern && perfilForm.controls['correo'].dirty">El campo debe ser un email correcto</p>
             </div>
             <div class="form-group col-md-6">
-              <h5>Cambiar contraseña:</h5>
+              <h5>Nueva contraseña:</h5>
               <input type="password" class="form-control" formControlName="password">
               <p *ngIf="perfilForm.controls['password'].errors?.pattern && perfilForm.controls['password'].dirty">La contraseña debe tener al menos un numero, una letra y entre 6-15 caracteres</p>
             </div>

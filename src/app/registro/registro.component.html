@@ -1,6 +1,6 @@
 <cabecera></cabecera>
 
-<form class="registro container mt-5" novalidate [formGroup]="registroForm" (ngSubmit)="manejarRegistro()" *ngIf='registroForm'>
+<form *ngIf='registroForm' class="registro container mt-5" novalidate [formGroup]="registroForm" (ngSubmit)="manejarRegistro()">
 
     <div class="row mt-5 py-5">
 

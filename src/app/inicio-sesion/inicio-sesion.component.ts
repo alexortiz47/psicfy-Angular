@@ -30,14 +30,12 @@ export class InicioSesionComponent implements OnInit {
 
   manejarLogin() {
     this.psicologosService.doLogin(this.loginForm.value).then((res) => {
-      console.log(res)
       if(res.error){
         return this.login = true
       }else{
         this.login = false
         this.router.navigate(['/inicio'])
-        localStorage.setItem('token', res.toString())
-        console.log(res)
+        localStorage.setItem('token', res.token.toString())
       }
     })
     this.loginForm.reset()

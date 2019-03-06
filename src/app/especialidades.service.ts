@@ -16,4 +16,8 @@ export class EspecialidadesService {
   getAllEspecialidades() {
     return this.httpClient.get<Especialidad[]>(this.url).toPromise()
   }
+
+  getEspByPsicologo(id) {
+    return this.httpClient.post<any[]>(`${this.url}/psicol`, {id: id}).toPromise()
+  }
 }

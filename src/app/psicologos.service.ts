@@ -39,4 +39,16 @@ export class PsicologosService {
     return this.httpClient.get<Psicologo[]>(this.url).toPromise()
   }
 
+  comprobarToken() {
+    if(localStorage.getItem('token')){
+      return true
+    }else{
+      return false
+    }
+  }
+
+  getByToken(token) {
+    return this.httpClient.post<Psicologo>(`${this.url}/token`, {token: token}).toPromise()
+  }
+
 }

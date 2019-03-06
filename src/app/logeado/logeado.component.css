@@ -10,3 +10,15 @@ img {
     text-align: center;
   }
 }
+
+input.ng-valid.ng-dirty {
+  border: 1px solid green;
+}
+
+input.ng-invalid.ng-dirty {
+  border: 1px solid tomato;
+}
+
+.error {
+  color: tomato;
+}

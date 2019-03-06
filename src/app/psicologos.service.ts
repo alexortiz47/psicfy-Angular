@@ -51,4 +51,12 @@ export class PsicologosService {
     return this.httpClient.post<Psicologo>(`${this.url}/token`, {token: token}).toPromise()
   }
 
+  updatePsicologo(valuesUpdate){
+    return this.httpClient.post(`${this.url}/update`, valuesUpdate).toPromise()
+  }
+
+  deletePsicologo(token) {
+    return this.httpClient.post(`${this.url}/delete`, {token: token}).toPromise()
+  }
+
 }

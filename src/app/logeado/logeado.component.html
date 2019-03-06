@@ -35,10 +35,21 @@
           </div>
 
           <div class="form-row mb-4">
+            <div class="form-group col-md-6">
+              <label>Latitud:</label>
+              <input type="text" class="form-control" formControlName="latitud" placeholder="oculto">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Longitud:</label>
+              <input type="text" class="form-control" formControlName="longitud" placeholder="oculto">
+            </div>
+          </div>
+
+          <div class="form-row mb-4">
             <div class="form-group col-md-9">
               <h5>Especialidades:</h5>
               <div *ngFor="let esp of arrEspPsicologo">
-                <p class="float-left mr-1">{{ esp.especialidades }}, </p>
+                <p class="float-left mr-1">{{ esp.nombre }}, </p>
               </div>
             </div>
             <div class="form-group col-md-3">
@@ -91,31 +102,28 @@
               <p *ngIf="perfilForm.controls['correo'].errors?.pattern && perfilForm.controls['correo'].dirty">El campo debe ser un email correcto</p>
             </div>
             <div class="form-group col-md-6">
-              <h5>Nueva contraseña:</h5>
-              <input type="password" class="form-control" formControlName="password">
-              <p *ngIf="perfilForm.controls['password'].errors?.pattern && perfilForm.controls['password'].dirty">La contraseña debe tener al menos un numero, una letra y entre 6-15 caracteres</p>
-            </div>
-          </div>
-
-          <div class="form-row mb-4">
-            <div class="form-group col-md-6">
               <label>Repetir correo:</label>
               <input type="email" class="form-control" formControlName="correo_repeat">
               <p *ngIf="perfilForm.errors && perfilForm.errors['correo_repeat'] && perfilForm.controls['correo_repeat'].dirty" style="color: red">El correo no coincide</p>
             </div>
-            <div class="form-group col-md-6">
-              <label>Repetir contraseña:</label>
-              <input type="password" class="form-control" formControlName="password_repeat">
-              <p *ngIf="perfilForm.errors && perfilForm.errors['password_repeat'] && perfilForm.controls['password_repeat'].dirty" style="color: red">La contraseña no coincide</p>
+          </div>
+
+          <div class="form-row mb-4">
+            <div class="form-group">
+              <label>Cambiar imagen de perfil:</label>
+              <input type="file" class="form-control-file" formControlName="imgUrl">
             </div>
           </div>
 
           <div class="form-row mb-4 d-flex justify-content-around">
-            <div class="col-md-5">
+            <div class="col-md-4">
               <button type="submit" class="btn btn-lg btn-block btn-success mb-3">Actualizar</button>
             </div>
-            <div class="col-md-5">
-              <button type="button" class="btn btn-lg btn-block btn-danger mb-3">Eliminar cuenta</button>
+            <div class="col-md-4">
+              <button type="button" class="btn btn-lg btn-block btn-secondary mb-3" [routerLink]="['']">Cancelar</button>
+            </div>
+            <div class="col-md-4">
+              <button type="button" class="btn btn-lg btn-block btn-danger mb-3" (click)="deletePsicologo()">Eliminar cuenta</button>
             </div>
           </div>
         </div>

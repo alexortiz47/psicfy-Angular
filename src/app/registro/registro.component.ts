@@ -58,9 +58,11 @@ export class RegistroComponent implements OnInit {
         ]),
         correo_repeat: new FormControl(''),
         password: new FormControl('', [
+          Validators.required,
           Validators.pattern(/(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$/)
         ]),
-        password_repeat: new FormControl('')
+        password_repeat: new FormControl(''),
+        imgUrl: new FormControl('')
       }, [
         this.repeatPasswordValidator,
         this.repeatCorreoValidator
@@ -88,6 +90,7 @@ export class RegistroComponent implements OnInit {
     })
     this.psicologosService.doRegistro(valueSubmit).then((res) => {
       console.log(res)
+      this.router.navigate(['/login'])
     })
     console.log(valueSubmit)
     this.registroForm.reset()

@@ -24,18 +24,18 @@ export class LogeadoComponent implements OnInit {
   token: string;
   psicologoLogeado: Psicologo;
 
-  constructor(
-    private router: Router,
-    private psicologosService: PsicologosService,
-    private especialidadesService: EspecialidadesService
-  ) {
+  constructor(private router: Router, public psicologosService: PsicologosService, private especialidadesService: EspecialidadesService) {
     this.arrEspecialidades = [];
-    this.arrPoblaciones = ["Infanto-Juvenil (0-16 años)", "Adultos (>16 años)"];
+    this.arrPoblaciones = ["Infanto-Juvenil (0-16)", "Adultos (>16)"];
     this.especialidades = false;
     this.arrIdEsp = [];
     this.poblacion = false;
     this.token = localStorage.getItem("token"); // Guardamos el token que esta en localstorage
     this.arrEspPsicologo = [];
+    this.psicologosService.getByToken(this.token).then(res => {
+      // console.log(res)
+      this.psicologoLogeado = res
+    })
   }
 
   ngOnInit() {
@@ -45,46 +45,39 @@ export class LogeadoComponent implements OnInit {
         this.arrEspecialidades.push(item.nombre);
         this.arrIdEsp.push(item.id);
       });
-      this.psicologosService.getByToken(this.token).then(res => {
-        this.psicologoLogeado = res;
+      this.perfilForm = new FormGroup({
+          nombre: new FormControl("", [Validators.required]),
+          apellidos: new FormControl("", [Validators.required]),
+          numColeg: new FormControl("", [
+            Validators.required,
+            Validators.pattern(/^([0-9]{3,5})[M]$/)
+          ]),
+          domicilio: new FormControl(this.psicologoLogeado.domicilio, [
+            Validators.required
+          ]),
+          codPostal: new FormControl(this.psicologoLogeado.codPostal, [
+            Validators.required,
+            Validators.pattern(/^(?:0[1-9]\d{3}|[1-4]\d{4}|5[0-2]\d{3})$/)
+          ]),
+          latitud: new FormControl(this.psicologoLogeado.latitud),
+          longitud: new FormControl(this.psicologoLogeado.longitud),
+          especialidades: this.buildEspecialidades(),
+          poblacion: this.buildPoblaciones(),
+          correo: new FormControl(this.psicologoLogeado.correo, [
+            Validators.required,
+            Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
+          ]),
+          correo_repeat: new FormControl(""),
+          imgUrl: new FormControl("")
+        },
+        [this.repeatCorreoValidator]
+      );
 
-        this.perfilForm = new FormGroup(
-          {
-            // Generamos el formulario aquí, porque es donde se conocen los datos del psicologo
-            nombre: new FormControl("", [Validators.required]),
-            apellidos: new FormControl("", [Validators.required]),
-            numColeg: new FormControl("", [
-              Validators.required,
-              Validators.pattern(/^([0-9]{3,5})[M]$/)
-            ]),
-            domicilio: new FormControl(this.psicologoLogeado.domicilio, [
-              Validators.required
-            ]),
-            codPostal: new FormControl(this.psicologoLogeado.codPostal, [
-              Validators.required,
-              Validators.pattern(/^(?:0[1-9]\d{3}|[1-4]\d{4}|5[0-2]\d{3})$/)
-            ]),
-            latitud: new FormControl(this.psicologoLogeado.latitud),
-            longitud: new FormControl(this.psicologoLogeado.longitud),
-            especialidades: this.buildEspecialidades(),
-            poblacion: this.buildPoblaciones(),
-            correo: new FormControl(this.psicologoLogeado.correo, [
-              Validators.required,
-              Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
-            ]),
-            correo_repeat: new FormControl(""),
-            imgUrl: new FormControl("")
-          },
-          [this.repeatCorreoValidator]
-        );
-
-        this.especialidadesService
-          .getEspByPsicologo(this.psicologoLogeado.id)
-          .then(res => {
-            // console.log(res)
-            this.arrEspPsicologo = res; // Igualamos el array de objetos que nos llega con las especialidades
-          });
-      });
+      this.especialidadesService
+        .getEspByPsicologo(this.psicologoLogeado.id).then(res => {
+          // console.log(res)
+          this.arrEspPsicologo = res; // Igualamos el array de objetos que nos llega con el array de las especialidades que hemos creado
+        });
     });
   }
 
@@ -151,21 +144,32 @@ export class LogeadoComponent implements OnInit {
     if (this.perfilForm.controls.imgUrl.dirty) {
       valuesUpdate['imgUrl'] = valueSubmit.imgUrl
     }
+    console.log(valuesUpdate)
+    let valuesUpdateSize = Object.keys(valuesUpdate).length;
+    console.log(valuesUpdateSize)
 
-    this.psicologosService.updatePsicologo(valuesUpdate).then(res => {
-      console.log(res)
-      this.router.navigate([''])
-    })
-    // console.log(valuesUpdate)
-
+    if(valuesUpdateSize > 1){ // Comprobamos si el objeto que envia solo tiene 1 elemento, el token, es que no ha modificado nada, y mostramos mensaje
+      this.psicologosService.updatePsicologo(valuesUpdate).then(res => {
+        console.log(res)
+        this.router.navigate([''])
+      })
+    }else{
+      alert('Para actualizar debes modificar algun campo')
+    }
   }
 
+  // Método que elimina datos de la BD pulsando Eliminar Cuenta
   deletePsicologo() {
     this.psicologosService.deletePsicologo(this.token).then(res => {
       console.log(res)
       localStorage.removeItem('token')
       this.router.navigate([''])
     })
+  }
+
+  // Método que vuelve a la página de inicio/numColeg pulsando Cancelar
+  inicioPsicologo() {
+    this.router.navigate([`inicio/${this.psicologoLogeado.numColeg}`])
   }
 
   // Mostrar u ocultar las especialidades y poblacion para cambiarlo

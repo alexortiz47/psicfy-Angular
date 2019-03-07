@@ -35,10 +35,15 @@ export class LogeadoComponent implements OnInit {
     this.psicologosService.getByToken(this.token).then(res => {
       // console.log(res)
       this.psicologoLogeado = res
+      this.createForm()
     })
   }
 
-  ngOnInit() {
+  ngOnInit(){
+
+  }
+
+  createForm() {
     this.especialidadesService.getAllEspecialidades().then(res => {
       // console.log(res)
       res.forEach(item => {
@@ -115,10 +120,10 @@ export class LogeadoComponent implements OnInit {
         .filter(v => v !== null)
         .join(", ")
     });
-    // console.log(valueSubmit)
 
     let valuesUpdate = {
-      token: this.token
+      token: this.token,
+      id: this.psicologoLogeado.id
     }; // Creamos un objeto que tendra tantas claves como datos modificados
 
     if (this.perfilForm.controls.domicilio.dirty) {
@@ -146,12 +151,12 @@ export class LogeadoComponent implements OnInit {
     }
     console.log(valuesUpdate)
     let valuesUpdateSize = Object.keys(valuesUpdate).length;
-    console.log(valuesUpdateSize)
+    // console.log(valuesUpdateSize)
 
-    if(valuesUpdateSize > 1){ // Comprobamos si el objeto que envia solo tiene 1 elemento, el token, es que no ha modificado nada, y mostramos mensaje
+    if(valuesUpdateSize > 2){ // Comprobamos si el objeto que envia solo tiene 1 elemento, el token, es que no ha modificado nada, y mostramos mensaje
       this.psicologosService.updatePsicologo(valuesUpdate).then(res => {
         console.log(res)
-        this.router.navigate([''])
+        this.router.navigate([`inicio/${this.psicologoLogeado.numColeg}`])
       })
     }else{
       alert('Para actualizar debes modificar algun campo')

@@ -24,6 +24,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  irInicio(){
+    localStorage.getItem('token') ? this.router.navigate([`inicio/${this.psicologoLogeado.numColeg}`]) : this.router.navigate([''])
+  }
+
   irEvaluate() {
     this.router.navigate(['evaluate'])
   }

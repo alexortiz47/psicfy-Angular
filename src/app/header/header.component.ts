@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PsicologosService } from '../psicologos.service';
+import { Psicologo } from '../models/psicologo.model';
 
 @Component({
   selector: 'cabecera',
@@ -9,7 +10,15 @@ import { PsicologosService } from '../psicologos.service';
 })
 export class HeaderComponent implements OnInit {
 
+  token: string
+  psicologoLogeado: Psicologo
+
   constructor(private router: Router, public psicologosService: PsicologosService) {
+    this.token = localStorage.getItem('token')
+    this.psicologosService.getByToken(this.token).then(res => {
+      // console.log(res)
+      this.psicologoLogeado = res
+    })
   }
 
   ngOnInit() {
@@ -32,7 +41,7 @@ export class HeaderComponent implements OnInit {
   }
 
   irLogeado() {
-    this.router.navigate(['inicioLog'])
+    this.router.navigate([`edit/${this.psicologoLogeado.numColeg}`])
   }
 
   logOut() {

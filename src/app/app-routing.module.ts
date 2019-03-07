@@ -14,12 +14,13 @@ import { AdminMainComponent } from './admin-main/admin-main.component';
 const routes: Routes = [
   { path: '', redirectTo: 'inicio', pathMatch: 'full'},
   { path: 'inicio', component: MainPrincipalComponent},
+  { path: 'inicio/:numColeg', component: MainPrincipalComponent},
   { path: 'evaluate', component: EvaluateComponent},
   { path: 'resultado', component: ResultadoComponent},
   { path: 'buscar', component: CercaComponent},
   { path: 'registro', component: RegistroComponent},
   { path: 'login', component: InicioSesionComponent},
-  { path: 'logeado', component: LogeadoComponent},
+  { path: 'edit/:numColeg', component: LogeadoComponent},
   { path: 'admin', component: AdminComponent},
   { path: 'admin/inicio', component: AdminMainComponent},
   { path: '**', component: Error404Component}

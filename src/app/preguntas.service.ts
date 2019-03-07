@@ -10,7 +10,7 @@ export class PreguntasService {
   url: string;
 
   constructor(private httpClient: HttpClient) {
-    this.url = 'https://proyecto-final-neoland-aob.firebaseio.com/preguntas.json'
+    this.url = 'http://localhost:3000/preguntas'
   }
 
   getAllPreguntas() {

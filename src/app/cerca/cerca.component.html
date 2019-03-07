@@ -7,28 +7,15 @@
         <label>Población:</label>
         <select class="form-control" (change)="seleccionarPob($event)">
           <option selected>Todas</option>
-          <option>Infanto-Juvenil (0-16 años)</option>
-          <option>Adultos (>16 años)</option>
+          <option>Infanto-Juvenil (0-16)</option>
+          <option>Adultos (>16)</option>
         </select>
       </div>
       <div class="form-group col-md-6">
         <label>Selecciona una especialidad:</label>
         <select class="form-control" (change)="seleccionarEsp($event)">
           <option selected>Todas</option>
-          <option>Ansiedad</option>
-          <option>Depresión</option>
-          <option>Trastornos del sueño</option>
-          <option>Trastornos alimenticios</option>
-          <option>Pareja y sexualidad</option>
-          <option>Familia</option>
-          <option>Consumo de tóxicos</option>
-          <option>Adicciones</option>
-          <option>Duelo</option>
-          <option>Trastorno por estrés postraumático</option>
-          <option>Violencia de género</option>
-          <option>Discapacidad</option>
-          <option>Trastorno mental grave</option>
-          <option>Coaching</option>
+          <option *ngFor="let esp of arrEsp">{{ esp.nombre }}</option>
         </select>
       </div>
       <div class="col-md-3">
@@ -43,14 +30,14 @@
         <div class="card p-3">
             <div class="row">
               <div class="col-5 text-center">
-                <img [src]=psicologo.imgUrl class="imgUsuario card-img-top mx-auto border rounded-circle mb-3">
+                <img src='../../assets/user.png' class="imgUsuario card-img-top mx-auto border rounded-circle mb-3">
                 <h5 class="card-title">{{ psicologo.nombre }} {{ psicologo.apellidos }}</h5>
                 <h5 class="card-text">{{ psicologo.numColeg }}</h5>
               </div>
               <div class="col-7 card-body">
                 <p class="card-text"><span>Especialista en:</span> {{ psicologo.especialidad }}</p>
                 <p class="card-text"><span>Población:</span> {{ psicologo.poblacion }}</p>
-                <p class="card-text"><span>Direccion:</span> {{ psicologo.direccion }}</p>
+                <p class="card-text"><span>Direccion:</span> {{ psicologo.domicilio }}</p>
                 <p class="card-text"><span>Correo:</span> {{ psicologo.correo }}</p>
               </div>
             </div>

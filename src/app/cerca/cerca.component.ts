@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PsicologosService } from '../psicologos.service';
 import { Psicologo } from '../models/psicologo.model';
+import { EspecialidadesService } from '../especialidades.service';
+import { Especialidad } from '../models/especialidad.model';
 
 @Component({
   selector: 'cerca',
@@ -10,11 +12,14 @@ import { Psicologo } from '../models/psicologo.model';
 export class CercaComponent implements OnInit {
 
   arrPsico: Psicologo[]
+  arrEsp: Especialidad[]
 
-  constructor(private psicologosService: PsicologosService) {
+  constructor(private psicologosService: PsicologosService, private especialidadesService: EspecialidadesService) {
     this.psicologosService.getAllPsicologos().then((res) => {
-      console.log(res)
       this.arrPsico = res;
+    })
+    this.especialidadesService.getAllEspecialidades().then(res => {
+      this.arrEsp = res
     })
   }
 

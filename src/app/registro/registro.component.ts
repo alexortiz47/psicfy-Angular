@@ -24,7 +24,7 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit() {
     this.especialidadesService.getAllEspecialidades().then((res) => {
-      console.log(res)
+      // console.log(res)
       res.forEach(item => {
         this.arrEspecialidades.push(item.nombre)
         this.arrIdEsp.push(item.id)
@@ -90,9 +90,9 @@ export class RegistroComponent implements OnInit {
     })
     this.psicologosService.doRegistro(valueSubmit).then((res) => {
       console.log(res)
-      this.router.navigate(['/login'])
+      this.router.navigate([`/login`])
     })
-    console.log(valueSubmit)
+    // console.log(valueSubmit)
     this.registroForm.reset()
   }
 
@@ -110,7 +110,7 @@ export class RegistroComponent implements OnInit {
     return (password == password_repeat) ? null : { 'password_repeat': 'La contraseña no coincide' }
   }
 
-  irInicio(){
+  irLogin(){
     this.router.navigate(['/login'])
   }
 

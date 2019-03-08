@@ -1,0 +1,10 @@
+input.ng-valid.ng-dirty {
+  border: 1px solid green;
+}
+input.ng-invalid.ng-dirty {
+  border: 1px solid tomato;
+}
+.error {
+  color: tomato;
+  font-weight: 700;
+}

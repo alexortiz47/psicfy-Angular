@@ -31,8 +31,16 @@ export class PsicologosService {
     return this.httpClient.post<Psicologo[]>(`${this.url}/create`, datosRegistro).toPromise()
   }
 
+  doRegistroAdmin(values){
+    return this.httpClient.post<any>(`${this.url}/createAdmin`, values).toPromise()
+  }
+
   doLogin(values){
     return this.httpClient.post<any>(`${this.url}/checklogin`, values).toPromise()
+  }
+
+  doLoginAdmin(values){
+    return this.httpClient.post<any>(`${this.url}/checkloginAdmin`, values).toPromise()
   }
 
   getAllPsicologos() {

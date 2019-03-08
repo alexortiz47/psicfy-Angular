@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div *ngIf="!loginOk" class="container mt-5">
   <div class="row">
     <div class="col-md-6 m-auto">
       <h2 class="text-center">Acesso Administrador</h2>
@@ -24,3 +24,42 @@
     </div>
   </div>
 </div>
+
+<main *ngIf="loginOk" class="container mt-5">
+  <h2 class="text-center">Añadir nueva especialidad</h2>
+  <form class="my-5" novalidate [formGroup]="espForm" (ngSubmit)="addEsp()">
+    <div class="col-lg-6 mx-auto">
+      <div class="form-group">
+        <label for="especialidad">Nombre de la especialidad:</label>
+        <input type="text" class="form-control" id="especialidad" formControlName="nombre">
+      </div>
+      <div class="row d-flex justify-content-around">
+        <div class="col-lg-5 form-group mt-3">
+          <button type="submit" class="btn btn-success btn-block" [disabled]="espForm.invalid">Guardar</button>
+        </div>
+        <div class="col-lg-5 form-group mt-3">
+          <button type="button" class="btn btn-danger btn-block" (click)="logOutAdmin()">Cerrar sesión</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <h2 class="text-center">Nuevo Administrador</h2>
+  <form class="my-5" novalidate [formGroup]="adminRegForm" (ngSubmit)="manejarRegistro()">
+    <div class="col-lg-6 mx-auto">
+      <div class="form-group">
+        <label>Correo:</label>
+        <input type="email" class="form-control" formControlName="correo">
+        <p class="error" *ngIf="adminRegForm.controls['correo'].errors?.pattern && adminRegForm.controls['correo'].dirty">El campo debe ser un email correcto</p>
+      </div>
+      <div class="form-group">
+        <label>Contraseña:</label>
+        <input type="password" class="form-control" formControlName="password">
+        <p class="error" *ngIf="adminRegForm.controls['password'].errors?.pattern && adminRegForm.controls['password'].dirty">La contraseña debe tener al menos un numero, una letra y entre 6-15 caracteres</p>
+      </div>
+      <button type="submit" class="btn btn-lg btn-block btn-info mb-3" [disabled]="adminRegForm.invalid">Registro</button>
+    </div>
+  </form>
+  <!-- <a class="btn dropdown-item text-center">¿Has olvidado tu contraseña?</a> -->
+</main>
+

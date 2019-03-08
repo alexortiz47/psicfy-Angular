@@ -18,7 +18,6 @@ import { LogeadoComponent } from './logeado/logeado.component';
 import { PreguntaComponent } from './pregunta/pregunta.component';
 import { ResultadoComponent } from './resultado/resultado.component';
 import { AdminComponent } from './admin/admin.component';
-import { AdminMainComponent } from './admin-main/admin-main.component';
 
 
 @NgModule({
@@ -35,8 +34,7 @@ import { AdminMainComponent } from './admin-main/admin-main.component';
     LogeadoComponent,
     PreguntaComponent,
     ResultadoComponent,
-    AdminComponent,
-    AdminMainComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

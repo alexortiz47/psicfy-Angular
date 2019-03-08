@@ -54,7 +54,7 @@
             </div>
             <div class="form-group col-md-3">
               <button *ngIf="!especialidades" class="btn btn-outline-dark btn-block" (click)="cambiarEsp()">Cambiar especialidades</button>
-              <button *ngIf="especialidades" class="btn btn-danger btn-block" (click)="cambiarEsp()">No Cambiar especialidades</button>
+              <button *ngIf="especialidades" class="btn btn-danger btn-block" (click)="cambiarEsp()">Cancelar</button>
             </div>
           </div>
 
@@ -73,12 +73,12 @@
 
           <div class="form-row mb-4">
             <div class="form-group col-md-9">
-              <h5>Población en la que está especializado:</h5>
+              <h5>Grupo/s poblacional/es:</h5>
               <p>{{ psicologoLogeado.poblacion }}</p>
             </div>
             <div class="form-group col-md-3">
-              <button *ngIf="!poblacion" class="btn btn-outline-dark btn-block" (click)="cambiarPob()">Cambiar población</button>
-              <button *ngIf="poblacion" class="btn btn-danger btn-block" (click)="cambiarPob()">No cambiar población</button>
+              <button *ngIf="!poblacion" class="btn btn-outline-dark btn-block" (click)="cambiarPob()">Cambiar grupo poblacional</button>
+              <button *ngIf="poblacion" class="btn btn-danger btn-block" (click)="cambiarPob()">Cancelar</button>
             </div>
           </div>
 

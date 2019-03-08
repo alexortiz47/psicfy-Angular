@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PsicologosService } from '../psicologos.service';
+import { EspecialidadesService } from '../especialidades.service';
 
 @Component({
   selector: 'admin',
@@ -11,10 +12,29 @@ import { PsicologosService } from '../psicologos.service';
 export class AdminComponent implements OnInit {
 
   adminForm: FormGroup
+  espForm: FormGroup
+  adminRegForm: FormGroup
   login: boolean
+  loginOk: boolean
 
-  constructor(private router: Router, private psicologosService: PsicologosService) {
+  constructor(private router: Router, private psicologosService: PsicologosService, private especialidadesService: EspecialidadesService) {
     this.login = false
+    this.loginOk = false
+    this.espForm = new FormGroup({
+      nombre: new FormControl('', [
+        Validators.required
+      ])
+    })
+    this.adminRegForm = new FormGroup({
+      correo: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$/)
+      ])
+    })
   }
 
   ngOnInit() {
@@ -35,9 +55,29 @@ export class AdminComponent implements OnInit {
         return this.login = true
       }else{
         this.login = false
-        this.router.navigate(['/admin/inicio'])
+        this.loginOk = true
       }
     })
     this.adminForm.reset()
   }
+
+  addEsp() {
+    this.especialidadesService.createEsp(this.espForm.value).then(res => {
+      console.log(res)
+    })
+    this.espForm.reset()
+  }
+
+  manejarRegistro() {
+    this.psicologosService.doRegistroAdmin(this.adminRegForm.value).then((res) => {
+      console.log(res)
+    })
+    this.adminRegForm.reset()
+  }
+
+  logOutAdmin() {
+    localStorage.removeItem('token')
+    this.router.navigate([''])
+  }
+
 }

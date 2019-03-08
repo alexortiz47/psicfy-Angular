@@ -11,11 +11,11 @@
             <div class="row justify-content-center">
               <div class="col-md-4 col-sm-7 mb-4">
                 <p>¿Quieres saber si necesitas ayuda?</p>
-                <a class="btn btn-outline-dark btn-lg" [routerLink]="['evaluate']" role="button">¡Auto-Evalúate!</a>
+                <button class="btn btn-outline-dark btn-lg" (click)="irEvaluate()" role="button">¡Auto-Evalúate!</button>
               </div>
               <div class="col-md-4 col-sm-7">
                 <p>¿Buscas a un profesional de la Psicología?</p>
-                <a class="btn btn-outline-dark btn-lg" [routerLink]="['cerca']" role="button">Buscar Psicólogo</a>
+                <button class="btn btn-outline-dark btn-lg" (click)="irCerca()" role="button">Buscar Psicólogo</button>
               </div>
             </div>
           </div>

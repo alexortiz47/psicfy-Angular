@@ -2,10 +2,10 @@
 
 <div class="container my-5">
   <div class="container my-5">
-    <form class="row mb-5 p-3 border-bottom d-flex justify-content-between">
-      <div class="form-group col-md-4">
+    <div class="row mb-5 p-3 border-bottom d-flex justify-content-between">
+      <div class="form-group col-md-5">
         <label>Selecciona un grupo poblacional:</label>
-        <select class="form-control" (change)="seleccionarPob($event)">
+        <select class="form-control" (change)="seleccion($event)" [(ngModel)]="poblacion">
           <option selected>Todos</option>
           <option>Infanto-Juvenil (0-16)</option>
           <option>Adultos (>16)</option>
@@ -13,20 +13,15 @@
       </div>
       <div class="form-group col-md-5">
         <label>Selecciona una especialidad:</label>
-        <select class="form-control" (change)="seleccionarEsp($event)">
+        <select class="form-control" (change)="seleccion($event)" [(ngModel)]="especialidad">
           <option selected>Todas</option>
           <option *ngFor="let esp of arrEsp">{{ esp.nombre }}</option>
         </select>
       </div>
-      <div class="col-md-3">
-        <button class="btn btn-info btn-block mt-4" type="submit">Buscar</button>
-      </div>
-    </form>
-
-
+    </div>
 
     <div class="row">
-      <div class="col-md-10 mb-4 mx-auto" *ngFor="let psicologo of arrDatosPsico">
+      <div class="col-md-10 mb-4 mx-auto" *ngFor="let psicologo of arrFiltrado">
         <div class="card p-3">
             <div class="row p-3">
               <div class="col-md-5 text-center">

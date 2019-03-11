@@ -38,8 +38,15 @@
             <p>RESULTADO</p>
         </div>
         <div class="col-12 mb-5">
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet facere reprehenderit ducimus quisquam sequi eaque corrupti? Officia quidem minus tempore. Modi excepturi vel aliquid commodi nihil illum eos quam voluptas.</p>
-      </div>
+          <p *ngIf="depresion1">Depresión 14-18</p>
+          <p *ngIf="depresion2">Depresión 19-25</p>
+          <p *ngIf="ansiedad1">Ansiedad 14-18</p>
+          <p *ngIf="ansiedad2">Ansiedad 19-25</p>
+          <p *ngIf="adicciones1">Adicciones 14-18</p>
+          <p *ngIf="adicciones2">Adicciones 19-25</p>
+          <p *ngIf="emociones1">Emociones 14-18</p>
+          <p *ngIf="emociones2">Emociones 19-25</p>
+        </div>
       </div>
       <div class="row text-center">
         <div class="col-12 mb-5">

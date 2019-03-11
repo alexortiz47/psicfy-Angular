@@ -16,7 +16,6 @@ import { Error404Component } from './error404/error404.component';
 import { CercaComponent } from './cerca/cerca.component';
 import { LogeadoComponent } from './logeado/logeado.component';
 import { PreguntaComponent } from './pregunta/pregunta.component';
-import { ResultadoComponent } from './resultado/resultado.component';
 import { AdminComponent } from './admin/admin.component';
 
 
@@ -33,7 +32,6 @@ import { AdminComponent } from './admin/admin.component';
     CercaComponent,
     LogeadoComponent,
     PreguntaComponent,
-    ResultadoComponent,
     AdminComponent
   ],
   imports: [

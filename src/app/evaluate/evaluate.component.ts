@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 export class EvaluateComponent implements OnInit {
 
   mensaje: boolean
-  inicio: boolean
+  preguntas: boolean
+  resultado: boolean
   arrPreguntas: Pregunta[]
   arrRespuestas: any[]
   edad: number
@@ -21,7 +22,8 @@ export class EvaluateComponent implements OnInit {
       this.arrPreguntas = res
     })
     this.mensaje = true
-    this.inicio = false
+    this.preguntas = false
+    this.resultado = false
     this.arrRespuestas = []
   }
 
@@ -29,15 +31,15 @@ export class EvaluateComponent implements OnInit {
   }
 
   iniciarPreguntas() {
-    if(!this.inicio || this.mensaje) {
-      this.inicio = true;
+    if(!this.preguntas || this.mensaje) {
+      this.preguntas = true;
       this.mensaje = false;
     }
   }
 
   volverMensajeInicio(){
-    if(this.inicio || !this.mensaje) {
-      this.inicio = false;
+    if(this.preguntas || !this.mensaje) {
+      this.preguntas = false;
       this.mensaje = true;
     }
   }
@@ -57,7 +59,12 @@ export class EvaluateComponent implements OnInit {
   enviarRespuestas() {
     console.log(this.edad)
     console.log(this.arrRespuestas)
-    this.router.navigate(['resultado'])
+    this.resultado = true
+    this.preguntas = false
+  }
+
+  terminarEval() {
+    this.router.navigate(['buscar'])
   }
 
 }

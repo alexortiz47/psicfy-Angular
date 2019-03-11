@@ -27,7 +27,7 @@
           </div>
           <pregunta *ngFor="let preg of arrPreguntas" [pregunta]="preg" [preguntaId]="preg.id" (respuesta)="respRecibida($event)"></pregunta>
         </div>
-        <button type="submit" class="col-8 mx-auto btn btn-info btn-block" (click)="enviarRespuestas()">Enviar</button>
+        <button type="submit" class="col-8 mx-auto btn btn-info btn-block" (click)="enviarRespuestas()" [disabled]="boton">Enviar</button>
       </div>
     </form>
 

@@ -16,10 +16,13 @@ export class EvaluateComponent implements OnInit {
   arrPreguntas: Pregunta[]
   arrRespuestas: any[]
   edad: number
+  boton: boolean
+  // Variables para puntuacion de cada bloque
   totalDepresion: number
   totalAnsiedad: number
   totalAdiccion: number
   totalEmocion: number
+  // Variables para mostrar un mensaje u otro. Dos por bloque (14-18 / 19-25)
   depresion1: boolean
   depresion2: boolean
   ansiedad1: boolean
@@ -49,6 +52,7 @@ export class EvaluateComponent implements OnInit {
     this.adicciones2 = false
     this.emociones1 = false
     this.emociones2 = false
+    this.boton = true
   }
 
   ngOnInit() {
@@ -77,12 +81,12 @@ export class EvaluateComponent implements OnInit {
     }else{
       this.arrRespuestas.push($event)
     }
-
+    this.arrRespuestas.length < 20 ? this.boton = true : this.boton = false
   }
 
   enviarRespuestas() {
-    console.log(this.edad)
-    console.log(this.arrRespuestas)
+    // console.log(this.edad)
+    // console.log(this.arrRespuestas)
 
     for(let i = 0; i <= 4; i++){
       this.totalDepresion += parseInt(this.arrRespuestas[i].value)
@@ -96,10 +100,10 @@ export class EvaluateComponent implements OnInit {
     for(let i = 15; i <= 19; i++){
       this.totalEmocion += parseInt(this.arrRespuestas[i].value)
     }
-    console.log(`Depresion: ${this.totalDepresion}`)
-    console.log(`Ansiedad: ${this.totalAnsiedad}`)
-    console.log(`Adicciones: ${this.totalAdiccion}`)
-    console.log(`Emociones: ${this.totalEmocion}`)
+    // console.log(`Depresion: ${this.totalDepresion}`)
+    // console.log(`Ansiedad: ${this.totalAnsiedad}`)
+    // console.log(`Adicciones: ${this.totalAdiccion}`)
+    // console.log(`Emociones: ${this.totalEmocion}`)
 
     if(this.totalDepresion > 13 && this.totalDepresion < 19) {
       this.depresion1 = true

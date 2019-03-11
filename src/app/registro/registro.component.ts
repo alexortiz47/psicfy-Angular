@@ -3,6 +3,9 @@ import { FormGroup, FormControl, Validators, FormArray, NgForm} from '@angular/f
 import { Router } from '@angular/router';
 import { PsicologosService } from '../psicologos.service';
 import { EspecialidadesService } from '../especialidades.service';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators'
 
 @Component({
   selector: 'registro',
@@ -15,11 +18,15 @@ export class RegistroComponent implements OnInit {
   arrEspecialidades: string[];
   arrPoblaciones: string[];
   arrIdEsp: number[]
+  uploadPercent: Observable<number>
+  downloadURL: Observable<string>
+  urlImagen: string
 
-  constructor(private router: Router, private psicologosService: PsicologosService, private especialidadesService: EspecialidadesService) {
+  constructor(private router: Router, private psicologosService: PsicologosService, private especialidadesService: EspecialidadesService, private storage: AngularFireStorage) {
     this.arrEspecialidades = [];
     this.arrPoblaciones = ['Infanto-Juvenil (0-16)', 'Adultos (>16)'];
     this.arrIdEsp = []
+    this.urlImagen = ''
   }
 
   ngOnInit() {
@@ -80,22 +87,7 @@ export class RegistroComponent implements OnInit {
     return new FormArray(values)
   }
 
-  manejarRegistro() {
-
-    let valueSubmit = Object.assign({}, this.registroForm.value)
-
-    valueSubmit = Object.assign(valueSubmit, {
-      especialidades: valueSubmit.especialidades.map((v, i) => v ? this.arrIdEsp[i] : null).filter(v => v !== null),
-      poblacion: valueSubmit.poblacion.map((v, i) => v ? this.arrPoblaciones[i].normalize('NFD') : null).filter(v => v !== null).join(', ')
-    })
-    this.psicologosService.doRegistro(valueSubmit).then((res) => {
-      console.log(res)
-      this.router.navigate([`/login`])
-    })
-    // console.log(valueSubmit)
-    this.registroForm.reset()
-  }
-
+  // Validaciones del registro
   repeatCorreoValidator(group: FormGroup) {
     let correo = group.controls['correo'].value
     let correo_repeat = group.controls['correo_repeat'].value
@@ -110,8 +102,45 @@ export class RegistroComponent implements OnInit {
     return (password == password_repeat) ? null : { 'password_repeat': 'La contraseña no coincide' }
   }
 
+  manejarRegistro() {
+
+    this.registroForm.value.imgUrl = this.urlImagen
+
+    let valueSubmit = Object.assign({}, this.registroForm.value)
+
+    valueSubmit = Object.assign(valueSubmit, {
+      especialidades: valueSubmit.especialidades.map((v, i) => v ? this.arrIdEsp[i] : null).filter(v => v !== null),
+      poblacion: valueSubmit.poblacion.map((v, i) => v ? this.arrPoblaciones[i].normalize('NFD') : null).filter(v => v !== null).join(', ')
+    })
+    this.psicologosService.doRegistro(valueSubmit).then((res) => {
+      console.log(res)
+      this.router.navigate([`/login`])
+    })
+    console.log(valueSubmit)
+    this.registroForm.reset()
+  }
+
   irLogin(){
     this.router.navigate(['/login'])
+  }
+
+  onChangeImage($event) {
+    let token =  Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    const image = $event.target.files[0] // Es un array porque con el file se pueden seleccionar mas de un archivo. Ponemos la pos 0 porque así seleccionamos siempre el primer elemento del array
+    const filePath = `imagenes/${token}.jpg`; // Ruta dentro de firebase. Controlar nosotros el nombre del archivo con un generador de token por ejemplo
+    const fileRef = this.storage.ref(filePath); // Referencia dentro de firebase
+    const task = this.storage.upload(filePath, image); // Ejecucion para subir la img a firebase
+
+   this.uploadPercent = task.percentageChanges(); // Observable que se ejecuta cuando cambia el porcentaje de subida de la imagen que estamos subiendo
+   task.snapshotChanges().pipe( // Indica cuando se ha terminado de subir la imagen. IMPORTANTE
+       finalize(() => {
+         this.downloadURL = fileRef.getDownloadURL() // Nos devuelve la url de subida en firebase IMPORTANTE, es un observable
+         this.downloadURL.subscribe(url => {
+          console.log(url)
+          this.urlImagen = url
+         })
+       })
+    ).subscribe()
   }
 
 }

@@ -1,9 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl, Validators, FormArray, FormControlName } from "@angular/forms";
+import { FormGroup, FormControl, Validators, FormArray } from "@angular/forms";
 import { Router } from "@angular/router";
 import { PsicologosService } from "../psicologos.service";
 import { Psicologo } from "../models/psicologo.model";
 import { EspecialidadesService } from "../especialidades.service";
+import { AngularFireStorage } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators'
 
 @Component({
   selector: "app-logeado",
@@ -24,7 +27,11 @@ export class LogeadoComponent implements OnInit {
   token: string;
   psicologoLogeado: Psicologo;
 
-  constructor(private router: Router, public psicologosService: PsicologosService, private especialidadesService: EspecialidadesService) {
+  uploadPercent: Observable<number>
+  downloadURL: Observable<string>
+  urlImagen: string
+
+  constructor(private router: Router, public psicologosService: PsicologosService, private especialidadesService: EspecialidadesService, private storage: AngularFireStorage) {
     this.arrEspecialidades = [];
     this.arrPoblaciones = ["Infanto-Juvenil (0-16)", "Adultos (>16)"];
     this.especialidades = false;
@@ -37,6 +44,7 @@ export class LogeadoComponent implements OnInit {
       this.psicologoLogeado = res
       this.createForm()
     })
+    this.urlImagen = ''
   }
 
   ngOnInit(){
@@ -109,6 +117,8 @@ export class LogeadoComponent implements OnInit {
 
   // Evento ngSubmit del formulario de Angular
   manejarPerfil() {
+    this.perfilForm.value.imgUrl = this.urlImagen
+
     let valueSubmit = Object.assign({}, this.perfilForm.value);
 
     valueSubmit = Object.assign(valueSubmit, {
@@ -192,5 +202,24 @@ export class LogeadoComponent implements OnInit {
     } else {
       this.poblacion = false;
     }
+  }
+
+  onChangeImage($event) {
+    let token =  Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    const image = $event.target.files[0] // Es un array porque con el file se pueden seleccionar mas de un archivo. Ponemos la pos 0 porque así seleccionamos siempre el primer elemento del array
+    const filePath = `imagenes/${token}.jpg`; // Ruta dentro de firebase. Controlar nosotros el nombre del archivo con un generador de token por ejemplo
+    const fileRef = this.storage.ref(filePath); // Referencia dentro de firebase
+    const task = this.storage.upload(filePath, image); // Ejecucion para subir la img a firebase
+
+   this.uploadPercent = task.percentageChanges(); // Observable que se ejecuta cuando cambia el porcentaje de subida de la imagen que estamos subiendo
+   task.snapshotChanges().pipe( // Indica cuando se ha terminado de subir la imagen. IMPORTANTE
+       finalize(() => {
+         this.downloadURL = fileRef.getDownloadURL() // Nos devuelve la url de subida en firebase IMPORTANTE, es un observable
+         this.downloadURL.subscribe(url => {
+          //  console.log(url)
+           this.urlImagen = url
+         })
+       })
+    ).subscribe()
   }
 }

@@ -6,8 +6,8 @@
 
         <div class="col-10 m-auto">
           <div class="nombre form-row mb-4 d-flex justify-content-between">
-            <div class="form-group col-md-2">
-              <img src="../../assets/user.png" alt="">
+            <div class="form-group col-md-3">
+              <img [src]="psicologoLogeado.imgUrl" class="rounded-circle" alt="">
             </div>
             <div class="form-group col-md-3">
               <h5>Nombre:</h5>
@@ -20,6 +20,13 @@
             <div class="form-group col-md-2">
               <h5>Nº colegiado:</h5>
               <h3>{{ psicologoLogeado.numColeg }}</h3>
+            </div>
+          </div>
+
+          <div class="form-row mb-4">
+            <div class="form-group">
+              <label>Cambiar imagen de perfil:</label>
+              <input type="file" class="form-control-file" formControlName="imgUrl" (change)="onChangeImage($event)">
             </div>
           </div>
 
@@ -105,13 +112,6 @@
               <label>Repetir correo:</label>
               <input type="email" class="form-control" formControlName="correo_repeat">
               <p *ngIf="perfilForm.errors && perfilForm.errors['correo_repeat'] && perfilForm.controls['correo_repeat'].dirty" style="color: red">El correo no coincide</p>
-            </div>
-          </div>
-
-          <div class="form-row mb-4">
-            <div class="form-group">
-              <label>Cambiar imagen de perfil:</label>
-              <input type="file" class="form-control-file" formControlName="imgUrl">
             </div>
           </div>
 

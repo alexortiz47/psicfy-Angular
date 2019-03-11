@@ -3,7 +3,6 @@ import { PsicologosService } from "../psicologos.service";
 import { Psicologo } from "../models/psicologo.model";
 import { EspecialidadesService } from "../especialidades.service";
 import { Especialidad } from "../models/especialidad.model";
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: "cerca",
@@ -38,7 +37,8 @@ export class CercaComponent implements OnInit {
             poblacion: psico.poblacion,
             domicilio: psico.domicilio,
             codPostal: psico.codPostal,
-            correo: psico.correo
+            correo: psico.correo,
+            imgUrl: psico.imgUrl
           };
           this.arrDatosPsico.push(datosPsico);
         });

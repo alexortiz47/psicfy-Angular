@@ -46,11 +46,13 @@
           <p *ngIf="adicciones2">Adicciones 19-25</p>
           <p *ngIf="emociones1">Emociones 14-18</p>
           <p *ngIf="emociones2">Emociones 19-25</p>
+          <p *ngIf="noHelp">Congrats!! No necesita ayuda!!</p>
         </div>
       </div>
       <div class="row text-center">
         <div class="col-12 mb-5">
-          <button class="btn btn-info" (click)="terminarEval()">Buscar psicólogo</button>
+          <button *ngIf="!noHelp" class="btn btn-info" (click)="terminarEval()">Buscar psicólogo</button>
+          <button *ngIf="noHelp" class="btn btn-info" (click)="volverInicio()">Inicio</button>
         </div>
       </div>
     </div>

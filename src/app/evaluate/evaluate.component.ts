@@ -17,6 +17,7 @@ export class EvaluateComponent implements OnInit {
   arrRespuestas: any[]
   edad: number
   boton: boolean
+  noHelp: boolean
   // Variables para puntuacion de cada bloque
   totalDepresion: number
   totalAnsiedad: number
@@ -53,6 +54,7 @@ export class EvaluateComponent implements OnInit {
     this.emociones1 = false
     this.emociones2 = false
     this.boton = true
+    this.noHelp = false
   }
 
   ngOnInit() {
@@ -129,12 +131,20 @@ export class EvaluateComponent implements OnInit {
       this.emociones2 = true
     }
 
+    if(this.totalDepresion < 14 && this.totalAnsiedad < 14 && this.totalAdiccion < 14 && this.totalEmocion < 14) {
+      this.noHelp = true
+    }
+
     this.resultado = true
     this.preguntas = false
   }
 
   terminarEval() {
     this.router.navigate(['buscar'])
+  }
+
+  volverInicio() {
+    this.router.navigate([''])
   }
 
 }

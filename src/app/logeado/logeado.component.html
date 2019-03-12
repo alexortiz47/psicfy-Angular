@@ -25,8 +25,8 @@
 
           <div class="form-row mb-4">
             <div class="form-group">
-              <label>Cambiar imagen de perfil:</label>
-              <input type="file" class="form-control-file" formControlName="imgUrl" (change)="onChangeImage($event)">
+              <label class="mr-3">Cambiar imagen de perfil:</label><fa style="color: green" *ngIf="urlImagen != ''" name="check"></fa><fa style="color: tomato" *ngIf="urlImagen == '' && perfilForm.controls['imgUrl'].dirty" name="times "></fa>
+              <input id="img" type="file" class="form-control-file" formControlName="imgUrl" (change)="onChangeImage($event)">
             </div>
           </div>
 
@@ -108,16 +108,16 @@
               <input type="email" class="form-control" formControlName="correo">
               <p *ngIf="perfilForm.controls['correo'].errors?.pattern && perfilForm.controls['correo'].dirty">El campo debe ser un email correcto</p>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6" *ngIf="perfilForm.controls['correo'].dirty">
               <label>Repetir correo:</label>
               <input type="email" class="form-control" formControlName="correo_repeat">
-              <p *ngIf="perfilForm.errors && perfilForm.errors['correo_repeat'] && perfilForm.controls['correo_repeat'].dirty" style="color: red">El correo no coincide</p>
+              <p class="error" *ngIf="perfilForm.errors && perfilForm.errors['correo_repeat'] && perfilForm.controls['correo_repeat'].dirty">El correo no coincide</p>
             </div>
           </div>
 
           <div class="form-row mb-4 d-flex justify-content-around">
             <div class="col-md-4">
-              <button type="submit" class="btn btn-lg btn-block btn-success mb-3">Actualizar</button>
+              <button type="submit" class="btn btn-lg btn-block btn-success mb-3" [disabled]="perfilForm.pristine">Actualizar</button>
             </div>
             <div class="col-md-4">
               <button type="button" class="btn btn-lg btn-block btn-secondary mb-3" (click)="inicioPsicologo()">Cancelar</button>

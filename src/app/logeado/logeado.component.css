@@ -23,3 +23,7 @@ input.ng-invalid.ng-dirty {
 .error {
   color: tomato;
 }
+
+#img{
+  border: none
+}

@@ -48,7 +48,6 @@ export class LogeadoComponent implements OnInit {
   }
 
   ngOnInit(){
-
   }
 
   createForm() {

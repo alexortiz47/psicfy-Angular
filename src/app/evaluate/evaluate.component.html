@@ -4,8 +4,7 @@
     <div class="mensaje" *ngIf="mensaje">
       <div class="row text-center">
         <div class="col-12 mb-5">
-            <p>A continuación aparecerán una serie de preguntas que pretenden evaluar el estado general de la persona. Contesta con sinceridad para poder obtener una aproximación más realista.</p>
-            <p>En caso de querer evaluar a un menor u otra persona que no eres tú, indica su edad en el hueco destinado para ello.</p>
+            <p>A continuación aparecerán una serie de preguntas que pretenden evaluar su estado general, o el de otra persona. Contestar con sinceridad para poder obtener una aproximación más realista.</p>
         </div>
       </div>
       <div class="row text-center">
@@ -21,10 +20,10 @@
           <div class="iconoVolver mb-4" (click)="volverMensajeInicio()">
               <fa class="flecha" name="arrow-left"></fa>
           </div>
-          <div class="col-12 mb-5">
+          <!-- <div class="col-12 mb-5">
             <label class=" mr-1 col-11">Introduzca la edad de la persona:</label>
             <input class="col-1" type="text" name="edad" [(ngModel)]="edad">
-          </div>
+          </div> -->
           <pregunta *ngFor="let preg of arrPreguntas" [pregunta]="preg" [preguntaId]="preg.id" (respuesta)="respRecibida($event)"></pregunta>
         </div>
         <button type="submit" class="col-8 mx-auto btn btn-info btn-block" (click)="enviarRespuestas()" [disabled]="boton">Enviar</button>

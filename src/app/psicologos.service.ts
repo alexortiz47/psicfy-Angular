@@ -19,7 +19,6 @@ export class PsicologosService {
       apellidos: value.apellidos,
       numColeg: value.numColeg,
       domicilio: value.domicilio,
-      codPostal: value.codPostal,
       especialidades: value.especialidades,
       poblacion: value.poblacion,
       correo: value.correo,

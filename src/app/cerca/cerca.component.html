@@ -21,7 +21,13 @@
     </div>
 
     <div class="row">
-      <div class="col-md-10 mb-4 mx-auto" *ngFor="let psicologo of arrFiltrado">
+      <div class="col-md-12 mb-5">
+          <div class="rounded" #googleMap style="width: 100%; height: 600px"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10 mx-auto mb-4" *ngFor="let psicologo of arrFiltrado">
         <div class="card p-3">
             <div class="row p-3">
               <div class="col-md-5 text-center">

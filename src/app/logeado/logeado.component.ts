@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { FormGroup, FormControl, Validators, FormArray } from "@angular/forms";
 import { Router } from "@angular/router";
 import { PsicologosService } from "../psicologos.service";
@@ -8,12 +8,17 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators'
 
+declare var google;
+
 @Component({
   selector: "app-logeado",
   templateUrl: "./logeado.component.html",
   styleUrls: ["./logeado.component.css"]
 })
 export class LogeadoComponent implements OnInit {
+
+  @ViewChild("inputPlace") inputPlace: ElementRef;
+
   especialidades: boolean;
   poblacion: boolean;
 
@@ -30,6 +35,9 @@ export class LogeadoComponent implements OnInit {
   uploadPercent: Observable<number>
   downloadURL: Observable<string>
   urlImagen: string
+  lat: string
+  lng: string
+  dir: string
 
   constructor(private router: Router, public psicologosService: PsicologosService, private especialidadesService: EspecialidadesService, private storage: AngularFireStorage) {
     this.arrEspecialidades = [];
@@ -44,10 +52,34 @@ export class LogeadoComponent implements OnInit {
       this.psicologoLogeado = res
       this.createForm()
     })
-    this.urlImagen = ''
+    this.urlImagen = ""
+    this.lat = ""
+    this.lng = ""
+    this.dir = ""
   }
 
   ngOnInit(){
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      // console.log(this.inputPlace.nativeElement);
+      let autocomplete = new google.maps.places.Autocomplete(
+        this.inputPlace.nativeElement
+      );
+      autocomplete.setFields(["address_components", "formatted_address", "geometry", "icon", "name"]);
+
+      autocomplete.addListener("place_changed", () => {
+        let place = autocomplete.getPlace();
+        // console.log(place);
+        this.lat = place.geometry.location.lat();
+        this.lng = place.geometry.location.lng();
+        // console.log(this.lat);
+        // console.log(this.lng);
+        this.dir = place.formatted_address
+        // console.log(this.dir)
+      });
+    }, 100);
   }
 
   createForm() {
@@ -64,13 +96,7 @@ export class LogeadoComponent implements OnInit {
             Validators.required,
             Validators.pattern(/^([0-9]{3,5})[M]$/)
           ]),
-          domicilio: new FormControl(this.psicologoLogeado.domicilio, [
-            Validators.required
-          ]),
-          codPostal: new FormControl(this.psicologoLogeado.codPostal, [
-            Validators.required,
-            Validators.pattern(/^(?:0[1-9]\d{3}|[1-4]\d{4}|5[0-2]\d{3})$/)
-          ]),
+          domicilio: new FormControl(''),
           latitud: new FormControl(this.psicologoLogeado.latitud),
           longitud: new FormControl(this.psicologoLogeado.longitud),
           especialidades: this.buildEspecialidades(),
@@ -98,9 +124,7 @@ export class LogeadoComponent implements OnInit {
     let correo = group.controls["correo"].value;
     let correo_repeat = group.controls["correo_repeat"].value;
 
-    return correo == correo_repeat
-      ? null
-      : { correo_repeat: "El correo no coincide" };
+    return correo == correo_repeat ? null : { correo_repeat: "El correo no coincide" };
   }
 
   // Checkboxes de Especialidades y población:
@@ -117,6 +141,9 @@ export class LogeadoComponent implements OnInit {
   // Evento ngSubmit del formulario de Angular
   manejarPerfil() {
     this.perfilForm.value.imgUrl = this.urlImagen
+    this.perfilForm.value.domicilio = this.dir
+    this.perfilForm.value.latitud = this.lat
+    this.perfilForm.value.longitud = this.lng
 
     let valueSubmit = Object.assign({}, this.perfilForm.value);
 
@@ -135,12 +162,16 @@ export class LogeadoComponent implements OnInit {
       id: this.psicologoLogeado.id
     }; // Creamos un objeto que tendra tantas claves como datos modificados
 
-    if (this.perfilForm.controls.domicilio.dirty) {
+    if (this.perfilForm.controls.domicilio) {
       valuesUpdate['domicilio'] = valueSubmit.domicilio
     }
 
-    if (this.perfilForm.controls.codPostal.dirty) {
-      valuesUpdate['codPostal'] = valueSubmit.codPostal
+    if (this.perfilForm.controls.latitud) {
+      valuesUpdate['latitud'] = valueSubmit.latitud
+    }
+
+    if (this.perfilForm.controls.longitud) {
+      valuesUpdate['longitud'] = valueSubmit.longitud
     }
 
     if (valueSubmit.especialidades.length != 0) {

@@ -10,12 +10,11 @@ export class Psicologo {
   correo: string;
   password: string;
   domicilio: string;
-  codPostal: number;
   latitud: number;
   longitud: number;
   token: string;
 
-  constructor(pId: number, pNombre: string, pApellidos: string, pNumCol: number, pEspecialidad: string, pPoblacion: string, pImgUrl: string, pCorreo: string, pPassword: string, pDomicilio: string, pCodPostal: number, pLatitud: number, pLongitud: number, pToken: string) {
+  constructor(pId: number, pNombre: string, pApellidos: string, pNumCol: number, pEspecialidad: string, pPoblacion: string, pImgUrl: string, pCorreo: string, pPassword: string, pDomicilio: string,pLatitud: number, pLongitud: number, pToken: string) {
     this.id = pId;
     this.nombre = pNombre;
     this.apellidos = pApellidos;
@@ -26,7 +25,6 @@ export class Psicologo {
     this.correo = pCorreo;
     this.password = pPassword;
     this.domicilio = pDomicilio;
-    this.codPostal = pCodPostal;
     this.latitud = pLatitud;
     this.longitud = pLongitud;
     this.token = pToken

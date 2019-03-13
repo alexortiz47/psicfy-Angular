@@ -48,6 +48,7 @@ export class AdminComponent implements OnInit {
     })
   }
 
+  // Enviar los datos para comprobar login para el Administrador
   manejarLogin() {
     this.psicologosService.doLoginAdmin(this.adminForm.value).then((res) => {
       console.log(res)
@@ -61,6 +62,7 @@ export class AdminComponent implements OnInit {
     this.adminForm.reset()
   }
 
+  // Añadir una especialidad en la base de datos
   addEsp() {
     this.especialidadesService.createEsp(this.espForm.value).then(res => {
       console.log(res)
@@ -68,6 +70,7 @@ export class AdminComponent implements OnInit {
     this.espForm.reset()
   }
 
+  // Añadir un nuevo administrador a la base de datos
   manejarRegistro() {
     this.psicologosService.doRegistroAdmin(this.adminRegForm.value).then((res) => {
       console.log(res)
@@ -75,6 +78,7 @@ export class AdminComponent implements OnInit {
     this.adminRegForm.reset()
   }
 
+  // Salir del login del Administrador
   logOutAdmin() {
     localStorage.removeItem('token')
     this.router.navigate([''])

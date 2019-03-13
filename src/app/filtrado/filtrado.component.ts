@@ -56,6 +56,7 @@ export class FiltradoComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Método que al dar al enter, busca el nombre introducido en el input o si lo contiene
   sendName($event) {
     if($event.keyCode == 13) {
       this.arrFiltrado = this.arrFiltrado.filter(item => {
@@ -71,8 +72,7 @@ export class FiltradoComponent implements OnInit {
     }
   }
 
-
-
+  // Método que filtra según lo que se elija en los selects
   seleccion($event) {
     // console.log(this.poblacion);
     // console.log(this.especialidad);

@@ -61,7 +61,9 @@ export class LogeadoComponent implements OnInit {
   ngOnInit(){
   }
 
+  // Metodo que se ejecuta despues del ngOnInit
   ngAfterViewInit() {
+    // Ponemos un TimeOut para darle un poco de tiempo
     setTimeout(() => {
       // console.log(this.inputPlace.nativeElement);
       let autocomplete = new google.maps.places.Autocomplete(
@@ -82,6 +84,7 @@ export class LogeadoComponent implements OnInit {
     }, 100);
   }
 
+  // Método que crea el formulario
   createForm() {
     this.especialidadesService.getAllEspecialidades().then(res => {
       // console.log(res)
@@ -127,7 +130,7 @@ export class LogeadoComponent implements OnInit {
     return correo == correo_repeat ? null : { correo_repeat: "El correo no coincide" };
   }
 
-  // Checkboxes de Especialidades y población:
+  // Construcción de Checkboxes de Especialidades y población:
   buildEspecialidades() {
     const values = this.arrEspecialidades.map(item => new FormControl(false));
     return new FormArray(values);
@@ -234,6 +237,7 @@ export class LogeadoComponent implements OnInit {
     }
   }
 
+  // Método que identifica cuando se carga una nueva imagen de usuario
   onChangeImage($event) {
     let token =  Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     const image = $event.target.files[0] // Es un array porque con el file se pueden seleccionar mas de un archivo. Ponemos la pos 0 porque así seleccionamos siempre el primer elemento del array

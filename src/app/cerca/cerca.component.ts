@@ -12,24 +12,22 @@ declare var google
   styleUrls: ["./cerca.component.css"]
 })
 export class CercaComponent implements OnInit {
-  arrPsico: Psicologo[];
-  // arrEsp: Especialidad[]; // Para pintar el select de especialidades
-  arrDatosPsico: any[];
-  // arrFiltrado: any[];
-  // poblacion: string;
-  // especialidad: string;
-  duracion: string
-  distancia: string
+  arrPsico: Psicologo[]
+  arrDatosPsico: any[]
   psicoSeleccionado: any
-  desplazamiento: string
-  start: any
-  end: any
 
+  // Creacion de variables para el GOOGLE MAPS
   @ViewChild('googleMap') gMap: any // Es el div donde va a estar nuestro mapa
-  map: any // Este sera el mapa donde vamos a interactuar
+  map: any // Este será el mapa donde vamos a interactuar
   markers: any[] = [] // Creamos un array donde metemos todos los markers para tenerlos controlados
   directionsService: any
   directionsDisplay: any
+  duracion: string
+  distancia: string
+  desplazamiento: string
+  start: any
+  end: any
+  // -------------------------------------------------------- //
 
   constructor(private psicologosService: PsicologosService, private especialidadesService: EspecialidadesService) {
     this.arrDatosPsico = [];
@@ -70,11 +68,12 @@ export class CercaComponent implements OnInit {
     }
   }
 
+  // Metodo que se lanza cuando el usuario acepta la localizacion
   showPosition(position) {
     // console.log(position)
     this.loadMap(position)
   }
-
+  // Metodo que se lanza cuando se genera un error con el tema de la geolocalización
   showError(error) {
     console.log(error.code)
     switch (error.code) {
@@ -93,10 +92,12 @@ export class CercaComponent implements OnInit {
     }
   }
 
-  loadMap(position) { // Generamos el mapa con las propiedades que espera google: center, zoom, mapTypeId(estilo de mapa). Aqui haremos todo con respecto al mapa
+  // Método que crea todo nuestro mapa, aquí meteremos todo lo relacionado con el mismo
+  loadMap(position) {
     this.directionsService = new google.maps.DirectionsService()
     this.directionsDisplay = new google.maps.DirectionsRenderer()
 
+    // Generamos el mapa con las propiedades que espera google: center, zoom, mapTypeId(estilo de mapa). Aqui haremos todo con respecto al mapa
     let propsMap = { // Son las propiedades del mapa
       center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude), // posicion actual
       zoom: 11,
@@ -139,6 +140,7 @@ export class CercaComponent implements OnInit {
     })
   }
 
+  // Método para generar las rutas de Google
   generateRoute(start, end) {
     let requestOpts = {
       origin: start,
@@ -157,6 +159,7 @@ export class CercaComponent implements OnInit {
     })
   }
 
+  // Método que cambia el tipo de ruta en función de a que botón le de el usuario
   handleChangeRouteType(pTipo) {
     this.desplazamiento = pTipo
     this.generateRoute(this.start, this.end)

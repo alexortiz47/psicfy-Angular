@@ -15,7 +15,6 @@ export class EvaluateComponent implements OnInit {
   resultado: boolean
   arrPreguntas: Pregunta[]
   arrRespuestas: any[]
-  edad: number
   boton: boolean
   noHelp: boolean
   // Variables para puntuacion de cada bloque
@@ -41,10 +40,12 @@ export class EvaluateComponent implements OnInit {
     this.preguntas = false
     this.resultado = false
     this.arrRespuestas = []
+    // Variables iniciadas para puntuacion de cada bloque
     this.totalDepresion = 0
     this.totalAnsiedad = 0
     this.totalAdiccion = 0
     this.totalEmocion = 0
+    // Variables iniciadas para mostrar un mensaje u otro. Dos por bloque (14-18 / 19-25)
     this.depresion1 = false
     this.depresion2 = false
     this.ansiedad1 = false
@@ -60,6 +61,7 @@ export class EvaluateComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Metodo que da paso a empezar el cuestionario
   iniciarPreguntas() {
     if(!this.preguntas || this.mensaje) {
       this.preguntas = true;
@@ -67,6 +69,7 @@ export class EvaluateComponent implements OnInit {
     }
   }
 
+  // Método que vuelve desde las preguntas al mensaje de inicio
   volverMensajeInicio(){
     if(this.preguntas || !this.mensaje) {
       this.preguntas = false;
@@ -74,6 +77,7 @@ export class EvaluateComponent implements OnInit {
     }
   }
 
+  // Va sumando las respuestas de los checkboxes
   respRecibida($event) {
     let elem = this.arrRespuestas.find((item) => {
       return item.preguntaId == $event.preguntaId
@@ -86,6 +90,7 @@ export class EvaluateComponent implements OnInit {
     this.arrRespuestas.length < 20 ? this.boton = true : this.boton = false
   }
 
+  // Método que al pulsar el boton enviar, evalua las respuestas y saca uno u otro mensaje
   enviarRespuestas() {
     // console.log(this.edad)
     // console.log(this.arrRespuestas)

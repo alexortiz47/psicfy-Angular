@@ -28,6 +28,7 @@ export class InicioSesionComponent implements OnInit {
     })
   }
 
+  // Método que checkea el usuario que hace login
   manejarLogin() {
     this.psicologosService.doLogin(this.loginForm.value).then((res) => {
       // console.log(res)

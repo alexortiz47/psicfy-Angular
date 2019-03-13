@@ -39,7 +39,7 @@
 
           <p class="card-text" *ngIf="depresion2">Presentas un nivel alto de alteración en el estado de ánimo, con un estilo depresivo. Quizás te haya pasado o te esté pasando algo que te haga sentir triste, desesperado, con sensación de indefensión o incluso que no te encuentras a ti mismo/a. Quizás estés viviendo una separación, un proceso de duelo o tú vida haya dado un cambio que no terminas de encajar. En tu situación es muy recomendable contar con un profesional que te acompañe, te guíe y te de la fortaleza que seguramente muchas veces sientes que te falta. Acudir a terapia te ayudaría a aprender a gestionar tus emociones, regular tu estado de ánimo y poner fin a esas sensaciones de tristeza, vacío y desesperanza que puede que estés sintiendo. Un psicólogo a tu lado sería una buena manera de empezar a trazar un camino hacia la felicidad.</p>
 
-          <p class="card-text" *ngIf="ansiedad1">Presentas un nivel de ansiedad moderado. Es posible que estés viviendo alguna situación que te genere estrés y te esté costando manejarlo. Acudir a terapia para aprender tendría grandes beneficios para ti. </p>
+          <p class="card-text" *ngIf="ansiedad1">Presentas un nivel de ansiedad moderado. Es posible que estés viviendo alguna situación que te genere estrés y te esté costando manejarlo. Acudir a terapia para aprender tendría grandes beneficios para ti.</p>
 
           <p class="card-text" *ngIf="ansiedad2">Presentas un nivel de ansiedad elevado. Es posible que estés viviendo alguna situación que te genere estrés y te esté costando manejarlo. Es posible que de ahí se deriven somatizaciones frecuentes (dolores de estómago, de cabeza, temblores, etc.) que te provocan un alto grado de malestar. Sería muy recomendable acudir a terapia para ayudarte con la gestión de tu estrés y de los posibles signos (físicos y psicológicos) que se deriven de él. Aprenderías técnicas para manejar la ansiedad, para reducir los nervios en tu cuerpo y provocar un estado de relajación. También formas de regular tu pensamiento de forma que no siempre te lleve al “peligro del futuro”, a la incertidumbre de las situaciones. Un psicólogo podría hacer mucho por ti y por tu ansiedad. Como por ejemplo, que deje de asustarte y molestarte y convertirla en tu aliada.</p>
 
@@ -50,6 +50,16 @@
           <p class="card-text" *ngIf="emociones1">Parece que tienes algunas dificultades para gestionar tus emociones. Quizás sientas que a veces no entiendes que te ocurre y/o tengas reacciones desproporcionadas en situaciones que aparentemente no “lo merecen” (por ejemplo: llorar intensamente cuando no ha pasado nada tan grave; tener un episodio de ira desmedido; pegar un grito de repente). Si es así, tranquilo/a, esto es normal y tiene solución. Cuando las personas vamos “tragando y tragando” y no solucionamos aquello que nos provoca malestar, se acumula en nuestro interior. De forma que, cuando estamos al límite y pasa cualquier cosa (por pequeña que sea) nos desbordamos. Acudir a un psicólogo sería beneficioso para ti porque aprenderías a identificar por qué sientes lo que sientes y a autorregularte. Serías tú quien gestionase las emociones y no al revés... suena bien, ¿verdad?</p>
 
           <p class="card-text" *ngIf="emociones2">Parece que tienes mucha dificultad a la hora de gestionar tus emociones. Quizás sientas que a veces no entiendes que te ocurre, de donde vienen esas sensaciones tan molestas y/o hasta tengas reacciones desproporcionadas en situaciones que aparentemente no “lo merecen” (por ejemplo: llorar intensamente cuando no ha pasado nada tan grave; tener un episodio de ira desmedido; pegar un grito de repente; tener ganas de salir corriendo y no volver...). Si es así, tranquilo/a, esto es normal y tiene solución. Cuando las personas vamos “tragando y tragando” y no solucionamos aquello que nos provoca malestar, se acumula en nuestro interior. De forma que, cuando estamos al límite y nos pasa algo (por pequeño que sea) nos desbordamos. Acudir a un psicólogo sería beneficioso porque podrías aprender a identificar por qué sientes lo que sientes y a autorregularte. Esto te ayudaría a anticipar cuando vas a sentirte de determinada forma (triste, con ira, decepcionado/a...) y podrías cambiarlo según tus necesidades e intereses. Además, te permitiría conocer y prever las reacciones de los demás y te aportaría una sensación de control que probablemente ahora no sientas. Serías tú quien gestionase las emociones y no al revés... suena bien, ¿verdad?</p>
+
+          <div *ngIf="!noHelp">
+              <p class="card-text">En caso de estar dispuesto a ir a terapia, le recomendamos psicólogos especialistas en:</p>
+              <ul>
+                <li *ngIf="depresion1 || depresion2">Depresión</li>
+                <li *ngIf="ansiedad1 || ansiedad2">Ansiedad</li>
+                <li *ngIf="adicciones1 || adicciones2">Adicciones y consumo de tóxicos</li>
+                <li *ngIf="emociones1 || emociones2">Gestión emocional</li>
+              </ul>
+          </div>
 
           <p class="card-text" *ngIf="noHelp">Congrats!! No necesita ayuda!!</p>
 

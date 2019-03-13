@@ -56,20 +56,10 @@ export class FiltradoComponent implements OnInit {
   ngOnInit() {
   }
 
-
-  ngOnChanges(changes: SimpleChange) {
-    for (let propName in changes) {
-      let chng = changes[propName];
-      let cur  = JSON.stringify(chng.currentValue);
-      let prev = JSON.stringify(chng.previousValue);
-      console.log(`${propName}: ValorActual = ${cur}, ValorPrevio = ${prev}`);
-    }
-  }
-
   sendName($event) {
     if($event.keyCode == 13) {
       this.arrFiltrado = this.arrFiltrado.filter(item => {
-        if(item.nombre.includes(this.nombre)){
+        if(item.nombre.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(this.nombre.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ""))){
           return true
         }else{
           return false

@@ -12,23 +12,23 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-6 card-body mx-auto">
+      <div class="col-lg-6 card-body mx-auto">
         <p class="card-text"><span>Especialista en: </span></p>
         <ul>
           <li *ngFor="let esp of psico.especialidades">{{ esp.nombre }}</li>
         </ul>
       </div>
-      <div class="col-6 card-body mx-auto">
+      <div class="col-lg-6 card-body mx-auto">
         <p class="card-text"><span>Grupo poblacional:</span> {{ psico.poblacion }}</p>
         <p class="card-text"><span>Direccion:</span> {{ psico.domicilio }}</p>
         <p class="card-text"><span>Correo:</span> {{ psico.correo }}</p>
       </div>
     </div>
     <div class="row">
-      <div class="col-4">
+      <div class="col-md-4 col-sm-12">
           <p class="card-text"><i id="icono" class="far fa-clock mr-1"></i> {{ duracion }}</p>
       </div>
-      <div class="col-4">
+      <div class="col-md-4 col-sm-12">
           <p class="card-text"><i id="icono" class="fa fa-route mr-1"></i> {{ distancia }}</p>
       </div>
     </div>

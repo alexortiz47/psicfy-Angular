@@ -1,0 +1,53 @@
+<cabecera></cabecera>
+
+<div class="container my-5">
+  <div class="container my-5">
+
+    <div class="row mb-5 d-flex justify-content-between">
+      <div class="form-group col-md-4">
+          <label>Selecciona un grupo poblacional:</label>
+          <select class="form-control" (change)="seleccion($event)" [(ngModel)]="poblacion">
+            <option selected>Todos</option>
+            <option>Infanto-Juvenil (0-16)</option>
+            <option>Adultos (>16)</option>
+          </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label>Selecciona una especialidad:</label>
+        <select class="form-control" (change)="seleccion($event)" [(ngModel)]="especialidad">
+          <option selected>Todas</option>
+          <option *ngFor="let esp of arrEsp">{{ esp.nombre }}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label>Escribe el nombre del profesional:</label>
+        <input class="form-control" type="text" [(ngModel)]="nombre" (keypress)='sendName($event)'>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-11 mx-auto mb-4" *ngFor="let psicologo of arrFiltrado">
+        <div class="card p-3">
+            <div class="row p-3">
+              <div class="col-md-5 text-center">
+                <img [src]="psicologo.imgUrl" class="imgUsuario card-img-top mx-auto border rounded-circle mb-3">
+                <h4 class="card-title">{{ psicologo.nombre }} {{ psicologo.apellidos }}</h4>
+                <h5 class="card-text">{{ psicologo.numColeg }}</h5>
+                <hr class="d-md-none">
+              </div>
+              <div class="col-md-7 card-body">
+                <p class="card-text"><span>Especialista en: </span></p>
+                <ul>
+                  <li *ngFor="let esp of psicologo.especialidades">{{ esp.nombre }}</li>
+                </ul>
+                <p class="card-text"><span>Grupo poblacional:</span> {{ psicologo.poblacion }}</p>
+                <p class="card-text"><span>Direccion:</span> {{ psicologo.domicilio }}</p>
+                <p class="card-text"><span>Correo:</span> {{ psicologo.correo }}</p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<piepag></piepag>

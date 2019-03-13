@@ -1,12 +1,42 @@
-<div class="card">
-  <div class="card-header d-flex justify-content-between">
-    <h4 class="float-left">{{ psico.nombre }} {{ psico.apellidos }}</h4>
-    <img [src]="psico.imgUrl" class="imgUsuario rounded-circle">
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">{{ psico.domicilio }}</h5>
-    <p class="card-title"><i id="icono" class="far fa-address-card mr-1"></i> {{ psico.correo }}</p>
+
+<div class="card p-5">
+    <div class="row">
+      <div class="col-10 mx-auto text-center mb-2">
+          <img [src]="psico.imgUrl" class="imgUsuario border mx-auto rounded-circle">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-10 mx-auto text-center">
+          <h5 class="mx-auto titulo card-title">{{ psico.nombre }} {{ psico.apellidos }}</h5>
+          <h5 class="mx-auto card-title">{{ psico.numColeg }}</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 card-body mx-auto">
+        <p class="card-text"><span>Especialista en: </span></p>
+        <ul>
+          <li *ngFor="let esp of psico.especialidades">{{ esp.nombre }}</li>
+        </ul>
+      </div>
+      <div class="col-6 card-body mx-auto">
+        <p class="card-text"><span>Grupo poblacional:</span> {{ psico.poblacion }}</p>
+        <p class="card-text"><span>Direccion:</span> {{ psico.domicilio }}</p>
+        <p class="card-text"><span>Correo:</span> {{ psico.correo }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+          <p class="card-text"><i id="icono" class="far fa-clock mr-1"></i> {{ duracion }}</p>
+      </div>
+      <div class="col-4">
+          <p class="card-text"><i id="icono" class="fa fa-route mr-1"></i> {{ distancia }}</p>
+      </div>
+    </div>
+</div>
+
+<!-- <div>
     <p class="card-text"><i id="icono" class="far fa-clock mr-1"></i> {{ duracion }}</p>
     <p class="card-text"><i id="icono" class="fa fa-route mr-1"></i> {{ distancia }}</p>
-  </div>
-</div>
+</div> -->
+
+

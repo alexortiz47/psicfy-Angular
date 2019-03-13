@@ -8,13 +8,15 @@ import { Error404Component } from './error404/error404.component';
 import { CercaComponent } from './cerca/cerca.component';
 import { LogeadoComponent } from './logeado/logeado.component';
 import { AdminComponent } from './admin/admin.component';
+import { FiltradoComponent } from './filtrado/filtrado.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'inicio', pathMatch: 'full'},
   { path: 'inicio', component: MainPrincipalComponent},
   { path: 'inicio/:numColeg', component: MainPrincipalComponent},
   { path: 'evaluate', component: EvaluateComponent},
-  { path: 'buscar', component: CercaComponent},
+  { path: 'buscar/localización', component: CercaComponent},
+  { path: 'buscar/filtrado', component: FiltradoComponent},
   { path: 'registro', component: RegistroComponent},
   { path: 'login', component: InicioSesionComponent},
   { path: 'edit/:numColeg', component: LogeadoComponent},

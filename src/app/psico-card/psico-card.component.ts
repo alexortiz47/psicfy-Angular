@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Psicologo } from '../models/psicologo.model';
 
 @Component({
   selector: 'psico-card',
@@ -8,7 +7,7 @@ import { Psicologo } from '../models/psicologo.model';
 })
 export class PsicoCardComponent implements OnInit {
 
-  @Input() psico: Psicologo
+  @Input() psico: any
   @Input() duracion: string
   @Input() distancia: string
 

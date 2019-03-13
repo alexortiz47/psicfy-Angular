@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire'
 import { AngularFireStorageModule } from '@angular/fire/storage'
+import { CapitalizePipe } from './capitalize.pipe';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { PreguntaComponent } from './pregunta/pregunta.component';
 import { AdminComponent } from './admin/admin.component';
 import { environment } from 'src/environments/environment';
 import { PsicoCardComponent } from './psico-card/psico-card.component';
+import { FiltradoComponent } from './filtrado/filtrado.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { PsicoCardComponent } from './psico-card/psico-card.component';
     LogeadoComponent,
     PreguntaComponent,
     AdminComponent,
-    PsicoCardComponent
+    PsicoCardComponent,
+    FiltradoComponent,
+    CapitalizePipe
   ],
   imports: [
     BrowserModule,

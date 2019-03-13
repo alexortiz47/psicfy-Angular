@@ -13,14 +13,14 @@ declare var google
 })
 export class CercaComponent implements OnInit {
   arrPsico: Psicologo[];
-  arrEsp: Especialidad[]; // Para pintar el select de especialidades
+  // arrEsp: Especialidad[]; // Para pintar el select de especialidades
   arrDatosPsico: any[];
-  arrFiltrado: any[];
-  poblacion: string;
-  especialidad: string;
+  // arrFiltrado: any[];
+  // poblacion: string;
+  // especialidad: string;
   duracion: string
   distancia: string
-  psicoSeleccionado: Psicologo
+  psicoSeleccionado: any
   desplazamiento: string
   start: any
   end: any
@@ -31,12 +31,8 @@ export class CercaComponent implements OnInit {
   directionsService: any
   directionsDisplay: any
 
-  constructor(
-    private psicologosService: PsicologosService,
-    private especialidadesService: EspecialidadesService
-  ) {
+  constructor(private psicologosService: PsicologosService, private especialidadesService: EspecialidadesService) {
     this.arrDatosPsico = [];
-
     this.psicologosService.getAllPsicologos().then(res => {
       // console.log(res)
       this.arrPsico = res;
@@ -58,14 +54,7 @@ export class CercaComponent implements OnInit {
           this.arrDatosPsico.push(datosPsico);
         });
       });
-      this.arrFiltrado = this.arrDatosPsico
     });
-    this.especialidadesService.getAllEspecialidades().then(res => {
-      this.arrEsp = res;
-    });
-    this.poblacion = "Todos";
-    this.especialidad = "Todas";
-    this.arrFiltrado = this.arrDatosPsico;
     this.duracion = ''
     this.distancia = ''
     this.desplazamiento = 'DRIVING'
@@ -131,10 +120,6 @@ export class CercaComponent implements OnInit {
 
     this.arrDatosPsico.map(psico => {
 
-      // let infowindow = new google.maps.InfoWindow({
-      //   content: `<h4>${psico.nombre} ${psico.apellidos}</h4><h5>${psico.numColeg}</h5><br><p>${psico.domicilio}</p>`
-      // })
-
       let marker = new google.maps.Marker({
         position: new google.maps.LatLng(psico.latitud, psico.longitud),
         map: this.map,
@@ -175,24 +160,5 @@ export class CercaComponent implements OnInit {
   handleChangeRouteType(pTipo) {
     this.desplazamiento = pTipo
     this.generateRoute(this.start, this.end)
-  }
-
-  seleccion($event) {
-    // console.log(this.poblacion);
-    // console.log(this.especialidad);
-
-    this.arrFiltrado = [...this.arrDatosPsico]; // Cada vez que se hace change de alguno de los select, genera un nuevo array, y sobre ese evalua, si el de la poblacion es 'todos' no entra en el primer if, al igual que si el de las especialidades es 'todas'
-
-    if (this.poblacion != "Todos") {
-      this.arrFiltrado = this.arrFiltrado.filter(psico => {
-        return psico.poblacion.split(", ").includes(this.poblacion);
-      });
-    }
-
-    if (this.especialidad != "Todas") {
-      this.arrFiltrado = this.arrFiltrado.filter(psico => {
-        return psico.especialidades.map(item => item.nombre).includes(this.especialidad);
-      });
-    }
   }
 }

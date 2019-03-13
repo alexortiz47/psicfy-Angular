@@ -16,8 +16,12 @@
             <a class="btn text-light" title="Evaluate" (click)="irEvaluate()">Evalúate</a>
         </li>
 
-        <li class="nav-item p-3" *ngIf="!this.psicologosService.comprobarToken()">
-          <a class="btn text-light" title="Buscar" (click)="irBuscar()">Buscar profesional</a>
+        <li class="buscar nav-item dropdown" *ngIf="!this.psicologosService.comprobarToken()">
+          <a class="btn nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Buscar profesional</a>
+          <div class="dropdown-menu">
+            <a class="btn dropdown-item" (click)="irCerca()">Por localización</a>
+            <a class="btn dropdown-item" (click)="irFiltrado()">Por datos profesionales</a>
+          </div>
         </li>
 
         <li class="nav-item p-3" *ngIf="!this.psicologosService.comprobarToken()">

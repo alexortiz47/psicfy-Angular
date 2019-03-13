@@ -20,6 +20,7 @@ import { LogeadoComponent } from './logeado/logeado.component';
 import { PreguntaComponent } from './pregunta/pregunta.component';
 import { AdminComponent } from './admin/admin.component';
 import { environment } from 'src/environments/environment';
+import { PsicoCardComponent } from './psico-card/psico-card.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { environment } from 'src/environments/environment';
     CercaComponent,
     LogeadoComponent,
     PreguntaComponent,
-    AdminComponent
+    AdminComponent,
+    PsicoCardComponent
   ],
   imports: [
     BrowserModule,

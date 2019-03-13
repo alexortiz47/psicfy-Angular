@@ -18,7 +18,7 @@
       <div class="paso2 row text-center" *ngIf="preguntas">
         <div class="col-12">
           <div class="iconoVolver mb-4" (click)="volverMensajeInicio()">
-              <fa class="flecha" name="arrow-left"></fa>
+              <i class="flecha" class="fa fa-arrow-left"></i>
           </div>
           <!-- <div class="col-12 mb-5">
             <label class=" mr-1 col-11">Introduzca la edad de la persona:</label>
@@ -34,7 +34,7 @@
     <div class="mensaje" *ngIf="resultado">
       <div class="row text-center">
         <div class="col-12 mb-5">
-            <p>RESULTADO</p>
+            <p>Según las respuestas obtenidas en el cuestionario anterior, aquí tienes los resultados:</p>
         </div>
         <div class="col-12 mb-5">
           <p *ngIf="depresion1">Presentas un nivel moderado de alteración en el estado de ánimo. Quizás puedas sentirte triste, desesperado, con sensación de indefensión o incluso que no te encuentras a ti mismo/a. Acudir a terapia te ayudaría a poner soluciones, aprender a gestionar tus emociones, regular tu estado de ánimo y poner fin a esas sensaciones de tristeza que parece que estás teniendo.</p>
@@ -53,7 +53,13 @@
 
           <p *ngIf="emociones2">Parece que tienes mucha dificultad a la hora de gestionar tus emociones. Quizás sientas que a veces no entiendes que te ocurre, de donde vienen esas sensaciones tan molestas y/o hasta tengas reacciones desproporcionadas en situaciones que aparentemente no “lo merecen” (por ejemplo: llorar intensamente cuando no ha pasado nada tan grave; tener un episodio de ira desmedido; pegar un grito de repente; tener ganas de salir corriendo y no volver...). Si es así, tranquilo/a, esto es normal y tiene solución. Cuando las personas vamos “tragando y tragando” y no solucionamos aquello que nos provoca malestar, se acumula en nuestro interior. De forma que, cuando estamos al límite y nos pasa algo (por pequeño que sea) nos desbordamos. Acudir a un psicólogo sería beneficioso porque podrías aprender a identificar por qué sientes lo que sientes y a autorregularte. Esto te ayudaría a anticipar cuando vas a sentirte de determinada forma (triste, con ira, decepcionado/a...) y podrías cambiarlo según tus necesidades e intereses. Además, te permitiría conocer y prever las reacciones de los demás y te aportaría una sensación de control que probablemente ahora no sientas. Serías tú quien gestionase las emociones y no al revés... suena bien, ¿verdad?</p>
 
-          <p *ngIf="noHelp">Congrats!! No necesita ayuda!!</p>
+          <div class="col-12 mb-5 text-center">
+            <p><i>Recuerda que este cuestionario sólo se trata de una pequeña aproximación. Para contar con una evaluación ajustada y fiable, contacta con alguno de nuestros profesionales.</i></p>
+          </div>
+
+          <div class="col-12 mb-5">
+            <p *ngIf="noHelp">Congrats!! No necesita ayuda!!</p>
+          </div>
         </div>
       </div>
       <div class="row text-center">

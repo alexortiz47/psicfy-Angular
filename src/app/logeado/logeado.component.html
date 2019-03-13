@@ -25,7 +25,7 @@
 
           <div class="form-row mb-4">
             <div class="form-group">
-              <label class="mr-3">Cambiar imagen de perfil:</label><fa style="color: green" *ngIf="urlImagen != ''" name="check"></fa><fa style="color: tomato" *ngIf="urlImagen == '' && perfilForm.controls['imgUrl'].dirty" name="times "></fa>
+              <label class="mr-3">Cambiar imagen de perfil:</label><i style="color: green" *ngIf="urlImagen != ''" class="fa fa-check"></i><i style="color: tomato" *ngIf="urlImagen == '' && perfilForm.controls['imgUrl'].dirty" class="fa fa-times"></i>
               <input id="img" type="file" class="form-control-file" formControlName="imgUrl" (change)="onChangeImage($event)">
             </div>
           </div>

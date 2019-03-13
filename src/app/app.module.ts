@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AngularFireModule } from '@angular/fire'
 import { AngularFireStorageModule } from '@angular/fire/storage'
 
@@ -45,7 +44,6 @@ import { PsicoCardComponent } from './psico-card/psico-card.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AngularFontAwesomeModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule
   ],

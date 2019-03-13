@@ -20,6 +20,10 @@ export class CercaComponent implements OnInit {
   especialidad: string;
   duracion: string
   distancia: string
+  psicoSeleccionado: Psicologo
+  desplazamiento: string
+  start: any
+  end: any
 
   @ViewChild('googleMap') gMap: any // Es el div donde va a estar nuestro mapa
   map: any // Este sera el mapa donde vamos a interactuar
@@ -64,6 +68,7 @@ export class CercaComponent implements OnInit {
     this.arrFiltrado = this.arrDatosPsico;
     this.duracion = ''
     this.distancia = ''
+    this.desplazamiento = 'DRIVING'
   }
 
   ngOnInit() {
@@ -106,6 +111,8 @@ export class CercaComponent implements OnInit {
     let propsMap = { // Son las propiedades del mapa
       center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude), // posicion actual
       zoom: 11,
+      mapTypeControl: false,
+      streetViewControl: false,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     this.map = new google.maps.Map(this.gMap.nativeElement, propsMap) // Creamos el mapa de google, como primer parametro le pasamos el div donde va a ir y como segundo las propiedades del mapa de goolge
@@ -124,10 +131,9 @@ export class CercaComponent implements OnInit {
 
     this.arrDatosPsico.map(psico => {
 
-      let infowindow = new google.maps.InfoWindow({
-        content: `<h4>${psico.nombre} ${psico.apellidos}</h4><h5>${psico.numColeg}</h5><br><p>${psico.domicilio}</p>`,
-        padding: 40
-      })
+      // let infowindow = new google.maps.InfoWindow({
+      //   content: `<h4>${psico.nombre} ${psico.apellidos}</h4><h5>${psico.numColeg}</h5><br><p>${psico.domicilio}</p>`
+      // })
 
       let marker = new google.maps.Marker({
         position: new google.maps.LatLng(psico.latitud, psico.longitud),
@@ -137,15 +143,12 @@ export class CercaComponent implements OnInit {
       })
 
       marker.addListener('click', function() {
-        self.generateRoute(new google.maps.LatLng(position.coords.latitude, position.coords.longitude), new google.maps.LatLng(psico.latitud, psico.longitud))
-        infowindow.open(this.map, marker);
-        // console.log(psico)
-      });
-      marker.addListener('mouseover', function() {
-        infowindow.open(this.map, marker);
-      });
-      marker.addListener('mouseout', function() {
-        infowindow.close(this.map, marker);
+        // infowindow.open(this.map, marker);
+        self.start = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+        self.end = new google.maps.LatLng(psico.latitud, psico.longitud)
+        self.generateRoute(self.start, self.end)
+        self.psicoSeleccionado = psico
+        // console.log(self.psicoSeleccionado)
       });
       marker.setMap(this.map)
     })
@@ -155,17 +158,23 @@ export class CercaComponent implements OnInit {
     let requestOpts = {
       origin: start,
       destination: end,
-      travelMode: google.maps.TravelMode['DRIVING']
+      travelMode: google.maps.TravelMode[this.desplazamiento]
     }
 
     let self = this
 
     this.directionsService.route(requestOpts, (result) => {
+      // console.log(result)
       self.directionsDisplay.setOptions({suppressMarkers: true});
       self.directionsDisplay.setDirections(result)
       this.duracion = result.routes[0].legs[0].duration.text
       this.distancia = result.routes[0].legs[0].distance.text
     })
+  }
+
+  handleChangeRouteType(pTipo) {
+    this.desplazamiento = pTipo
+    this.generateRoute(this.start, this.end)
   }
 
   seleccion($event) {

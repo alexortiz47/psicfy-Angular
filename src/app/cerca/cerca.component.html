@@ -3,13 +3,39 @@
 <div class="container my-5">
   <div class="container my-5">
     <div class="row mb-5 p-3 border-bottom d-flex justify-content-between">
+      <div class="col-md-6">
+        <div class="row mb-3">
+            <div class="col-md-12">
+              <psico-card *ngIf="psicoSeleccionado" [psico]="psicoSeleccionado" [distancia]="distancia" [duracion]="duracion"></psico-card>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div *ngIf="psicoSeleccionado" class="col-md-8 botones mx-auto d-flex justify-content-around">
+              <button class="btn btn-info rounded" (click)="handleChangeRouteType('DRIVING')"><i class="fas fa-car"></i></button>
+              <button class="btn btn-info rounded" (click)="handleChangeRouteType('WALKING')"><i class="fas fa-walking"></i></button>
+              <button class="btn btn-info rounded" (click)="handleChangeRouteType('BICYCLING')"><i class="fas fa-bicycle"></i></button>
+            </div>
+        </div> -->
+      </div>
+      <div [ngClass]="{'col-md-6': psicoSeleccionado, 'col-md-12': !psicoSeleccionado, 'mb-3': true}">
+        <h3 *ngIf="!psicoSeleccionado" class="text-center">Selecciona un profesional del mapa</h3>
+        <div class="rounded mb-3" #googleMap style="width: 100%; height: 400px"></div>
+        <div *ngIf="psicoSeleccionado" class="col-md-8 botones mx-auto d-flex justify-content-around">
+          <button class="btn btn-info rounded" (click)="handleChangeRouteType('DRIVING')"><i class="fas fa-car"></i></button>
+          <button class="btn btn-info rounded" (click)="handleChangeRouteType('WALKING')"><i class="fas fa-walking"></i></button>
+          <button class="btn btn-info rounded" (click)="handleChangeRouteType('BICYCLING')"><i class="fas fa-bicycle"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-5 d-flex justify-content-between">
       <div class="form-group col-md-5">
-        <label>Selecciona un grupo poblacional:</label>
-        <select class="form-control" (change)="seleccion($event)" [(ngModel)]="poblacion">
-          <option selected>Todos</option>
-          <option>Infanto-Juvenil (0-16)</option>
-          <option>Adultos (>16)</option>
-        </select>
+          <label>Selecciona un grupo poblacional:</label>
+          <select class="form-control" (change)="seleccion($event)" [(ngModel)]="poblacion">
+            <option selected>Todos</option>
+            <option>Infanto-Juvenil (0-16)</option>
+            <option>Adultos (>16)</option>
+          </select>
       </div>
       <div class="form-group col-md-5">
         <label>Selecciona una especialidad:</label>
@@ -21,13 +47,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-12 mb-5">
-          <div class="rounded" #googleMap style="width: 100%; height: 600px"></div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-10 mx-auto mb-4" *ngFor="let psicologo of arrFiltrado">
+      <div class="col-md-11 mx-auto mb-4" *ngFor="let psicologo of arrFiltrado">
         <div class="card p-3">
             <div class="row p-3">
               <div class="col-md-5 text-center">

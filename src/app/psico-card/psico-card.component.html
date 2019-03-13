@@ -1,3 +1,12 @@
-<p>
-  psico-card works!
-</p>
+<div class="card">
+  <div class="card-header d-flex justify-content-between">
+    <h4 class="float-left">{{ psico.nombre }} {{ psico.apellidos }}</h4>
+    <img [src]="psico.imgUrl" class="imgUsuario rounded-circle">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ psico.domicilio }}</h5>
+    <p class="card-title"><i id="icono" class="far fa-address-card mr-1"></i> {{ psico.correo }}</p>
+    <p class="card-text"><i id="icono" class="far fa-clock mr-1"></i> {{ duracion }}</p>
+    <p class="card-text"><i id="icono" class="fa fa-route mr-1"></i> {{ distancia }}</p>
+  </div>
+</div>

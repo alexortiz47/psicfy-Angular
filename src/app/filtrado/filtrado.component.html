@@ -38,7 +38,7 @@
               <div class="col-md-7 card-body">
                 <p class="card-text"><span>Especialista en: </span></p>
                 <ul>
-                  <li *ngFor="let esp of psicologo.especialidades">{{ esp.nombre }}</li>
+                  <li *ngFor="let esp of psicologo.especialidades">{{ esp.nombre | capitalize}}</li>
                 </ul>
                 <p class="card-text"><span>Grupo poblacional:</span> {{ psicologo.poblacion }}</p>
                 <p class="card-text"><span>Direccion:</span> {{ psicologo.domicilio }}</p>

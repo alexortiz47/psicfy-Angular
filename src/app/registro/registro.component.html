@@ -38,7 +38,7 @@
               <div id="especialidades" class="row ml-4">
                 <div class="checkbox col-md-4" formArrayName="especialidades" *ngFor="let esp of arrEspecialidades; let i = index">
                   <label class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" [formControlName]="i"> {{ esp }}
+                    <input class="form-check-input" type="checkbox" [formControlName]="i"> {{ esp | capitalize }}
                   </label>
                 </div>
               </div>

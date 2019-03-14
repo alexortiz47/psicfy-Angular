@@ -18,34 +18,26 @@
               <p>Usuario y/o la contraseña incorrectos</p>
             </div>
           </form>
-          <!-- <a class="btn dropdown-item text-center">¿Has olvidado tu contraseña?</a> -->
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<main *ngIf="loginOk" class="container mt-5">
-  <h2 class="text-center">Añadir nueva especialidad</h2>
-  <form class="my-5" novalidate [formGroup]="espForm" (ngSubmit)="addEsp()">
+<main *ngIf="loginOk" class="container my-5">
+  <h2 class="mt-5 text-center">Añadir especialidad</h2>
+  <form class="mt-4 mb-5" novalidate [formGroup]="espForm" (ngSubmit)="addEsp()">
     <div class="col-lg-6 mx-auto">
       <div class="form-group">
         <label for="especialidad">Nombre de la especialidad:</label>
         <input type="text" class="form-control" id="especialidad" formControlName="nombre">
       </div>
-      <div class="row d-flex justify-content-around">
-        <div class="col-lg-5 form-group mt-3">
-          <button type="submit" class="btn btn-success btn-block" [disabled]="espForm.invalid">Guardar</button>
-        </div>
-        <div class="col-lg-5 form-group mt-3">
-          <button type="button" class="btn btn-danger btn-block" (click)="logOutAdmin()">Cerrar sesión</button>
-        </div>
-      </div>
+      <button type="submit" class="btn btn-success btn-block" [disabled]="espForm.invalid">Guardar</button>
     </div>
   </form>
-
-  <h2 class="text-center">Nuevo Administrador</h2>
-  <form class="my-5" novalidate [formGroup]="adminRegForm" (ngSubmit)="manejarRegistro()">
+  <hr>
+  <h2 class="mt-5 text-center">Nuevo Administrador</h2>
+  <form class="mt-4 mb-5" novalidate [formGroup]="adminRegForm" (ngSubmit)="manejarRegistro()">
     <div class="col-lg-6 mx-auto">
       <div class="form-group">
         <label>Correo:</label>
@@ -57,9 +49,13 @@
         <input type="password" class="form-control" formControlName="password">
         <p class="error" *ngIf="adminRegForm.controls['password'].errors?.pattern && adminRegForm.controls['password'].dirty">La contraseña debe tener al menos un numero, una letra y entre 6-15 caracteres</p>
       </div>
-      <button type="submit" class="btn btn-lg btn-block btn-info mb-3" [disabled]="adminRegForm.invalid">Registro</button>
+      <button type="submit" class="btn btn-lg btn-block btn-info mb-3" [disabled]="adminRegForm.invalid">Registrar</button>
     </div>
   </form>
-  <!-- <a class="btn dropdown-item text-center">¿Has olvidado tu contraseña?</a> -->
+  <div class="row">
+    <div class="mx-auto form-group mt-3">
+      <a class="btn" (click)="logOutAdmin()"><i class="fas fa-power-off"></i></a>
+    </div>
+  </div>
 </main>
 

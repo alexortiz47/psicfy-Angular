@@ -22,6 +22,7 @@ import { AdminComponent } from './admin/admin.component';
 import { environment } from 'src/environments/environment';
 import { PsicoCardComponent } from './psico-card/psico-card.component';
 import { FiltradoComponent } from './filtrado/filtrado.component';
+import { BotComponent } from './bot/bot.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { FiltradoComponent } from './filtrado/filtrado.component';
     AdminComponent,
     PsicoCardComponent,
     FiltradoComponent,
-    CapitalizePipe
+    CapitalizePipe,
+    BotComponent
   ],
   imports: [
     BrowserModule,

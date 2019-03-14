@@ -17,6 +17,7 @@ export class PreguntaComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Método que emite un objeto con el id de la pregunta y el valor de la respuesta (numérico)
   radioSelect($event) {
     // console.log($event.target.value)
     this.respuesta.emit({

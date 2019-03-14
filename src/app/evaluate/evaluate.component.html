@@ -18,10 +18,6 @@
           <div class="iconoVolver mb-4" (click)="volverMensajeInicio()">
               <i class="fa fa-arrow-left flecha"></i>
           </div>
-          <!-- <div class="col-12 mb-5">
-            <label class=" mr-1 col-11">Introduzca la edad de la persona:</label>
-            <input class="col-1" type="text" name="edad" [(ngModel)]="edad">
-          </div> -->
           <pregunta *ngFor="let preg of arrPreguntas" [pregunta]="preg" [preguntaId]="preg.id" (respuesta)="respRecibida($event)"></pregunta>
         </div>
         <button type="submit" class="col-8 mx-auto btn btn-info btn-block" (click)="enviarRespuestas()" [disabled]="boton">Enviar</button>

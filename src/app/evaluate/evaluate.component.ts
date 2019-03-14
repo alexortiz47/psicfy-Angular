@@ -77,8 +77,9 @@ export class EvaluateComponent implements OnInit {
     }
   }
 
-  // Va sumando las respuestas de los checkboxes
+  // Va sumando a un array, y comprobando si se cambian las respuestas de las preguntas, por si el usuario rectifica en alguna
   respRecibida($event) {
+    // Buscamos en el array de respuestas si ya existe una pregunta contestada, y luego evaluamos que si existe, sustituya el valor por el nuevo, y sino que lo añada al arrat de respuestas
     let elem = this.arrRespuestas.find((item) => {
       return item.preguntaId == $event.preguntaId
     })

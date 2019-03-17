@@ -57,8 +57,7 @@ export class RegistroComponent implements OnInit {
           nombre: new FormControl("", [Validators.required]),
           apellidos: new FormControl("", [Validators.required]),
           numColeg: new FormControl("", [
-            Validators.required,
-            Validators.pattern(/^([0-9]{3,5})[M]$/)
+            Validators.required
           ]),
           domicilio: new FormControl(''),
           especialidades: this.buildEspecialidades(),
@@ -84,8 +83,14 @@ export class RegistroComponent implements OnInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
+      let options = {
+        componentRestrictions: {
+          country: "es"
+        }
+      }
       // console.log(this.inputPlace.nativeElement);
-      let autocomplete = new google.maps.places.Autocomplete(this.inputPlace.nativeElement);
+      let input = this.inputPlace.nativeElement
+      let autocomplete = new google.maps.places.Autocomplete(input, options);
       autocomplete.setFields(["address_components", "formatted_address", "geometry", "icon", "name"]);
 
       autocomplete.addListener("place_changed", () => {

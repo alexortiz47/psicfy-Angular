@@ -65,8 +65,14 @@ export class LogeadoComponent implements OnInit {
   ngAfterViewInit() {
     // Ponemos un TimeOut para darle un poco de tiempo
     setTimeout(() => {
+      let options = {
+        componentRestrictions: {
+          country: "es"
+        }
+      }
       // console.log(this.inputPlace.nativeElement);
-      let autocomplete = new google.maps.places.Autocomplete(this.inputPlace.nativeElement);
+      let input = this.inputPlace.nativeElement
+      let autocomplete = new google.maps.places.Autocomplete(input, options);
       autocomplete.setFields(["address_components", "formatted_address", "geometry", "icon", "name"]);
 
       autocomplete.addListener("place_changed", () => {

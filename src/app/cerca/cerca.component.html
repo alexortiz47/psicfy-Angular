@@ -2,18 +2,18 @@
 
 <div class="container my-5">
   <div class="container my-5">
-    <h2 class="text-center">Selecciona un profesional en el mapa para obtener su información y cómo llegar</h2>
+    <h2 class="text-center">Selecciona un profesional en el mapa</h2>
     <div class="row mb-5 p-3 d-flex justify-content-between">
         <div class="col-md-12" [ngClass]="{'col-md-5': psicoSeleccionado, 'col-md-12': !psicoSeleccionado, 'mb-3': true}">
-          <div class="rounded mb-3" #googleMap style="width: 100%; height: 550px"></div>
+          <div class="rounded mb-3" #googleMap style="width: 100%; height: 500px"></div>
+          <div *ngIf="psicoSeleccionado" class="col-md-8 botones">
+              <button class="d-block btn btn-light mb-3" (click)="handleChangeRouteType('DRIVING')"><i class="fas fa-car"></i></button>
+              <button class="d-block btn btn-light mb-3" (click)="handleChangeRouteType('WALKING')"><i class="fas fa-walking"></i></button>
+              <button class="d-block btn btn-light" (click)="handleChangeRouteType('BICYCLING')"><i class="fas fa-bicycle"></i></button>
+            </div>
         </div>
         <div class="col-md-7">
-          <psico-card *ngIf="psicoSeleccionado" [psico]="psicoSeleccionado" [distancia]="distancia" [duracion]="duracion"></psico-card>
-          <div *ngIf="psicoSeleccionado" class="col-md-8 mt-3 botones mx-auto d-flex justify-content-around">
-            <button class="btn btn-outline-info rounded" (click)="handleChangeRouteType('DRIVING')"><i class="fas fa-car"></i></button>
-            <button class="btn btn-outline-info rounded" (click)="handleChangeRouteType('WALKING')"><i class="fas fa-walking"></i></button>
-            <button class="btn btn-outline-info rounded" (click)="handleChangeRouteType('BICYCLING')"><i class="fas fa-bicycle"></i></button>
-          </div>
+          <psico-card class="psico fade" *ngIf="psicoSeleccionado" [psico]="psicoSeleccionado" [distancia]="distancia" [duracion]="duracion"></psico-card>
         </div>
     </div>
   </div>

@@ -23,6 +23,8 @@ import { environment } from 'src/environments/environment';
 import { PsicoCardComponent } from './psico-card/psico-card.component';
 import { FiltradoComponent } from './filtrado/filtrado.component';
 import { BotComponent } from './bot/bot.component';
+import { QueComponent } from './que/que.component';
+import { CuandoComponent } from './cuando/cuando.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { BotComponent } from './bot/bot.component';
     PsicoCardComponent,
     FiltradoComponent,
     CapitalizePipe,
-    BotComponent
+    BotComponent,
+    QueComponent,
+    CuandoComponent
   ],
   imports: [
     BrowserModule,

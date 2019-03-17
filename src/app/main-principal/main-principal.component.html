@@ -1,128 +1,48 @@
 <cabecera></cabecera>
 
 <main>
-
-  <section>
-      <div class="jumbotron jumbotron-fluid">
-          <div class="container">
-            <h1 class="display-4">Dile sí a la <span>pSIc</span>ología en <span>Mad</span>rid</h1>
-            <p class="lead">Un espacio de calidad para ti</p>
-            <hr class="my-5">
-            <div class="row justify-content-center">
-              <div class="col-md-4 col-sm-7 mb-4">
-                <p>¿Quieres saber si necesitas ayuda?</p>
-                <button class="btn btn-outline-dark btn-lg" (click)="irEvaluate()" role="button">¡Auto-Evalúate!</button>
-              </div>
-              <div class="col-md-4 col-sm-7">
-                <p>¿Buscas a un profesional de la Psicología?</p>
-                <button class="btn btn-outline-dark btn-lg" (click)="irCerca()" role="button">Buscar Psicólogo</button>
-              </div>
-            </div>
+  <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Dile sí a la <span>pSIc</span>ología en <span>Mad</span>rid</h1>
+        <p class="lead">Un espacio de calidad para ti</p>
+        <hr class="my-5">
+        <div class="row justify-content-center">
+          <div class="col-md-4 col-sm-7 mb-4">
+            <p>¿Quieres saber si necesitas ayuda?</p>
+            <button class="btn btn-outline-dark btn-lg" (click)="irEvaluate()" role="button">¡Auto-Evalúate!</button>
           </div>
-      </div>
-  </section>
-
-  <section>
-
-    <article class="container-fluid bg-ligth py-5 text-center">
-
-      <h2>¿QUÉ ES LA TERAPIA?</h2>
-
-    </article>
-
-    <article class="texto-terapia container pt-5 border-top mx-auto">
-      <div class="row d-flex justify-content-between">
-        <div class="col-lg-7 col-xl-6">
-          <p>Imagina que vas a una tienda de juegos y compras un puzzle. Uno de muchas piezas. ¿Qué es lo primero que hacemos cuando tenemos un puzzle? Probablemente, buscar una mesa o tablero en el que podamos volcar la caja, de forma que nos quepan todas las piezas y, a futuro, quepa el puzzle que pensamos montar.</p>
-          <p>Una vez volcamos la caja, podemos ver las piezas que contiene. Aquí suelen aparecer pensamientos como "madre mía, son muchísimas" o "no me esperaba que fueran tantas" Probablemente, lo primero que hagamos ahora es ir buscando los bordes.</p>
-          <p>Esto, a medida que vamos construyendo el marco de nuestro puzzle, nos permite descubrir la base de nuestro trabajo. <strong>La guía que nos informa de cómo hacer y por dónde ir.</strong></p>
-        </div>
-        <div class="col-lg-5 mb-3">
-          <img class="img-fluid rounded" src="../../assets/puzzle1.jpg" alt="puzzle1">
+          <div class="col-md-4 col-sm-7">
+            <p>¿Buscas a un profesional de la Psicología?</p>
+            <button class="btn btn-outline-dark btn-lg" (click)="irCerca()" role="button">Buscar Psicólogo</button>
+          </div>
         </div>
       </div>
+  </div>
 
-      <div class="row d-flex justify-content-between mt-3">
-        <div class="col-lg-5 d-none d-md-block mt-2">
-          <img class="img-fluid rounded" src="../../assets/puzzle2.jpg" alt="puzzle2">
-        </div>
-        <div class="col-lg-7 col-xl-6">
-          <p>Cuando el borde está listo, vamos arreglándonoslas para ir colocando el resto de las fichas. A veces lo hacemos por colores, otras por la forma... al ser tantísimas piezas, necesitamos alguna pista que nos facilite la tarea.</p>
-          <p>En todo ese proceso, es perfectamente posible que se nos caigan piezas, las perdamos y luego las encontremos, que nos desesperemos por no encontrar la que buscamos, que demos mil vueltas a la misma zona del puzzle buscando qué poner...</p>
-          <p>Es un proceso que requiere tiempo, atención y paciencia y que no resulta nada sencillo, por ello suele ser muy útil <strong>contar con otras dos manos</strong> que nos faciliten la tarea y nos ayuden a buscar.</p>
-        </div>
+  <div class="fotos container">
+    <div class="main row">
+      <div class="contenedor-images">
+        <article (click)=irQue()>
+          <img src="../../assets/puzzle2.jpg" alt="">
+          <div class="velo">
+            <h3>¿Qué es la terapia?</h3>
+          </div>
+        </article>
+        <article (click)=irCuando()>
+          <img src="../../assets/cuando.jpg" alt="">
+          <div class="velo">
+            <h3>¿Cuándo ir a terapia?</h3>
+          </div>
+        </article>
       </div>
-
-      <div class="row d-flex justify-content-between">
-        <div class="col-lg-7 col-xl-6">
-          <p>¿Por qué hablamos de la construcción de un puzzle? Porque la terapia es algo muy parecido.
-          <p>La persona, el puzzle. Ese <strong>conjunto de piezas en las que todas y cada una de ellas tiene el mismo valor</strong>. Cada una con su color, su forma y su posición.</p>
-          <p>La intervención terapéutica, la construcción del puzzle. Aquél espacio en el que se mira cada ficha, una por una, buscando su lugar. Ese proceso en el que las piezas se caen y se pierden... pero luego se encuentran. En el que uno se desespera cuando no encuentra lo que busca. Sin embargo, también es un proceso de conocimiento, aprendizaje y disfrute, que, finalmente, nos permite conocer la sensación de poner la última pieza (¡si alguna vez has construido un puzzle, sabrás de lo que hablamos!).</p>
-          <p>Y el psicólogo, esas dos manos que se sientan contigo para facilitar la tarea y acompañarte en el proceso de (re)construcción. Ese apoyo que tienes desde que vuelcas la caja hasta que pones la última pieza. Ese "comodín" que existe en algunas app de puzzles en las que puedes pedir "pista" si te sientes perdido. <strong>El psicólogo es quien, durante todo tu proceso de (re)construcción, te guia y acompaña</strong>.</p>
-        </div>
-        <div class="col-lg-5">
-          <img class="img-fluid rounded d-none d-md-block" src="../../assets/puzzle3.png" alt="puzzle3">
-          <img class="img-fluid rounded" src="../../assets/puzzle3.psd" alt="puzzle3">
-        </div>
-      </div>
-
-    </article>
-
-</section>
-
-<section>
-
-  <article class="container-fluid bg-ligth py-5 text-center">
-
-    <h2>¿CUÁNDO IR A TERAPIA?</h2>
-
-  </article>
-
-  <article class="texto-terapia container py-5 border-top">
-
-    <div class="row d-flex justify-content-between">
-        <div class="col-12">
-          <p>Si te sientes identificado con alguna de estas frases puede que sea el momento de acudir a un especialista. Pero antes recuerda que:</p>
-        </div>
-        <!-- <div class="col-lg-5">
-          <img class="img-fluid rounded" src="../../assets/cuando.jpg" alt="cuando">
-        </div> -->
     </div>
-    <div class="row">
+    <div class="mensaje row">
       <div class="col-8 mx-auto text-center">
-        <p><i>A terapia no va aquel que tiene un problema, pues problemas tenemos todos. A terapia acude quien quiere resolverlos.</i></p>
+        <h3><i>Estamos aquí para ayudarte.</i></h3>
+        <h3><i>Somos personas que cuidan de personas.</i></h3>
       </div>
     </div>
-    <div class="row d-flex justify-content-between mt-3 mb-5">
-      <div class="col-lg-7 col-xl-6">
-        <ul>
-          <li>Siento que las preocupaciones del día a día pueden conmigo</li>
-          <li>Tiendo a estar muy nervioso/a y creo que no puedo controlarlo</li>
-          <li>Me cuesta dormir la mayoría de las noches</li>
-          <li>No sé qué me pasa pero no estoy bien</li>
-          <li>Tengo problemas con mi familia, hijo/s, pareja..</li>
-          <li>Últimamente estoy decaído/a, triste, cansado/a y no se por que</li>
-          <li>Me siento incomprendido/a</li>
-          <li>Tengo dificultad para enfrentarme a determinadas situaciones sociales</li>
-          <li>Siento que he perdido el control de mi vida</li>
-          <li>¿Por qué si se que no estoy haciendo lo adecuado me cuesta cambiar?</li>
-          <li>¿Por qué tropiezo siempre con la misma piedra?</li>
-        </ul>
-      </div>
-      <div class="col-lg-5">
-        <img class="imgCuando img-fluid rounded" src="../../assets/cuando.jpg" alt="cuando">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-8 mx-auto text-center">
-        <p><i>Estamos aquí para ayudarte. Somos personas que cuidan de personas.</i></p>
-      </div>
-    </div>
-
-  </article>
-
-</section>
-
+  </div>
 </main>
 
 <piepag></piepag>

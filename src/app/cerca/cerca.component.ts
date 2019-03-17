@@ -60,6 +60,7 @@ export class CercaComponent implements OnInit {
 
   ngOnInit() {
     // console.log(this.gMap.nativeElement) // Accedemos al elemento que le hemos identificado en el html #googleMap
+    let estado = "oculto";
     if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.showPosition.bind(this), this.showError)
       // Devuelve la posicion en un momento determinado, cuando se lo pidamos
@@ -134,7 +135,7 @@ export class CercaComponent implements OnInit {
         self.end = new google.maps.LatLng(psico.latitud, psico.longitud)
         self.generateRoute(self.start, self.end)
         self.psicoSeleccionado = psico
-        // console.log(self.psicoSeleccionado)
+        //console.log(self.psicoSeleccionado)
       });
       marker.setMap(this.map)
     })

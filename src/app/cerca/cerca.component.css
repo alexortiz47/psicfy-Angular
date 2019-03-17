@@ -10,3 +10,38 @@ span {
 h5 {
   font-weight: 700;
 }
+button {
+  padding: 7px;
+}
+button i {
+  width: 20px;
+  height: 20px;
+  color: #343a40;
+}
+button:hover i{
+  color: #17a2b8;
+}
+.botones {
+  margin-top: -200px;
+}
+
+.psico{
+  -webkit-animation-duration: 2s;
+	animation-duration: 2s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+.fade {
+	-webkit-animation-name: fadeIn;
+	animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeIn {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+@keyframes fadeIn {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}

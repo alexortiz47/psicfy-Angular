@@ -61,10 +61,6 @@ export class RegistroComponent implements OnInit {
             Validators.pattern(/^([0-9]{3,5})[M]$/)
           ]),
           domicilio: new FormControl(''),
-          // codPostal: new FormControl("", [
-          //   Validators.required,
-          //   Validators.pattern(/^(?:0[1-9]\d{3}|[1-4]\d{4}|5[0-2]\d{3})$/)
-          // ]),
           especialidades: this.buildEspecialidades(),
           poblacion: this.buildPoblaciones(),
           correo: new FormControl("", [
@@ -89,9 +85,7 @@ export class RegistroComponent implements OnInit {
   ngAfterViewInit() {
     setTimeout(() => {
       // console.log(this.inputPlace.nativeElement);
-      let autocomplete = new google.maps.places.Autocomplete(
-        this.inputPlace.nativeElement
-      );
+      let autocomplete = new google.maps.places.Autocomplete(this.inputPlace.nativeElement);
       autocomplete.setFields(["address_components", "formatted_address", "geometry", "icon", "name"]);
 
       autocomplete.addListener("place_changed", () => {
@@ -104,7 +98,7 @@ export class RegistroComponent implements OnInit {
         this.dir = place.formatted_address
         // console.log(this.dir)
       });
-    }, 100);
+    }, 700);
   }
 
   buildEspecialidades() {
@@ -122,23 +116,24 @@ export class RegistroComponent implements OnInit {
     let correo = group.controls["correo"].value;
     let correo_repeat = group.controls["correo_repeat"].value;
 
-    return correo == correo_repeat
-      ? null
-      : { correo_repeat: "El correo no coincide" };
+    return correo == correo_repeat ? null : { correo_repeat: "El correo no coincide" };
   }
 
   repeatPasswordValidator(group: FormGroup) {
     let password = group.controls["password"].value;
     let password_repeat = group.controls["password_repeat"].value;
 
-    return password == password_repeat
-      ? null
-      : { password_repeat: "La contraseña no coincide" };
+    return password == password_repeat ? null : { password_repeat: "La contraseña no coincide" };
   }
 
   manejarRegistro() {
     // Metemos en el registro los valores de la img, y de la lat, lng y dir que nos devuelve google con el autocompletar
-    this.registroForm.value.imgUrl = this.urlImagen
+    if(this.urlImagen == '') {
+      this.registroForm.value.imgUrl = 'https://firebasestorage.googleapis.com/v0/b/proyecto-final-neoland-aob.appspot.com/o/user.png?alt=media&token=fc1abec1-0175-4804-9686-580d1aeea607'
+    }else{
+      this.registroForm.value.imgUrl = this.urlImagen
+    }
+
     this.registroForm.value.domicilio = this.dir
     this.registroForm.value.latitud = this.lat
     this.registroForm.value.longitud = this.lng
@@ -155,10 +150,10 @@ export class RegistroComponent implements OnInit {
         .join(", ")
     });
     this.psicologosService.doRegistro(valueSubmit).then(res => {
-      console.log(res);
+      // console.log(res);
       this.router.navigate([`/login`]);
     });
-    console.log(valueSubmit);
+    // console.log(valueSubmit);
     this.registroForm.reset();
   }
 

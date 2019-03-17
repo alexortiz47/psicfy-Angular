@@ -66,9 +66,7 @@ export class LogeadoComponent implements OnInit {
     // Ponemos un TimeOut para darle un poco de tiempo
     setTimeout(() => {
       // console.log(this.inputPlace.nativeElement);
-      let autocomplete = new google.maps.places.Autocomplete(
-        this.inputPlace.nativeElement
-      );
+      let autocomplete = new google.maps.places.Autocomplete(this.inputPlace.nativeElement);
       autocomplete.setFields(["address_components", "formatted_address", "geometry", "icon", "name"]);
 
       autocomplete.addListener("place_changed", () => {
@@ -81,7 +79,7 @@ export class LogeadoComponent implements OnInit {
         this.dir = place.formatted_address
         // console.log(this.dir)
       });
-    }, 100);
+    }, 700);
   }
 
   // Método que crea el formulario

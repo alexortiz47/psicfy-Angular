@@ -33,11 +33,11 @@ export class HeaderComponent implements OnInit {
   }
 
   irCerca() {
-    this.router.navigate(['buscar/localización'])
+    this.router.navigate(['buscar_localizacion'])
   }
 
   irFiltrado() {
-    this.router.navigate(['buscar/filtrado'])
+    this.router.navigate(['buscar_filtrado'])
   }
 
   irRegistro() {

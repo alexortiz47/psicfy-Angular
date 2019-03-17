@@ -27,6 +27,7 @@ export class PsicologosService {
       latitud: value.latitud,
       longitud: value.longitud
     }
+    // console.log(datosRegistro)
     return this.httpClient.post<Psicologo[]>(`${this.url}/create`, datosRegistro).toPromise()
   }
 

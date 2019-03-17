@@ -18,7 +18,16 @@ export class MainPrincipalComponent implements OnInit {
   }
 
   irCerca() {
-    this.router.navigate(['buscar'])
+    this.router.navigate(['buscar_localizacion'])
   }
+
+  irQue() {
+    this.router.navigate(['que_es'])
+  }
+
+  irCuando() {
+    this.router.navigate(['cuando_ir'])
+  }
+
 
 }

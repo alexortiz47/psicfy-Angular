@@ -11,13 +11,97 @@
 span {
   color: #17a2b8;
 }
-.img-fluid {
+
+
+img {
 	width: 100%;
-	height: auto;
+  height: auto;
 }
-.texto-terapia{
-  font-size: 1.1rem;
+
+
+/* Imagenes de que es la terapia y cuando ir a terapia */
+.fotos {
+  margin-top: 80px;
 }
-.imgCuando{
-  margin-top: 30px;
+
+.main {
+	padding-bottom: 30px;
+}
+
+.main .contenedor-images {
+	width: 100%;
+}
+
+.main .contenedor-images article {
+	width: 50%;
+	float: left;
+	margin-bottom: -5px;
+	position: relative;
+	overflow: hidden;
+  cursor: pointer;
+  border: 20px solid white;
+  border-radius: 25px;
+}
+
+@media(max-width: 500px)
+{
+	.main .contenedor-images article {
+		width: 100%;
+	}
+
+	.main .contenedor-images {
+		width: 95%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.main .contenedor-images article .velo {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.6);
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	transition: 1s;
+}
+
+.main .contenedor-images article .velo h4, main .contenedor-images article .velo h3 {
+	position: relative;
+	top: 45%;
+	color: white;
+	text-align: center;
+}
+
+.main .contenedor-images article .velo h4 {
+	left: -500px;
+	transition: 1s;
+}
+
+.main .contenedor-images article .velo h3 {
+	left: 500px;
+	transition: 1s;
+}
+
+.main .contenedor-images article:hover .velo{
+	opacity: 1;
+}
+
+.main .contenedor-images article:hover .velo h4, main .contenedor-images article:hover .velo h3 {
+	left: 0px;
+}
+
+.main .contenedor-images article img {
+  transition: 2s;
+}
+
+.main .contenedor-images article:hover img {
+	transform: rotateZ(10deg) scale(1.5);
+
+}
+
+.mensaje {
+  margin-top: 50px;
+  margin-bottom: 70px;
 }

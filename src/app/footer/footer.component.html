@@ -1,8 +1,46 @@
 <footer class="container-fluid bg-dark text-light">
 
-  <div class="container text-center p-4">
+  <div class="container p-5">
+    <div class="container-fluid">
+      <div class="row d-flex justify-content-around">
+        <div class="col-4">
+          <ul class="servicio">
+            <h5>Servicio</h5>
+            <li><a>Privacidad</a></li>
+            <li><a>Quiénes somos</a></li>
+            <li><a>Términos y condiciones</a></li>
+          </ul>
+        </div>
+        <div class="col-5">
+          <ul class="servicio">
+            <h5>¿Qué quieres hacer?</h5>
+            <li><a (click)="irEvaluate()">Evalúate</a></li>
+            <li><a (click)="irBuscar()">Buscar psicólogo por localización</a></li>
+            <li><a (click)="irFiltrar()">Buscar psicólogo por datos profesionales</a></li>
+          </ul>
+        </div>
+        <div class="col-3">
+          <div class="row">
+            <div class="col-2">
+                <img id="logo" src="../../assets/logoo.png" alt="logo" (click)="irInicio()">
+            </div>
+            <div class="col-10">
+              <ul class="servicio contacto">
+                <li>pSIcMad SL</li>
+                <li>Plaza de España 11</li>
+                <li>28008, Madrid</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <p>Copyrigth &copy; - 2019</p>
+    <div class="fraseCopy row text-center mt-5">
+      <div class="col-12">
+          <p>www.psicmad.es &copy; 2019</p>
+      </div>
+    </div>
 
   </div>
 

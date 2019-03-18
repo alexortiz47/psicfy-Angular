@@ -145,8 +145,12 @@ export class EvaluateComponent implements OnInit {
     this.preguntas = false
   }
 
-  terminarEval() {
-    this.router.navigate(['buscar'])
+  irLocalizacion() {
+    this.router.navigate(['buscar_localizacion'])
+  }
+
+  irFiltrado() {
+    this.router.navigate(['buscar_filtrado'])
   }
 
   volverInicio() {

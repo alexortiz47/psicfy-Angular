@@ -1,8 +1,12 @@
-<div id="bot" class="bg-light container border border-light" [@signal]="signalState">
-  <div class="row bg-dark text-light p-2 d-flex justify-content-between" (click)="changeStatus()">
-    <div class="col-12">
+<div id="bot" class="bg-light container border border-light" [@signal]="signalState" *ngIf="visible">
+  <div class="row bg-dark text-light p-3 d-flex justify-content-between" (click)="changeStatus()">
+    <div class="col-8">
       <img class="rounded-circle float-left mr-3" src="../../assets/bot.png" alt="">
       <p>Alex</p>
+    </div>
+    <div class="col-4">
+      <p *ngIf="escribiendo" class="text-secondary float-right">Escribiendo...</p>
+      <p *ngIf="!escribiendo" class="text-success float-right"><i id="punto" class="fas fa-circle"></i></p>
     </div>
   </div>
   <div class="row border-bottom">
@@ -20,7 +24,7 @@
   <div class="row">
     <div class="col-12 p-3">
       <div id="write">
-        <input class="bg-light" type="text" #inputMsg (keypress)="sendMsg(inputMsg.value, $event)" placeholder="Escriba su mensaje">
+        <input id="inputBot" class="bg-light" type="text" #inputMsg (keypress)="sendMsg(inputMsg.value, $event)" placeholder="Escriba su mensaje">
       </div>
     </div>
   </div>

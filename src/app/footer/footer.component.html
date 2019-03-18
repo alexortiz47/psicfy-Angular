@@ -2,36 +2,30 @@
 
   <div class="container p-5">
     <div class="container-fluid">
-      <div class="row d-flex justify-content-around">
-        <div class="col-4">
-          <ul class="servicio">
+      <div class="row d-flex justify-content-around text-center">
+        <div class="col-md-3">
+          <ul class="servicio p-2">
             <h5>Servicio</h5>
             <li><a>Privacidad</a></li>
             <li><a>Quiénes somos</a></li>
             <li><a>Términos y condiciones</a></li>
           </ul>
         </div>
-        <div class="col-5">
-          <ul class="servicio">
+        <div class="col-md-5">
+          <ul class="servicio p-2">
             <h5>¿Qué quieres hacer?</h5>
             <li><a (click)="irEvaluate()">Evalúate</a></li>
             <li><a (click)="irBuscar()">Buscar psicólogo por localización</a></li>
             <li><a (click)="irFiltrar()">Buscar psicólogo por datos profesionales</a></li>
           </ul>
         </div>
-        <div class="col-3">
-          <div class="row">
-            <div class="col-2">
-                <img id="logo" src="../../assets/logoo.png" alt="logo" (click)="irInicio()">
-            </div>
-            <div class="col-10">
-              <ul class="servicio contacto">
-                <li>pSIcMad SL</li>
-                <li>Plaza de España 11</li>
-                <li>28008, Madrid</li>
-              </ul>
-            </div>
-          </div>
+        <div class="col-md-4">
+          <img id="logo" src="../../assets/logoo.png" alt="">
+          <ul class="servicio contacto p-2">
+            <li>pSIcMad SL</li>
+            <li>Plaza de España 11</li>
+            <li>28008, Madrid</li>
+          </ul>
         </div>
       </div>
     </div>

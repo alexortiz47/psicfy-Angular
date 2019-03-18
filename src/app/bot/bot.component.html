@@ -1,29 +1,26 @@
-<div id="bot" class="bg-dark container rounded">
-  <div class="row bg-dark text-light p-2 rounded d-flex justify-content-between">
-    <div class="col-3">
-      <img class="rounded-circle" src="../../assets/user.png" alt="">
-    </div>
-    <div class="col-6">
-      <p>Bot Name</p>
-    </div>
-    <div class="col-2">
-      <i class="fas fa-times"></i>
+<div id="bot" class="bg-light container border border-light" [@signal]="signalState">
+  <div class="row bg-dark text-light p-2 d-flex justify-content-between" (click)="changeStatus()">
+    <div class="col-12">
+      <img class="rounded-circle float-left mr-3" src="../../assets/bot.png" alt="">
+      <p>Alex</p>
     </div>
   </div>
-  <div class="row">
+  <div class="row border-bottom">
     <div class="col-12 rounded">
-      <div class="bg-secondary text-light p-3" id="vistaChat">
+      <div class="p-3" id="vistaChat">
         <div id="chat">
-
+          <div class="row">
+            <p class="bg-white border rounded p-2">Hola, ¿En que puedo ayudarte?</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="row mt-3">
-    <div class="col-12">
+  <div class="row">
+    <div class="col-12 p-3">
       <div id="write">
-        <input class="form-control" type="text" #inputMsg (keypress)="sendMsg(inputMsg.value, $event)">
+        <input class="bg-light" type="text" #inputMsg (keypress)="sendMsg(inputMsg.value, $event)" placeholder="Escriba su mensaje">
       </div>
     </div>
   </div>

@@ -74,7 +74,7 @@ export class BotComponent implements OnInit {
         if (res["tipo"] === "search") {
           this.answer = res["mensaje"];
           let ul = document.createElement('ul')
-          ul.setAttribute('style', 'list-style:none')
+          // ul.setAttribute('style', 'list-style:none')
           for(let psico of res['psicologos']) { // Recorremos el array de psicologos que nos llega desde node
             let nombre = new CapitalizePipe().transform(psico.nombre)
             let apellidos = new CapitalizePipe().transform(psico.apellidos)
@@ -85,11 +85,11 @@ export class BotComponent implements OnInit {
               this.router.navigate(['/psico', psico.id])
             })
 
-            li.innerHTML = `${nombre} ${apellidos}`
+            li.innerHTML = `<a onMouseOver="this.style.color='#17a2b8'" onMouseOut="this.style.color='#212529'">${nombre} ${apellidos}</a>`
             ul.appendChild(li)
           }
           let divContainer = document.createElement('div')
-          divContainer.setAttribute('class', 'row bg-white border p-2')
+          divContainer.setAttribute('class', 'row bg-white border px-3 py-1 mb-3')
           divContainer.innerHTML = `<p>${this.answer}</p>`
           divContainer.appendChild(ul)
           document.getElementById('chat').appendChild(divContainer)
@@ -99,7 +99,7 @@ export class BotComponent implements OnInit {
         } else {
           this.answer = res["mensaje"];
 
-          document.getElementById("chat").innerHTML = document.getElementById("chat").innerHTML + `<div class="row"><p class="bg-white border p-2">${this.answer}</p></div>`;
+          document.getElementById("chat").innerHTML = document.getElementById("chat").innerHTML + `<div class="row"><p class="bg-white border px-3 py-1">${this.answer}</p></div>`;
 
           document.getElementById("vistaChat").scrollBy(0, 400);
 

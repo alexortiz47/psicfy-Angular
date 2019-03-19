@@ -41,7 +41,7 @@
             <div class="form-group col-md-8">
               <h5>Especialidades:</h5>
               <div class="ml-3" *ngFor="let esp of arrEspPsicologo; let last = last;">
-                <p class="font-italic float-left mr-1">{{ esp.nombre | capitalize }}<span *ngIf="!last">,</span></p>
+                <p class="float-left mr-1 badge badge-pill badge-dark p-1">{{ esp.nombre | capitalize }}<span *ngIf="!last"></span></p>
               </div>
             </div>
             <div class="form-group col-md-4 text-right">
@@ -65,7 +65,7 @@
           <div class="form-row mb-3 d-flex justify-content-between">
             <div class="form-group col-md-8">
               <h5>Grupo/s poblacional/es:</h5>
-              <p class="font-italic ml-3">{{ psicologoLogeado.poblacion }}</p>
+              <p class="ml-3 badge badge-pill badge-dark p-1">{{ psicologoLogeado.poblacion }}</p>
             </div>
             <div class="form-group col-md-4 text-right">
               <i [className]="(estado1) ? 'fas fa-plus down' : 'fas fa-plus rotate'" (click)="cambiarPob()"></i>

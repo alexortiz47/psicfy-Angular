@@ -41,12 +41,14 @@ export class BotComponent implements OnInit {
   visible: boolean;
 
   constructor(private botService: BotService, private router: Router) {
-    this.router.events.subscribe(val => { // Capturamos la url, y le decimos que si es una en concreto (/error404), que no muestre el bot mediante un *ngIf con la variable visible
+    this.router.events.subscribe(val => { // Capturamos la url, y le decimos que si es una en concreto (/error404, /admin), que no muestre el bot mediante un *ngIf con la variable visible
       if (val instanceof NavigationEnd) {
         if (this.router.url == "/error404") {
-          this.visible = false;
+          this.visible = false
+        } else if (this.router.url == "/admin") {
+          this.visible = false
         } else {
-          this.visible = true;
+          this.visible = true
         }
       }
     });

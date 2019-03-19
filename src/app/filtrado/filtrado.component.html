@@ -1,6 +1,4 @@
 <cabecera></cabecera>
-
-<div class="container my-5">
   <div class="container my-5">
 
     <div class="row mb-5 d-flex justify-content-between">
@@ -26,8 +24,8 @@
     </div>
 
     <div class="row">
-      <div class="col-md-11 mx-auto mb-4" *ngFor="let psicologo of arrFiltrado">
-        <div class="card p-3">
+      <div class="col-md-12 mx-auto mb-4" *ngFor="let psicologo of arrFiltrado">
+        <div id="psicologo" class="card p-3" (click)="irPsicologo(psicologo.id)">
             <div class="row p-3">
               <div class="col-md-5 text-center">
                 <img [src]="psicologo.imgUrl" class="imgUsuario card-img-top mx-auto border rounded-circle mb-3">
@@ -41,13 +39,10 @@
                   <li *ngFor="let esp of psicologo.especialidades">{{ esp.nombre | capitalize}}</li>
                 </ul>
                 <p class="card-text"><span>Grupo poblacional:</span> {{ psicologo.poblacion }}</p>
-                <p class="card-text"><span>Direccion:</span> {{ psicologo.domicilio }}</p>
-                <p class="card-text"><span>Correo:</span> {{ psicologo.correo }}</p>
               </div>
             </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 <piepag></piepag>

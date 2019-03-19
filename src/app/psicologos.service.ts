@@ -59,6 +59,10 @@ export class PsicologosService {
     return this.httpClient.post<Psicologo>(`${this.url}/token`, {token: token}).toPromise()
   }
 
+  getById(id) {
+    return this.httpClient.post<Psicologo>(`${this.url}/id`, {id: id}).toPromise()
+  }
+
   updatePsicologo(valuesUpdate){
     return this.httpClient.post(`${this.url}/update`, valuesUpdate).toPromise()
   }

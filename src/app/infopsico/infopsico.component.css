@@ -1,5 +1,15 @@
-.my-5{
+.mb-5{
   margin-bottom: 12rem !important;
+}
+img {
+  width: 150px;
+  height: 150px;
+}
+span {
+  font-weight: 700;
+}
+h4 {
+  font-weight: 700;
 }
 .iconoVolver{
   cursor: pointer;

@@ -8,6 +8,7 @@ import {
   animate
 } from "@angular/animations";
 import { Router, NavigationEnd } from "@angular/router";
+import { CapitalizePipe } from '../capitalize.pipe';
 
 @Component({
   selector: "app-bot",
@@ -74,9 +75,11 @@ export class BotComponent implements OnInit {
           this.answer = res["mensaje"];
           let li = "";
           for(let psico of res['psicologos']) { // Recorremos el array de psicologos que nos llega desde node
-              li += `<li><a href="psico/${psico.id}">${psico.nombre} ${psico.apellidos}</a></li>`;
+            let nombre = new CapitalizePipe().transform(psico.nombre)
+            let apellidos = new CapitalizePipe().transform(psico.apellidos)
+              li += `<li><a href="psico/${psico.id}">${nombre} ${apellidos}</a></li>`;
           }
-          document.getElementById("chat").innerHTML = document.getElementById("chat").innerHTML + `<div class="row bg-white border p-2"><p>${this.answer}</p><ul style="list-style: none">${li}</ul></div>`;
+          document.getElementById("chat").innerHTML = document.getElementById("chat").innerHTML + `<div class="row bg-white border p-2 mb-3"><p>${this.answer}</p><ul style="list-style: none">${li}</ul></div>`;
 
           document.getElementById("vistaChat").scrollBy(0, 400);
 

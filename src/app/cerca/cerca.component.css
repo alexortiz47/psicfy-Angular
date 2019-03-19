@@ -25,6 +25,13 @@ button:hover i{
   margin-top: -200px;
 }
 
+.red {
+  color: red;
+}
+.blue {
+  color: #5076ff;
+}
+
 .psico{
   -webkit-animation-duration: 2s;
 	animation-duration: 2s;

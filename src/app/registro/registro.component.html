@@ -1,10 +1,10 @@
 <cabecera></cabecera>
-
-<form *ngIf='registroForm' class="registro container mt-5" novalidate [formGroup]="registroForm" (ngSubmit)="manejarRegistro()">
+<div class="container">
+<form *ngIf='registroForm' class="registro mt-5" novalidate [formGroup]="registroForm" (ngSubmit)="manejarRegistro()">
 
     <div class="row mt-5 py-5">
 
-        <div class="col-10 m-auto">
+        <div class="col-12 m-auto">
           <div class="form-row mb-4">
             <div class="form-group col-md-3">
               <label>Nombre:</label>
@@ -93,3 +93,4 @@
         </div>
     </div>
 </form>
+</div>

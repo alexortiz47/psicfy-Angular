@@ -26,6 +26,7 @@ import { FiltradoComponent } from './filtrado/filtrado.component';
 import { BotComponent } from './bot/bot.component';
 import { QueComponent } from './que/que.component';
 import { CuandoComponent } from './cuando/cuando.component';
+import { InfopsicoComponent } from './infopsico/infopsico.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { CuandoComponent } from './cuando/cuando.component';
     CapitalizePipe,
     BotComponent,
     QueComponent,
-    CuandoComponent
+    CuandoComponent,
+    InfopsicoComponent
   ],
   imports: [
     BrowserModule,

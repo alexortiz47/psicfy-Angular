@@ -3,6 +3,11 @@
 <div class="container my-5">
   <div class="container my-5">
     <h2 class="text-center">Selecciona un profesional en el mapa</h2>
+    <div class="text-center"><small>Selecciona en la marca del mapa para ver la información </small> <i class="red fas fa-map-marker-alt"></i></div>
+
+    <div class="text-center"><small>Usted se encuentra aquí </small> <i class="blue fas fa-map-marker-alt"></i>
+    </div>
+
     <div class="row mb-5 p-3 d-flex justify-content-between">
         <div class="col-md-12" [ngClass]="{'col-md-5': psicoSeleccionado, 'col-md-12': !psicoSeleccionado, 'mb-3': true}">
           <div class="rounded mb-3" #googleMap style="width: 100%; height: 500px"></div>

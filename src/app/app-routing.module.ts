@@ -11,6 +11,7 @@ import { AdminComponent } from './admin/admin.component';
 import { FiltradoComponent } from './filtrado/filtrado.component';
 import { QueComponent } from './que/que.component';
 import { CuandoComponent } from './cuando/cuando.component';
+import { InfopsicoComponent } from './infopsico/infopsico.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'inicio', pathMatch: 'full'},
@@ -24,9 +25,11 @@ const routes: Routes = [
   { path: 'edit/:numColeg', component: LogeadoComponent},
   { path: 'que_es', component: QueComponent},
   { path: 'cuando_ir', component: CuandoComponent},
+  { path: 'psico/:id', component: InfopsicoComponent},
   { path: 'admin', component: AdminComponent},
   { path: 'admin', component: AdminComponent},
-  { path: '**', component: Error404Component}
+  { path: 'error404', component: Error404Component},
+  { path: '**', redirectTo: '/error404'}
 ];
 
 @NgModule({

@@ -8,3 +8,9 @@ span {
 h4 {
   font-weight: 700;
 }
+#psicologo {
+  cursor: pointer;
+}
+#psicologo:hover {
+  background-color: #f8f9fa;
+}

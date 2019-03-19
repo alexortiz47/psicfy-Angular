@@ -1,0 +1,45 @@
+<cabecera></cabecera>
+
+<div class="container" *ngIf="psicologo">
+  <div class="iconoVolver text-left mt-5 mb-3" (click)="volverFiltrado()">
+      <i class="fa fa-arrow-left flecha"><span> Volver</span></i>
+  </div>
+  <div class="card p-5 mb-5">
+    <div class="col-10 m-auto">
+      <div class="nombre form-row mb-4 d-flex justify-content-between">
+        <div class="form-group col-lg-3">
+          <img [src]="psicologo?.imgUrl" class="rounded-circle" alt="">
+        </div>
+        <div class="form-group col-lg-3">
+          <h5>Nombre:</h5>
+          <h4>{{ psicologo?.nombre | capitalize }}</h4>
+        </div>
+        <div class="form-group col-lg-4">
+          <h5>Apellidos:</h5>
+          <h4>{{ psicologo?.apellidos | capitalize }}</h4>
+        </div>
+        <div class="form-group col-lg-2">
+          <h5>Nº colegiado:</h5>
+          <h4>{{ psicologo?.numColeg }}</h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6 card-body mx-auto">
+          <p class="card-text"><span>Especialista en: </span></p>
+          <ul>
+            <li *ngFor="let esp of especialidades">{{ esp.nombre | capitalize }}</li>
+          </ul>
+          <p class="card-text"><span>Grupo poblacional:</span> {{ psicologo?.poblacion }}</p>
+        </div>
+        <div class="col-lg-6 card-body mx-auto">
+          <h5><span>Contacto:</span></h5>
+          <p class="card-text ml-3"><i class="fas fa-map-marked-alt mr-2 text-info"></i> {{ psicologo?.domicilio }}</p>
+          <p class="card-text ml-3"><i class="far fa-envelope mr-2 text-info"></i> {{ psicologo?.correo }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<piepag></piepag>

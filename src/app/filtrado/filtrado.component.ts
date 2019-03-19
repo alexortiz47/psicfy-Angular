@@ -3,6 +3,7 @@ import { Psicologo } from '../models/psicologo.model';
 import { Especialidad } from '../models/especialidad.model';
 import { PsicologosService } from '../psicologos.service';
 import { EspecialidadesService } from '../especialidades.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-filtrado',
@@ -19,7 +20,7 @@ export class FiltradoComponent implements OnInit {
   especialidad: string;
   nombre: string
 
-  constructor(private psicologosService: PsicologosService, private especialidadesService: EspecialidadesService) {
+  constructor(private psicologosService: PsicologosService, private especialidadesService: EspecialidadesService, private router: Router) {
     this.arrDatosPsico = [];
     this.psicologosService.getAllPsicologos().then(res => {
       // console.log(res)
@@ -28,6 +29,7 @@ export class FiltradoComponent implements OnInit {
         this.especialidadesService.getEspByPsicologo(psico.id).then(res => {
           // console.log(res)
           let datosPsico = {
+            id: psico.id,
             nombre: psico.nombre,
             apellidos: psico.apellidos,
             numColeg: psico.numColeg,
@@ -53,8 +55,7 @@ export class FiltradoComponent implements OnInit {
     this.nombre = ''
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   // Método que al dar al enter, busca el nombre introducido en el input o si lo contiene
   sendName($event) {
@@ -90,6 +91,10 @@ export class FiltradoComponent implements OnInit {
         return psico.especialidades.map(item => item.nombre).includes(this.especialidad);
       });
     }
+  }
+
+  irPsicologo(id) {
+    this.router.navigate([`/psico/${id}`])
   }
 
 }

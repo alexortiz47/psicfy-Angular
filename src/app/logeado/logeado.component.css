@@ -16,20 +16,25 @@ img {
 }
 
 input.ng-valid.ng-dirty {
-  border: 1px solid green;
+  border: 1px solid #28a745;
 }
 
-input.ng-valid.ng-dirty:first-child {
-  border: none;
+.form-control-file {
+  border: none !important;
 }
 
 input.ng-invalid.ng-dirty {
-  border: 1px solid tomato;
+  border: 1px solid #dc3545;
 }
 
 .error {
-  color: tomato;
+  color: #dc3545;
 }
+
+.verde {
+  color: #28a745;
+}
+
 
 #img{
   border: none

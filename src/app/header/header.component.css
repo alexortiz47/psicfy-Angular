@@ -9,15 +9,25 @@
 .nav-item .nav-link {
   color: white;
 }
+
 .nav-item a:hover {
   color: #17a2b8 !important;
 }
+.nav-item .profileNav a:hover {
+  color: initial !important;
+}
+
+.nav-item .profileNav a:last-child:hover {
+  color: #dc3545 !important;
+}
+
 .nav-item .btn-outline-info:hover {
   color: white !important;
 }
 .navbar-toggler:hover {
   background-color: #17a2b8;
 }
+
 #logo {
 	width: 90px;
   height: 90px;
@@ -27,8 +37,7 @@
 	box-shadow: none;
 }
 #perfil {
-  font-size: 2.5rem;
-  padding: 0px;
+  font-size: 1.8rem;
 }
 .logoPerfil {
   color: #17a2b8;
@@ -36,3 +45,4 @@
 .logoPerfil:hover {
   opacity: 0.7;
 }
+

@@ -8,6 +8,10 @@ input.ng-valid.ng-dirty {
   border: 1px solid green;
 }
 
+input.ng-valid.ng-dirty:last-child {
+  border: none;
+}
+
 input.ng-invalid.ng-dirty {
   border: 1px solid tomato;
 }

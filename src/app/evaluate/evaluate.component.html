@@ -5,7 +5,7 @@
       <div class="card-body p-5">
         <p class="card-text">A continuación aparecerán una serie de preguntas que pretenden evaluar su estado general, o el de otra persona.</p>
         <p class="card-text">Contestar con sinceridad para poder obtener una aproximación más realista.</p>
-        <button class="btn btn-info mt-5" (click)="iniciarPreguntas()">¡Adelante!</button>
+        <button class="btn btn-info btn-lg mt-5" (click)="iniciarPreguntas()">¡Adelante!</button>
       </div>
       <div class="card-footer text-muted">
           Recuerda que este cuestionario sólo se trata de una pequeña aproximación.
@@ -20,7 +20,7 @@
           </div>
           <pregunta *ngFor="let preg of arrPreguntas" [pregunta]="preg" [preguntaId]="preg.id" (respuesta)="respRecibida($event)"></pregunta>
         </div>
-        <button type="submit" class="col-8 mx-auto btn btn-info btn-block" (click)="enviarRespuestas()" [disabled]="boton">Enviar</button>
+        <button type="submit" class="col-6 mx-auto btn btn-info btn-lg" (click)="enviarRespuestas()" [disabled]="boton">Enviar</button>
       </div>
     </form>
 
@@ -60,7 +60,7 @@
           <p class="card-text" *ngIf="noHelp">De todas las áreas recorridas, a priori no hay signos que indiquen la necesidad de acudir a terapia. Sin embargo, si has llegado hasta aquí, quizás sea porque buscas ayuda. Recuerda que esta evaluación es automática y no tiene en cuenta factores personales que puedan estar determinando la situación psicológica de la persona. Te recomendamos contactar con alguno de nuestros profesionales para que puedan valorar de forma más ajustada tu caso.</p>
 
           <div class="text-right">
-              <button *ngIf="!noHelp" class="btn btn-info mt-5 mr-5" (click)="irLocalizacion()">Cerca de mi</button>
+              <button *ngIf="!noHelp" class="btn btn-info mt-5 mr-3" (click)="irLocalizacion()">Cerca de mi</button>
               <button *ngIf="!noHelp" class="btn btn-info mt-5" (click)="irFiltrado()">Todos los psicólogos</button>
               <button *ngIf="noHelp" class="btn btn-info mt-5" (click)="volverInicio()">Inicio</button>
           </div>

@@ -6,10 +6,6 @@ img {
   height: 150px;
 }
 
-h3 {
-  font-weight: 700;
-}
-
 #poblaciones{
   margin-left: 7rem;
 }
@@ -21,6 +17,10 @@ h3 {
 
 input.ng-valid.ng-dirty {
   border: 1px solid green;
+}
+
+input.ng-valid.ng-dirty:first-child {
+  border: none;
 }
 
 input.ng-invalid.ng-dirty {
@@ -36,19 +36,27 @@ input.ng-invalid.ng-dirty {
 }
 
 .rotate {
-  font-size: 20px;
-  color: green;
+  font-size: 1.2rem;
+  color: #212529;
   -moz-transition: all .2s linear;
   -webkit-transition: all .2s linear;
   transition: all .2s linear;
 }
+.rotate:hover {
+  color: #17a2b8;
+}
 .down {
-  font-size: 20px;
-  color: red;
+  font-size: 1.2rem;
+  color: tomato;
   -moz-transform:rotate(45deg);
   -webkit-transform:rotate(45deg);
   transform:rotate(45deg);
   -moz-transition: all .2s linear;
   -webkit-transition: all .2s linear;
   transition: all .2s linear;
+}
+
+.badge {
+  font-size: 0.9rem;
+  border-radius: 0px;
 }

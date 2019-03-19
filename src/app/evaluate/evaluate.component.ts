@@ -143,6 +143,7 @@ export class EvaluateComponent implements OnInit {
 
     this.resultado = true
     this.preguntas = false
+    window.scrollTo(0, 0)
   }
 
   irLocalizacion() {

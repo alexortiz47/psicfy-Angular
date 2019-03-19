@@ -11,15 +11,15 @@
             </div>
             <div class="form-group col-md-3">
               <h5>Nombre:</h5>
-              <h3>{{ psicologoLogeado.nombre | capitalize }}</h3>
+              <h2>{{ psicologoLogeado.nombre | capitalize }}</h2>
             </div>
             <div class="form-group col-md-4">
               <h5>Apellidos:</h5>
-              <h3>{{ psicologoLogeado.apellidos | capitalize }}</h3>
+              <h2>{{ psicologoLogeado.apellidos | capitalize }}</h2>
             </div>
             <div class="form-group col-md-2">
               <h5>Nº colegiado:</h5>
-              <h3>{{ psicologoLogeado.numColeg }}</h3>
+              <h2>{{ psicologoLogeado.numColeg }}</h2>
             </div>
           </div>
 
@@ -41,7 +41,7 @@
             <div class="form-group col-md-8">
               <h5>Especialidades:</h5>
               <div class="ml-3" *ngFor="let esp of arrEspPsicologo; let last = last;">
-                <p class="float-left mr-1 badge badge-pill badge-dark p-1">{{ esp.nombre | capitalize }}<span *ngIf="!last"></span></p>
+                <p class="float-left mr-2 badge badge badge-light p-2">{{ esp.nombre | capitalize }}<span *ngIf="!last"></span></p>
               </div>
             </div>
             <div class="form-group col-md-4 text-right">
@@ -65,7 +65,7 @@
           <div class="form-row mb-3 d-flex justify-content-between">
             <div class="form-group col-md-8">
               <h5>Grupo/s poblacional/es:</h5>
-              <p class="ml-3 badge badge-pill badge-dark p-1">{{ psicologoLogeado.poblacion }}</p>
+              <p class="ml-3 badge badge badge-light p-2">{{ psicologoLogeado.poblacion }}</p>
             </div>
             <div class="form-group col-md-4 text-right">
               <i [className]="(estado1) ? 'fas fa-plus down' : 'fas fa-plus rotate'" (click)="cambiarPob()"></i>
@@ -85,7 +85,7 @@
             </div>
           </div>
 
-          <div class="form-row mb-4">
+          <div class="form-row mb-5">
             <div class="form-group col-md-6">
               <h5>Correo:</h5>
               <input type="email" class="form-control" formControlName="correo">
@@ -98,7 +98,7 @@
             </div>
           </div>
 
-          <div class="form-row mb-4 d-flex justify-content-around">
+          <div class="form-row my-5 d-flex justify-content-around">
             <div class="col-md-4">
               <button type="submit" class="btn btn-lg btn-block btn-success mb-3">Actualizar</button>
             </div>

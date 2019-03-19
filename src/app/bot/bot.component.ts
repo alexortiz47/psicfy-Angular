@@ -73,14 +73,26 @@ export class BotComponent implements OnInit {
         // console.log(res)
         if (res["tipo"] === "search") {
           this.answer = res["mensaje"];
-          let li = "";
+          let ul = document.createElement('ul')
+          ul.setAttribute('style', 'list-style:none')
           for(let psico of res['psicologos']) { // Recorremos el array de psicologos que nos llega desde node
             let nombre = new CapitalizePipe().transform(psico.nombre)
             let apellidos = new CapitalizePipe().transform(psico.apellidos)
-              li += `<li><a href="psico/${psico.id}">${nombre} ${apellidos}</a></li>`;
-          }
-          document.getElementById("chat").innerHTML = document.getElementById("chat").innerHTML + `<div class="row bg-white border p-2 mb-3"><p>${this.answer}</p><ul style="list-style: none">${li}</ul></div>`;
 
+            let li = document.createElement('li')
+
+            li.addEventListener('click', ()=>{
+              this.router.navigate(['/psico', psico.id])
+            })
+
+            li.innerHTML = `${nombre} ${apellidos}`
+            ul.appendChild(li)
+          }
+          let divContainer = document.createElement('div')
+          divContainer.setAttribute('class', 'row bg-white border p-2')
+          divContainer.innerHTML = `<p>${this.answer}</p>`
+          divContainer.appendChild(ul)
+          document.getElementById('chat').appendChild(divContainer)
           document.getElementById("vistaChat").scrollBy(0, 400);
 
           this.escribiendo = false;
@@ -97,8 +109,9 @@ export class BotComponent implements OnInit {
     }
   }
 
-  irPsicologo() {
-    console.log("HOLAAAA!!!!!");
+  handleLiClick($event){
+    console.log('HOLA')
+    return false
   }
 
   changeStatus() {

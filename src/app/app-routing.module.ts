@@ -12,6 +12,7 @@ import { FiltradoComponent } from './filtrado/filtrado.component';
 import { QueComponent } from './que/que.component';
 import { CuandoComponent } from './cuando/cuando.component';
 import { InfopsicoComponent } from './infopsico/infopsico.component';
+import { ContactoComponent } from './contacto/contacto.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'inicio', pathMatch: 'full'},
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'que_es', component: QueComponent},
   { path: 'cuando_ir', component: CuandoComponent},
   { path: 'psico/:id', component: InfopsicoComponent},
+  { path: 'contacto', component: ContactoComponent},
   { path: 'admin', component: AdminComponent},
   { path: 'admin', component: AdminComponent},
   { path: 'error404', component: Error404Component},

@@ -40,6 +40,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['buscar_filtrado'])
   }
 
+  irContacto() {
+    this.router.navigate(['contacto'])
+  }
+
   irRegistro() {
     this.router.navigate(['registro'])
   }

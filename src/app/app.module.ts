@@ -27,6 +27,7 @@ import { BotComponent } from './bot/bot.component';
 import { QueComponent } from './que/que.component';
 import { CuandoComponent } from './cuando/cuando.component';
 import { InfopsicoComponent } from './infopsico/infopsico.component';
+import { ContactoComponent } from './contacto/contacto.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { InfopsicoComponent } from './infopsico/infopsico.component';
     BotComponent,
     QueComponent,
     CuandoComponent,
-    InfopsicoComponent
+    InfopsicoComponent,
+    ContactoComponent
   ],
   imports: [
     BrowserModule,

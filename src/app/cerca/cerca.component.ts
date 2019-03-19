@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from "@angular/core";
 import { PsicologosService } from "../psicologos.service";
 import { Psicologo } from "../models/psicologo.model";
 import { EspecialidadesService } from "../especialidades.service";
 import { Especialidad } from "../models/especialidad.model";
 
-declare var google
+declare var google;
 
 @Component({
   selector: "cerca",
@@ -12,24 +12,28 @@ declare var google
   styleUrls: ["./cerca.component.css"]
 })
 export class CercaComponent implements OnInit {
-  arrPsico: Psicologo[]
-  arrDatosPsico: any[]
-  psicoSeleccionado: any
+  arrPsico: Psicologo[];
+  arrDatosPsico: any[];
+  psicoSeleccionado: any;
 
   // Creacion de variables para el GOOGLE MAPS
-  @ViewChild('googleMap') gMap: any // Es el div donde va a estar nuestro mapa
-  map: any // Este será el mapa donde vamos a interactuar
-  markers: any[] = [] // Creamos un array donde metemos todos los markers para tenerlos controlados
-  directionsService: any
-  directionsDisplay: any
-  duracion: string
-  distancia: string
-  desplazamiento: string
-  start: any
-  end: any
+  @ViewChild("googleMap") gMap: any; // Es el div donde va a estar nuestro mapa
+  map: any; // Este será el mapa donde vamos a interactuar
+  markers: any[] = []; // Creamos un array donde metemos todos los markers para tenerlos controlados
+  directionsService: any;
+  directionsDisplay: any;
+  duracion: string;
+  distancia: string;
+  desplazamiento: string;
+  start: any;
+  end: any;
   // -------------------------------------------------------- //
 
-  constructor(private psicologosService: PsicologosService, private especialidadesService: EspecialidadesService) {
+  constructor(
+    private psicologosService: PsicologosService,
+    private especialidadesService: EspecialidadesService,
+    private changeRef: ChangeDetectorRef
+  ) {
     this.arrDatosPsico = [];
     this.psicologosService.getAllPsicologos().then(res => {
       // console.log(res)
@@ -53,92 +57,101 @@ export class CercaComponent implements OnInit {
         });
       });
     });
-    this.duracion = ''
-    this.distancia = ''
-    this.desplazamiento = 'DRIVING'
+    this.duracion = "";
+    this.distancia = "";
+    this.desplazamiento = "DRIVING";
   }
 
   ngOnInit() {
     // console.log(this.gMap.nativeElement) // Accedemos al elemento que le hemos identificado en el html #googleMap
     let estado = "oculto";
-    if(navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.showPosition.bind(this), this.showError)
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        this.showPosition.bind(this),
+        this.showError
+      );
       // Devuelve la posicion en un momento determinado, cuando se lo pidamos
     } else {
-      console.log('La cagamos, no se puede usar la geolocalización')
+      console.log("La cagamos, no se puede usar la geolocalización");
     }
   }
 
   // Metodo que se lanza cuando el usuario acepta la localizacion
   showPosition(position) {
     // console.log(position)
-    this.loadMap(position)
+    this.loadMap(position);
   }
   // Metodo que se lanza cuando se genera un error con el tema de la geolocalización
   showError(error) {
-    console.log(error.code)
+    console.log(error.code);
     switch (error.code) {
       case error.PERMISSION_DENIED:
-        console.log('El usuario no quiere ser localizado')
-        break
+        console.log("El usuario no quiere ser localizado");
+        break;
       case error.POSITION_UNAVAILABLE:
-        console.log('No se ha podido recuperar la posición')
-        break
+        console.log("No se ha podido recuperar la posición");
+        break;
       case error.TIMEOUT:
-        console.log('Se ha tardado demasiado en recuperar la localización')
-        break
+        console.log("Se ha tardado demasiado en recuperar la localización");
+        break;
       case error.UNKNOWN_ERROR:
-        console.log('Error desconocido')
-        break
+        console.log("Error desconocido");
+        break;
     }
   }
 
   // Método que crea todo nuestro mapa, aquí meteremos todo lo relacionado con el mismo
   loadMap(position) {
-    this.directionsService = new google.maps.DirectionsService()
-    this.directionsDisplay = new google.maps.DirectionsRenderer()
+    this.directionsService = new google.maps.DirectionsService();
+    this.directionsDisplay = new google.maps.DirectionsRenderer();
 
     // Generamos el mapa con las propiedades que espera google: center, zoom, mapTypeId(estilo de mapa). Aqui haremos todo con respecto al mapa
-    let propsMap = { // Son las propiedades del mapa
-      center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude), // posicion actual
+    let propsMap = {
+      // Son las propiedades del mapa
+      center: new google.maps.LatLng(
+        position.coords.latitude,
+        position.coords.longitude
+      ), // posicion actual
       zoom: 11,
       mapTypeControl: false,
       streetViewControl: false,
       mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-    this.map = new google.maps.Map(this.gMap.nativeElement, propsMap) // Creamos el mapa de google, como primer parametro le pasamos el div donde va a ir y como segundo las propiedades del mapa de goolge
+    };
+    this.map = new google.maps.Map(this.gMap.nativeElement, propsMap); // Creamos el mapa de google, como primer parametro le pasamos el div donde va a ir y como segundo las propiedades del mapa de goolge
 
-    this.directionsDisplay.setMap(this.map)
+    this.directionsDisplay.setMap(this.map);
 
     let marker = new google.maps.Marker({
       position: propsMap.center, // Es el mismo que el de arriba, no hace falta que repitamos
       map: this.map,
-      icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+      icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
       animation: google.maps.Animation.DROP
-    })
-    this.markers.push(marker)
+    });
+    this.markers.push(marker);
 
-    let self = this
+    let self = this;
 
     this.arrDatosPsico.map(psico => {
-
       let marker = new google.maps.Marker({
         position: new google.maps.LatLng(psico.latitud, psico.longitud),
         map: this.map,
         title: psico.nombre,
         animation: google.maps.Animation.DROP
-      })
+      });
 
-      marker.addListener('click', function() {
+      marker.addListener("click", function() {
         // infowindow.open(this.map, marker);
-        self.start = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
-        self.end = new google.maps.LatLng(psico.latitud, psico.longitud)
-        self.generateRoute(self.start, self.end)
-        self.psicoSeleccionado = psico
+        self.start = new google.maps.LatLng(
+          position.coords.latitude,
+          position.coords.longitude
+        );
+        self.end = new google.maps.LatLng(psico.latitud, psico.longitud);
+        self.generateRoute(self.start, self.end);
+        self.psicoSeleccionado = psico;
         //console.log(self.psicoSeleccionado)
       });
-      marker.setMap(this.map)
-    })
+      marker.setMap(this.map);
+    });
   }
 
   // Método para generar las rutas de Google
@@ -147,22 +160,23 @@ export class CercaComponent implements OnInit {
       origin: start,
       destination: end,
       travelMode: google.maps.TravelMode[this.desplazamiento]
-    }
+    };
 
-    let self = this
+    let self = this;
 
-    this.directionsService.route(requestOpts, (result) => {
+    this.directionsService.route(requestOpts, result => {
       // console.log(result)
-      self.directionsDisplay.setOptions({suppressMarkers: true});
-      self.directionsDisplay.setDirections(result)
-      this.duracion = result.routes[0].legs[0].duration.text
-      this.distancia = result.routes[0].legs[0].distance.text
-    })
+      self.directionsDisplay.setOptions({ suppressMarkers: true });
+      self.directionsDisplay.setDirections(result);
+      this.duracion = result.routes[0].legs[0].duration.text;
+      this.distancia = result.routes[0].legs[0].distance.text;
+      this.changeRef.detectChanges() // Fuerza que se cambien los contenidos de la vista para que no tarde tanto
+    });
   }
 
   // Método que cambia el tipo de ruta en función de a que botón le de el usuario
   handleChangeRouteType(pTipo) {
-    this.desplazamiento = pTipo
-    this.generateRoute(this.start, this.end)
+    this.desplazamiento = pTipo;
+    this.generateRoute(this.start, this.end);
   }
 }

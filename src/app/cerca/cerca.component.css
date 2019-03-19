@@ -16,7 +16,6 @@ button {
 button i {
   width: 20px;
   height: 20px;
-  color: #343a40;
 }
 button:hover i{
   color: #17a2b8;

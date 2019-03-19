@@ -1,13 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&subset=latin-ext');
-@import url('https://fonts.googleapis.com/css?family=Homemade+Apple');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
 
 * {
 	font-family: 'Quicksand', sans-serif;
-}
-
-.otraletra{
-  font-family: 'Homemade Apple', cursive;
 }
 
 .fuentecondensada{

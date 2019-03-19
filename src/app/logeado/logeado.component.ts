@@ -38,6 +38,8 @@ export class LogeadoComponent implements OnInit {
   lat: string
   lng: string
   dir: string
+  estado: boolean;
+  estado1: boolean;
 
   constructor(private router: Router, public psicologosService: PsicologosService, private especialidadesService: EspecialidadesService, private storage: AngularFireStorage) {
     this.arrEspecialidades = [];
@@ -56,6 +58,8 @@ export class LogeadoComponent implements OnInit {
     this.lat = ""
     this.lng = ""
     this.dir = ""
+    this.estado = false;
+    this.estado1 = false;
   }
 
   ngOnInit(){
@@ -226,14 +230,17 @@ export class LogeadoComponent implements OnInit {
 
   // Mostrar u ocultar las especialidades y poblacion para cambiarlo
   cambiarEsp() {
+    this.estado = !this.estado;
     if (!this.especialidades) {
       this.especialidades = true;
     } else {
       this.especialidades = false;
     }
+
   }
 
   cambiarPob() {
+    this.estado1 = !this.estado1;
     if (!this.poblacion) {
       this.poblacion = true;
     } else {
@@ -260,4 +267,5 @@ export class LogeadoComponent implements OnInit {
        })
     ).subscribe()
   }
+
 }

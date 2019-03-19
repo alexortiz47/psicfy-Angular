@@ -29,4 +29,8 @@ export class FooterComponent implements OnInit {
     this.router.navigate([''])
   }
 
+  irContacto() {
+    this.router.navigate(['contacto'])
+  }
+
 }

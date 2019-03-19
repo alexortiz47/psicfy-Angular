@@ -18,6 +18,10 @@ img {
   height: auto;
 }
 
+.btn {
+  border-radius: 0px;
+}
+
 
 /* Imagenes de que es la terapia y cuando ir a terapia */
 .fotos {

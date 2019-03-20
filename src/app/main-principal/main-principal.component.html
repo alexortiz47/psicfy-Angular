@@ -3,18 +3,20 @@
 <main>
   <div class="jumbotron jumbotron-fluid">
       <div class="container">
-        <h1 class="display-2 fuentecondensada" >La psicología a tu alcance</h1>
+        <h1 class="display-3 fuentecondensada" >La psicología a tu alcance</h1>
         <hr>
         <p class="cursiva lead mb-5">Un espacio de calidad para ti</p>
 
-        <div class="row justify-content-center">
+        <div class="homeButtons row justify-content-center">
           <div class="col-md-4 col-sm-7 mb-4">
-            <p>¿Quieres saber si necesitas ayuda?</p>
-            <button class="btn btn-outline-dark btn-lg" (click)="irEvaluate()" role="button">¡Auto-Evalúate!</button>
+            <p>¿Te ayudamos?</p>
+            <button class="btn d-md-none btn-outline-light" (click)="irEvaluate()" role="button">¡Auto-Evalúate!</button>
+            <button class="btn d-none d-md-inline btn-outline-dark" (click)="irEvaluate()" role="button">¡Auto-Evalúate!</button>
           </div>
           <div class="col-md-4 col-sm-7">
             <p>¿Buscas a un profesional?</p>
-            <button class="btn btn-outline-dark btn-lg" (click)="irCerca()" role="button">Buscar Psicólogo</button>
+            <button class="btn d-md-none btn-outline-light" (click)="irCerca()" role="button">Buscar Psicólogo</button>
+            <button class="btn d-none d-md-inline btn-outline-dark" (click)="irCerca()" role="button">Buscar Psicólogo</button>
           </div>
         </div>
       </div>

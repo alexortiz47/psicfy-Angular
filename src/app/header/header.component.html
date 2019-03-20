@@ -12,11 +12,11 @@
 
       <ul class="navbar-nav ml-auto">
 
-        <li class="nav-item mr-4" *ngIf="!this.psicologosService.comprobarToken()">
+        <li class="nav-item p-2" *ngIf="!this.psicologosService.comprobarToken()">
             <a class="btn text-light" title="Evaluate" (click)="irEvaluate()">Evalúate</a>
         </li>
 
-        <li class="nav-item mr-4 dropdown" *ngIf="!this.psicologosService.comprobarToken()">
+        <li class="nav-item  p-2 dropdown" *ngIf="!this.psicologosService.comprobarToken()">
           <a class="btn nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Buscar profesional</a>
           <div class="dropdown-menu">
             <a class="btn dropdown-item" (click)="irCerca()">Por localización</a>
@@ -24,19 +24,19 @@
           </div>
         </li>
 
-        <li class="nav-item mr-4">
+        <li class="nav-item p-2">
             <a class="btn text-light" title="Contacto" (click)="irContacto()">Contacto</a>
         </li>
 
-        <li class="nav-item mr-4" *ngIf="!this.psicologosService.comprobarToken()">
+        <li class="nav-item p-2" *ngIf="!this.psicologosService.comprobarToken()">
             <a class="btn text-light" title="Registro" (click)="irRegistro()">Regístrate</a>
         </li>
 
-        <li class="nav-item " *ngIf="!this.psicologosService.comprobarToken()">
+        <li class="nav-item p-2" *ngIf="!this.psicologosService.comprobarToken()">
           <a class="btn btn-outline-info text-info" title="Iniciar sesión" (click)="irLogin()">Iniciar sesión</a>
         </li>
 
-        <li class="nav-item dropdown" *ngIf="this.psicologosService.comprobarToken()">
+        <li class="nav-item p-2 dropdown" *ngIf="this.psicologosService.comprobarToken()">
           <a class="btn nav-link dropdown-toggle logoPerfil" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i id="perfil" class="fa fa-user-circle "></i></a>
           <div class="profileNav dropdown-menu">
             <a class="btn dropdown-item" (click)="irLogeado()">Perfil</a>

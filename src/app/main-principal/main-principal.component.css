@@ -1,4 +1,4 @@
-.jumbotron {
+main .jumbotron {
   background-image: url(../../assets/heroo.jpg);
 	background-position: center;
 	background-size: cover;
@@ -59,7 +59,11 @@ img {
 		width: 95%;
 		margin-left: auto;
 		margin-right: auto;
-	}
+  }
+
+  .homeButtons p{
+    color: white;
+  }
 }
 
 .main .contenedor-images article .velo {

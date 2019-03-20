@@ -84,13 +84,7 @@ img {
 	text-align: center;
 }
 
-.main .contenedor-images article .velo h4 {
-	left: -500px;
-	transition: 1s;
-}
-
 .main .contenedor-images article .velo h3 {
-	left: 500px;
 	transition: 1s;
 }
 

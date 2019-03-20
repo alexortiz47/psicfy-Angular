@@ -76,7 +76,7 @@ export class BotComponent implements OnInit {
         if (res["tipo"] === "search") {
           this.answer = res["mensaje"];
           let ul = document.createElement('ul')
-          // ul.setAttribute('style', 'list-style:none')
+          ul.setAttribute('style', 'list-style:none')
           for(let psico of res['psicologos']) { // Recorremos el array de psicologos que nos llega desde node
             let nombre = new CapitalizePipe().transform(psico.nombre)
             let apellidos = new CapitalizePipe().transform(psico.apellidos)
@@ -86,8 +86,8 @@ export class BotComponent implements OnInit {
             li.addEventListener('click', ()=>{
               this.router.navigate(['/psico', psico.id])
             })
-
-            li.innerHTML = `<a onMouseOver="this.style.color='#17a2b8'" onMouseOut="this.style.color='#212529'">${nombre} ${apellidos}</a>`
+            li.setAttribute('style', 'color: #17a2b8')
+            li.innerHTML = `<a onMouseOver="this.style.textDecoration='underline'" onMouseOut="this.style.textDecoration='none'">${nombre} ${apellidos}</a>`
             ul.appendChild(li)
           }
           let divContainer = document.createElement('div')

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { EstilosService } from './estilos.service';
 
 @Component({
   selector: 'app-root',

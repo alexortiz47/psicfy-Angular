@@ -45,4 +45,11 @@
 .logoPerfil:hover {
   opacity: 0.7;
 }
-
+.active {
+  color: #17a2b8 !important;
+  background-color: transparent;
+}
+.active2 {
+  background-color: #17a2b8 !important;
+  color: white !important;
+}

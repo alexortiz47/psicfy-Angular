@@ -9,7 +9,8 @@ export class ContactoService {
   url: string;
 
   constructor(private httpClient: HttpClient) {
-    this.url = 'http://localhost:3000/mail'
+    // this.url = 'http://localhost:3000/mail'
+    this.url = 'http://back.psicfy.com/mail';
   }
 
   enviarContacto(values) {

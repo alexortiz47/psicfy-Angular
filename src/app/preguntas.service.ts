@@ -10,7 +10,8 @@ export class PreguntasService {
   url: string;
 
   constructor(private httpClient: HttpClient) {
-    this.url = 'http://localhost:3000/preguntas'
+    // this.url = 'http://localhost:3000/preguntas'
+    this.url = 'http://back.psicfy.com/preguntas';
   }
 
   getAllPreguntas() {

@@ -10,7 +10,7 @@ export class BotService {
 
   constructor(private httpClient: HttpClient) {
     // this.url = 'http://localhost:3000/bot'
-    this.url = 'https://back.psicfy.com/bot';
+    this.url = 'http://back.psicfy.com/bot';
   }
 
   sendMensaje(mensaje) {

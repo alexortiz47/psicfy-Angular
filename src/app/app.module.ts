@@ -28,6 +28,7 @@ import { QueComponent } from './que/que.component';
 import { CuandoComponent } from './cuando/cuando.component';
 import { InfopsicoComponent } from './infopsico/infopsico.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -63,7 +64,7 @@ import { ContactoComponent } from './contacto/contacto.component';
     AngularFireStorageModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

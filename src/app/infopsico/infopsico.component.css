@@ -1,0 +1,23 @@
+.mb-5{
+  margin-bottom: 12rem !important;
+}
+img {
+  width: 150px;
+  height: 150px;
+}
+span {
+  font-weight: 700;
+}
+h4 {
+  font-weight: 700;
+}
+.iconoVolver{
+  cursor: pointer;
+  font-size: 16px;
+}
+.flecha{
+  color: #212529;
+}
+.flecha:hover{
+  color: #17a2b8;
+}

@@ -1,0 +1,77 @@
+<cabecera></cabecera>
+
+  <div class="container my-5">
+    <div class="card text-center" *ngIf="mensaje">
+      <div class="card-body p-5">
+        <p class="card-text">A continuación aparecerán una serie de preguntas que pretenden evaluar su estado general, o el de otra persona.</p>
+        <p class="card-text">Contestar con sinceridad para poder obtener una aproximación más realista.</p>
+        <button class="btn btn-info btn-lg mt-5" (click)="iniciarPreguntas()">¡Adelante!</button>
+      </div>
+      <div class="card-footer text-muted">
+          Recuerda que este cuestionario sólo se trata de una pequeña aproximación.
+      </div>
+    </div>
+
+    <form class="mb-3">
+      <div class="paso2 row text-center" *ngIf="preguntas">
+        <div class="col-12">
+          <div class="iconoVolver text-left mb-4" (click)="volverMensajeInicio()">
+              <i class="fa fa-arrow-left flecha"><span> Volver</span></i>
+          </div>
+          <pregunta *ngFor="let preg of arrPreguntas" [pregunta]="preg" [preguntaId]="preg.id" (respuesta)="respRecibida($event)"></pregunta>
+        </div>
+        <button type="submit" class="col-6 mx-auto btn btn-info btn-lg" (click)="enviarRespuestas()" [disabled]="boton">Enviar</button>
+      </div>
+    </form>
+
+
+    <div class="mensaje" *ngIf="resultado">
+      <div class="card">
+        <div class="card-header text-muted text-center">
+            Según las respuestas obtenidas en el cuestionario anterior, aquí tienes los resultados:
+        </div>
+        <div class="card-body p-5">
+          <p class="card-text" *ngIf="depresion1">Presentas un <strong>nivel moderado</strong> de <strong>alteración en el estado de ánimo</strong>. Quizás puedas sentirte triste, desesperado, con sensación de indefensión o incluso que no te encuentras a ti mismo/a. Acudir a terapia te ayudaría a poner soluciones, aprender a gestionar tus emociones, regular tu estado de ánimo y poner fin a esas sensaciones de tristeza que parece que estás teniendo.</p>
+
+          <p class="card-text" *ngIf="depresion2">Presentas un <strong>nivel alto</strong> de <strong>alteración en el estado de ánimo</strong>, con un estilo depresivo. Quizás te haya pasado o te esté pasando algo que te haga sentir triste, desesperado, con sensación de indefensión o incluso que no te encuentras a ti mismo/a. Quizás estés viviendo una separación, un proceso de duelo o tú vida haya dado un cambio que no terminas de encajar. En tu situación es muy recomendable contar con un profesional que te acompañe, te guíe y te de la fortaleza que seguramente muchas veces sientes que te falta. Acudir a terapia te ayudaría a aprender a gestionar tus emociones, regular tu estado de ánimo y poner fin a esas sensaciones de tristeza, vacío y desesperanza que puede que estés sintiendo. Un psicólogo a tu lado sería una buena manera de empezar a trazar un camino hacia la felicidad.</p>
+
+          <p class="card-text" *ngIf="ansiedad1">Presentas un <strong>nivel de ansiedad moderado</strong>. Es posible que estés viviendo alguna situación que te genere estrés y te esté costando manejarlo. Acudir a terapia para aprender tendría grandes beneficios para ti.</p>
+
+          <p class="card-text" *ngIf="ansiedad2">Presentas un <strong>nivel de ansiedad elevado</strong>. Es posible que estés viviendo alguna situación que te genere estrés y te esté costando manejarlo. Es posible que de ahí se deriven somatizaciones frecuentes (dolores de estómago, de cabeza, temblores, etc.) que te provocan un alto grado de malestar. Sería muy recomendable acudir a terapia para ayudarte con la gestión de tu estrés y de los posibles signos (físicos y psicológicos) que se deriven de él. Aprenderías técnicas para manejar la ansiedad, para reducir los nervios en tu cuerpo y provocar un estado de relajación. También formas de regular tu pensamiento de forma que no siempre te lleve al “peligro del futuro”, a la incertidumbre de las situaciones. Un psicólogo podría hacer mucho por ti y por tu ansiedad. Como por ejemplo, que deje de asustarte y molestarte y convertirla en tu aliada.</p>
+
+          <p class="card-text" *ngIf="adicciones1">Parece que muestras unos <strong>niveles medios de adicción</strong> (a alguna sustancia, objeto o actividad). Acudir a un psicólogo te ayudaría a controlar los impulsos que te llevan a la dependencia física y emocional, a ser tú quien lleve las riendas en la “interacción” y a reducir el malestar que probablemente te genere esa necesidad de consumo y dependencia.</p>
+
+          <p class="card-text" *ngIf="adicciones2">Muestras unos <strong>niveles altos de adicción</strong> (a alguna sustancia, objeto o actividad). Quizás sientas que, en tu relación con el objeto/sustancia de adicción, tú no llevas las riendas, sino que estás sometido por la necesidad y dependencia que te genera. Quizás hayas intentado romper ese circulo vicioso de alguna forma y no lo hayas conseguido. Si es así, estate tranquilo/a, no resulta fácil enfrentarnos a nuestras adicciones. Pero que no sea fácil no implica que no sea posible. Contar con la ayuda de un psicólogo te ayudaría a controlar los impulsos que te llevan a la dependencia física y emocional, a ser tú quien lleve las riendas en la “interacción” y a reducir el malestar que probablemente te genere esta situación.</p>
+
+          <p class="card-text" *ngIf="emociones1">Parece que tienes algunas <strong>dificultades para gestionar tus emociones</strong>. Quizás sientas que a veces no entiendes que te ocurre y/o tengas reacciones desproporcionadas en situaciones que aparentemente no “lo merecen” (por ejemplo: llorar intensamente cuando no ha pasado nada tan grave; tener un episodio de ira desmedido; pegar un grito de repente). Si es así, tranquilo/a, esto es normal y tiene solución. Cuando las personas vamos “tragando y tragando” y no solucionamos aquello que nos provoca malestar, se acumula en nuestro interior. De forma que, cuando estamos al límite y pasa cualquier cosa (por pequeña que sea) nos desbordamos. Acudir a un psicólogo sería beneficioso para ti porque aprenderías a identificar por qué sientes lo que sientes y a autorregularte. Serías tú quien gestionase las emociones y no al revés... suena bien, ¿verdad?</p>
+
+          <p class="card-text" *ngIf="emociones2">Parece que tienes <strong>bastante dificultad para gestionar tus emociones</strong>. Quizás sientas que a veces no entiendes que te ocurre, de donde vienen esas sensaciones tan molestas y/o hasta tengas reacciones desproporcionadas en situaciones que aparentemente no “lo merecen” (por ejemplo: llorar intensamente cuando no ha pasado nada tan grave; tener un episodio de ira desmedido; pegar un grito de repente; tener ganas de salir corriendo y no volver...). Si es así, tranquilo/a, esto es normal y tiene solución. Cuando las personas vamos “tragando y tragando” y no solucionamos aquello que nos provoca malestar, se acumula en nuestro interior. De forma que, cuando estamos al límite y nos pasa algo (por pequeño que sea) nos desbordamos. Acudir a un psicólogo sería beneficioso porque podrías aprender a identificar por qué sientes lo que sientes y a autorregularte. Esto te ayudaría a anticipar cuando vas a sentirte de determinada forma (triste, con ira, decepcionado/a...) y podrías cambiarlo según tus necesidades e intereses. Además, te permitiría conocer y prever las reacciones de los demás y te aportaría una sensación de control que probablemente ahora no sientas. Serías tú quien gestionase las emociones y no al revés... suena bien, ¿verdad?</p>
+
+          <div *ngIf="!noHelp">
+              <p class="card-text">En caso de estar dispuesto a ir a terapia, te recomendamos psicólogos especialistas en:</p>
+              <ul>
+                <li *ngIf="depresion1 || depresion2">Depresión</li>
+                <li *ngIf="ansiedad1 || ansiedad2">Ansiedad</li>
+                <li *ngIf="adicciones1 || adicciones2">Adicciones y consumo de tóxicos</li>
+                <li *ngIf="emociones1 || emociones2">Gestión emocional</li>
+              </ul>
+          </div>
+
+          <p class="card-text" *ngIf="noHelp">De todas las áreas recorridas, a priori no hay signos que indiquen la necesidad de acudir a terapia. Sin embargo, si has llegado hasta aquí, quizás sea porque buscas ayuda. Recuerda que esta evaluación es automática y no tiene en cuenta factores personales que puedan estar determinando la situación psicológica de la persona. Te recomendamos contactar con alguno de nuestros profesionales para que puedan valorar de forma más ajustada tu caso.</p>
+
+          <div class="text-right">
+              <button *ngIf="!noHelp" class="btn btn-info mt-5 mr-3" (click)="irLocalizacion()">Cerca de mi</button>
+              <button *ngIf="!noHelp" class="btn btn-info mt-5" (click)="irFiltrado()">Todos los psicólogos</button>
+              <button *ngIf="noHelp" class="btn btn-info mt-5" (click)="volverInicio()">Inicio</button>
+          </div>
+
+        </div>
+        <div *ngIf="!noHelp" class="card-footer text-muted text-center">
+            <i>Recuerda que este cuestionario sólo se trata de una pequeña aproximación. Para contar con una evaluación ajustada y fiable, contacta con alguno de nuestros profesionales.</i>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+<piepag></piepag>

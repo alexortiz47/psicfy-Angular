@@ -1,0 +1,16 @@
+.my-5{
+  margin-bottom: 12rem !important;
+}
+.iconoVolver{
+  cursor: pointer;
+  font-size: 16px;
+}
+.flecha{
+  color: #212529;
+}
+.flecha:hover{
+  color: #17a2b8;
+}
+.btn {
+  border-radius: 0px;
+}

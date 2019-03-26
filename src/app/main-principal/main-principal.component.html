@@ -1,0 +1,55 @@
+<cabecera></cabecera>
+
+<main>
+  <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-3 fuentecondensada" >La psicología a tu alcance</h1>
+        <hr>
+        <p class="cursiva lead mb-5">Un espacio de calidad para ti</p>
+
+        <div class="homeButtons row justify-content-center">
+          <div class="col-md-4 col-sm-7 mb-4">
+            <p>¿Te ayudamos?</p>
+            <button class="btn d-md-none btn-outline-light" (click)="irEvaluate()" role="button">¡Evalúate!</button>
+            <button class="btn d-none d-md-inline btn-outline-dark" (click)="irEvaluate()" role="button">¡Evalúate!</button>
+          </div>
+          <div class="col-md-4 col-sm-7">
+            <p>¿Buscas a un profesional?</p>
+            <button class="btn d-md-none btn-outline-light" (click)="irCerca()" role="button">Buscar Psicólogo</button>
+            <button class="btn d-none d-md-inline btn-outline-dark" (click)="irCerca()" role="button">Buscar Psicólogo</button>
+          </div>
+          <div class="down">
+            <!-- <i class="fas fa-chevron-down animated infinite flipInX delay-2s"></i> -->
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="fotos container">
+    <div class="main row">
+      <div class="contenedor-images">
+        <article (click)=irQue()>
+          <img src="../../assets/puzzle2.jpg" alt="">
+          <div class="velo">
+            <h3>¿Qué es la terapia?</h3>
+          </div>
+        </article>
+        <article (click)=irCuando()>
+          <img src="../../assets/cuando.jpg" alt="">
+          <div class="velo">
+            <h3>¿Cuándo ir a terapia?</h3>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="mensaje row">
+      <div class="col-8 mx-auto text-center">
+        <h3><i>Estamos aquí para ayudarte.</i></h3>
+        <h3><i>Personas que cuidan de personas.</i></h3>
+      </div>
+    </div>
+  </div>
+</main>
+
+<piepag></piepag>

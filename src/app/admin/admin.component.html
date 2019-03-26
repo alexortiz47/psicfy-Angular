@@ -1,0 +1,61 @@
+<div *ngIf="!loginOk" class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 m-auto">
+      <h2 class="text-center">Acceso Administrador</h2>
+      <div class="row py-5">
+        <div class="col-12 mx-auto">
+          <form class="px-4 py-3" novalidate [formGroup]="adminForm" (ngSubmit)="manejarLogin()">
+            <div class="form-group">
+              <label>Correo:</label>
+              <input type="email" class="form-control" formControlName="correo">
+            </div>
+            <div class="form-group">
+              <label>Contraseña:</label>
+              <input type="password" class="form-control" formControlName="password">
+            </div>
+            <button type="submit" class="btn btn-lg btn-block btn-info mb-3" [disabled]="adminForm.invalid">Iniciar Sesion</button>
+            <div class="error text-center" *ngIf='login'>
+              <p>Usuario y/o la contraseña incorrectos</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main *ngIf="loginOk" class="container my-5">
+  <h2 class="mt-5 text-center">Añadir especialidad</h2>
+  <form class="mt-4 mb-5" novalidate [formGroup]="espForm" (ngSubmit)="addEsp()">
+    <div class="col-lg-6 mx-auto">
+      <div class="form-group">
+        <label for="especialidad">Nombre de la especialidad:</label>
+        <input type="text" class="form-control" id="especialidad" formControlName="nombre">
+      </div>
+      <button type="submit" class="btn btn-success btn-block" [disabled]="espForm.invalid">Guardar</button>
+    </div>
+  </form>
+  <hr>
+  <h2 class="mt-5 text-center">Nuevo Administrador</h2>
+  <form class="mt-4 mb-5" novalidate [formGroup]="adminRegForm" (ngSubmit)="manejarRegistro()">
+    <div class="col-lg-6 mx-auto">
+      <div class="form-group">
+        <label>Correo:</label>
+        <input type="email" class="form-control" formControlName="correo">
+        <p class="error" *ngIf="adminRegForm.controls['correo'].errors?.pattern && adminRegForm.controls['correo'].dirty">El campo debe ser un email correcto</p>
+      </div>
+      <div class="form-group">
+        <label>Contraseña:</label>
+        <input type="password" class="form-control" formControlName="password">
+        <p class="error" *ngIf="adminRegForm.controls['password'].errors?.pattern && adminRegForm.controls['password'].dirty">La contraseña debe tener al menos un numero, una letra y entre 6-15 caracteres</p>
+      </div>
+      <button type="submit" class="btn btn-lg btn-block btn-info mb-3" [disabled]="adminRegForm.invalid">Registrar</button>
+    </div>
+  </form>
+  <div class="row">
+    <div class="mx-auto form-group mt-3">
+      <a class="btn" (click)="logOutAdmin()"><i class="fas fa-power-off"></i></a>
+    </div>
+  </div>
+</main>
+

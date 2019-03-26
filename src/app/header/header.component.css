@@ -1,0 +1,55 @@
+.btn {
+  border-radius: 0px;
+}
+.navbar-nav {
+  text-align: center;
+  margin: 0px;
+  line-height: 2.5rem;
+}
+.nav-item .nav-link {
+  color: white;
+}
+
+.nav-item a:hover {
+  color: #17a2b8 !important;
+}
+.nav-item .profileNav a:hover {
+  color: initial !important;
+}
+
+.nav-item .profileNav a:last-child:hover {
+  color: #dc3545 !important;
+}
+
+.nav-item .btn-outline-info:hover {
+  color: white !important;
+}
+.navbar-toggler:hover {
+  background-color: #17a2b8;
+}
+
+#logo {
+	width: 90px;
+  height: 90px;
+  cursor: pointer;
+}
+.btn.focus, .btn:focus {
+	box-shadow: none;
+}
+#perfil {
+  font-size: 1.8rem;
+}
+.logoPerfil {
+  color: #17a2b8;
+}
+.logoPerfil:hover {
+  opacity: 0.7;
+}
+.active {
+  color: #17a2b8 !important;
+  background-color: transparent;
+}
+.active2 {
+  background-color: #17a2b8 !important;
+  color: white !important;
+}

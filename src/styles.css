@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+@import url('https://fonts.googleapis.com/css?family=Marck+Script');
+
+
+* {
+	font-family: 'Quicksand', sans-serif;
+}
+.cursiva{
+  font-family: 'Marck Script', cursive;
+}
+
+.fuentecondensada{
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+a {
+  color: #17a2b8;
+}
+a:hover {
+  text-decoration: underline;
+  color: #17a2b8;
+}
+

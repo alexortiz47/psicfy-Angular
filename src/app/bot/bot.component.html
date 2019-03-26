@@ -1,0 +1,32 @@
+<div id="bot" class="bg-light container border border-light" [@signal]="signalState" *ngIf="visible">
+  <div class="row bg-dark text-light p-3 d-flex justify-content-between" (click)="changeStatus()">
+    <div class="col-8">
+      <img class="rounded-circle float-left mr-3" src="../../assets/bot.png" alt="">
+      <p>Alex</p>
+    </div>
+    <div class="col-4">
+      <div *ngIf="escribiendo" class="text-success float-right loader">Escribiendo<span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div>
+      <p *ngIf="!escribiendo" class="text-success float-right"><i id="punto" class="fas fa-circle"></i></p>
+    </div>
+  </div>
+  <div class="row border-bottom">
+    <div class="col-12 rounded">
+      <div class="p-3" id="vistaChat">
+        <div id="chat">
+          <div class="row">
+            <p class="bg-white border rounded px-3 py-1">Hola, ¿En que puedo ayudarte?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 p-3">
+      <div id="write">
+        <input id="inputBot" class="bg-light" type="text" #inputMsg (keypress)="sendMsg(inputMsg.value, $event)" placeholder="Escriba su mensaje">
+      </div>
+    </div>
+  </div>
+
+</div>

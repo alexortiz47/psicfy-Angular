@@ -1,0 +1,101 @@
+<cabecera></cabecera>
+<div class="container">
+<form *ngIf='registroForm' class="registro mt-5" novalidate [formGroup]="registroForm" (ngSubmit)="manejarRegistro()">
+
+    <div class="row mt-5 py-5">
+
+        <div class="col-12 m-auto">
+          <div class="form-row mb-4">
+            <div class="form-group col-md-3">
+              <label>Nombre:</label>
+              <input type="text" class="form-control" formControlName="nombre">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Apellidos:</label>
+              <input type="text" class="form-control" formControlName="apellidos">
+            </div>
+            <div class="form-group col-md-3">
+              <label>Número colegiado:</label>
+              <input type="text" class="form-control" formControlName="numColeg" placeholder="00000AA">
+            </div>
+          </div>
+
+          <div class="form-row mb-4">
+            <div class="form-group col-md-12">
+              <label>Domicilio profesional:</label>
+              <input type="text" class="form-control" #inputPlace>
+            </div>
+          </div>
+
+          <div class="form-row mb-3">
+            <div class="form-group">
+              <label>Selecciona una o varias especialidades:</label>
+              <div id="especialidades" class="row ml-4">
+                <div class="checkbox col-md-4" formArrayName="especialidades" *ngFor="let esp of arrEspecialidades; let i = index">
+                  <label class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" [formControlName]="i"> {{ esp | capitalize }}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row mb-3">
+            <div class="form-group">
+              <label>Selecciona uno o ambos grupos poblacionales:</label>
+              <div id="poblaciones" class="row">
+                <div class="checkbox" formArrayName="poblacion" *ngFor="let pob of arrPoblaciones; let i = index">
+                  <label class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" [formControlName]="i"> {{pob}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row mb-4">
+            <div class="form-group col-md-6">
+              <label>Correo:</label>
+              <input type="email" class="form-control" formControlName="correo">
+              <p class="error" *ngIf="registroForm.controls['correo'].errors?.pattern && registroForm.controls['correo'].dirty">El campo debe ser un email correcto</p>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Contraseña:</label>
+              <input type="password" class="form-control" formControlName="password">
+              <p class="error" *ngIf="registroForm.controls['password'].errors?.pattern && registroForm.controls['password'].dirty">La contraseña debe tener al menos un numero, una letra y entre 6-15 caracteres</p>
+            </div>
+          </div>
+
+          <div class="form-row mb-4">
+            <div class="form-group col-md-6">
+              <label>Repetir correo:</label>
+              <input type="email" class="form-control" formControlName="correo_repeat">
+              <p class="error" *ngIf="registroForm.errors && registroForm.errors['correo_repeat'] && registroForm.controls['correo_repeat'].dirty">El correo no coincide</p>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Repetir contraseña:</label>
+              <input type="password" class="form-control" formControlName="password_repeat">
+              <p class="error" *ngIf="registroForm.errors && registroForm.errors['password_repeat'] && registroForm.controls['password_repeat'].dirty">La contraseña no coincide</p>
+            </div>
+          </div>
+
+          <div class="form-row mb-4">
+            <div class="form-group">
+              <label class="mr-3">Imagen de perfil:</label><i *ngIf="urlImagen != ''" class="fa fa-check verde"></i><i *ngIf="urlImagen == '' && registroForm.controls['imgUrl'].dirty" class="fa fa-times error"></i>
+              <input type="file" class="form-control-file" formControlName="imgUrl" (change)="onChangeImage($event)">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+                <button type="submit" class="btn btn-lg btn-info btn-block mb-3" [disabled]="registroForm.invalid">Registrarme Gratis</button>
+            </div>
+          </div>
+          <div class="dropdown-divider"></div>
+          <div class="row">
+              <a id="cuenta" class="btn dropdown-item text-center" (click)="irLogin()">¿Ya tienes cuenta? Iniciar sesión</a>
+          </div>
+        </div>
+    </div>
+</form>
+</div>

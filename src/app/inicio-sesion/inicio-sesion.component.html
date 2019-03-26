@@ -1,0 +1,34 @@
+<cabecera></cabecera>
+
+<main class="inicioSesion container mt-5">
+
+    <div class="row mt-5 py-5">
+
+      <div class="col-md-6 m-auto">
+
+        <form class="px-4 py-3" novalidate [formGroup]="loginForm" (ngSubmit)="manejarLogin()">
+          <div class="form-group">
+            <label>Correo:</label>
+            <input type="email" class="form-control" formControlName="correo">
+          </div>
+
+          <div class="form-group">
+            <label>Contraseña:</label>
+            <input type="password" class="form-control" formControlName="password">
+          </div>
+
+          <button type="submit" class="btn btn-lg btn-block btn-info mb-3" [disabled]="loginForm.invalid">Iniciar Sesion</button>
+
+          <div class="error text-center" *ngIf='login'>
+            <p>Usuario y/o la contraseña incorrectos</p>
+          </div>
+
+        </form>
+
+        <div class="dropdown-divider"></div>
+        <a class="btn dropdown-item text-center" (click)="irRegistro()">¿Aún no tienes cuenta? Regístrate</a>
+        <!-- <a class="btn dropdown-item text-center">¿Has olvidado tu contraseña?</a> -->
+      </div>
+    </div>
+</main>
+

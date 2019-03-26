@@ -1,0 +1,67 @@
+.btn {
+  border-radius: 0px;
+}
+img {
+  width: 150px;
+  height: 150px;
+}
+
+#poblaciones{
+  margin-left: 7rem;
+}
+@media (max-width: 767px){
+  .nombre{
+    text-align: center;
+  }
+}
+
+input.ng-valid.ng-dirty {
+  border: 1px solid #28a745;
+}
+
+.form-control-file {
+  border: none !important;
+}
+
+input.ng-invalid.ng-dirty {
+  border: 1px solid #dc3545;
+}
+
+.error {
+  color: #dc3545;
+}
+
+.verde {
+  color: #28a745;
+}
+
+
+#img{
+  border: none
+}
+
+.rotate {
+  font-size: 1.2rem;
+  color: #212529;
+  -moz-transition: all .2s linear;
+  -webkit-transition: all .2s linear;
+  transition: all .2s linear;
+}
+.rotate:hover {
+  color: #17a2b8;
+}
+.down {
+  font-size: 1.2rem;
+  color: tomato;
+  -moz-transform:rotate(45deg);
+  -webkit-transform:rotate(45deg);
+  transform:rotate(45deg);
+  -moz-transition: all .2s linear;
+  -webkit-transition: all .2s linear;
+  transition: all .2s linear;
+}
+
+.badge {
+  font-size: 0.9rem;
+  border-radius: 0px;
+}

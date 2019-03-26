@@ -1,0 +1,17 @@
+.btn {
+  border-radius: 0px;
+}
+.inicioSesion {
+  height: 100%;
+}
+input.ng-valid.ng-dirty {
+  border: 1px solid green;
+}
+
+input.ng-invalid.ng-dirty {
+  border: 1px solid tomato;
+}
+.error{
+  color: tomato;
+  font-weight: 700;
+}

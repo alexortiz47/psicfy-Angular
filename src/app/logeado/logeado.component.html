@@ -1,0 +1,114 @@
+<cabecera></cabecera>
+
+<form *ngIf="perfilForm" class="registro container mt-5" novalidate [formGroup]="perfilForm" (ngSubmit)="manejarPerfil()">
+
+    <div class="row mt-5 py-5">
+
+        <div class="col-10 m-auto">
+          <div class="nombre form-row mb-4 d-flex justify-content-between">
+            <div class="form-group col-md-3">
+              <img [src]="psicologoLogeado.imgUrl" class="rounded-circle" alt="">
+            </div>
+            <div class="form-group col-md-3">
+              <h5>Nombre:</h5>
+              <h2>{{ psicologoLogeado.nombre | capitalize }}</h2>
+            </div>
+            <div class="form-group col-md-4">
+              <h5>Apellidos:</h5>
+              <h2>{{ psicologoLogeado.apellidos | capitalize }}</h2>
+            </div>
+            <div class="form-group col-md-2">
+              <h5>Nº colegiado:</h5>
+              <h2>{{ psicologoLogeado.numColeg }}</h2>
+            </div>
+          </div>
+
+          <div class="form-row mb-4">
+            <div class="form-group">
+              <label class="mr-3">Cambiar imagen de perfil:</label><i *ngIf="urlImagen != ''" class="fa fa-check verde"></i><i *ngIf="urlImagen == '' && perfilForm.controls['imgUrl'].dirty" class="fa fa-times error"></i>
+              <input id="img" type="file" class="form-control-file" formControlName="imgUrl" (change)="onChangeImage($event)">
+            </div>
+          </div>
+
+          <div class="form-row mb-4">
+            <div class="form-group col-12">
+              <h5>Domicilio profesional:</h5>
+              <input type="text" class="form-control" #inputPlace>
+            </div>
+          </div>
+
+          <div class="form-row mb-3 d-flex justify-content-between">
+            <div class="form-group col-md-8">
+              <h5>Especialidades:</h5>
+              <div class="ml-3" *ngFor="let esp of arrEspPsicologo; let last = last;">
+                <p class="float-left mr-2 badge badge badge-light p-2">{{ esp.nombre | capitalize }}<span *ngIf="!last"></span></p>
+              </div>
+            </div>
+            <div class="form-group col-md-4 text-right">
+              <i [className]="(estado) ? 'fas fa-plus down' : 'fas fa-plus rotate'" (click)="cambiarEsp()"></i>
+            </div>
+          </div>
+
+          <div *ngIf="especialidades" class="form-row mb-3">
+            <div class="form-group">
+              <label>Seleccione una o varias especialidades:</label>
+              <div id="especialidades" class="row ml-4">
+                <div class="checkbox col-md-4" formArrayName="especialidades" *ngFor="let esp of arrEspecialidades; let i = index">
+                  <label class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" [formControlName]="i"> {{esp}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row mb-3 d-flex justify-content-between">
+            <div class="form-group col-md-8">
+              <h5>Grupo/s poblacional/es:</h5>
+              <p class="ml-3 badge badge badge-light p-2">{{ psicologoLogeado.poblacion }}</p>
+            </div>
+            <div class="form-group col-md-4 text-right">
+              <i [className]="(estado1) ? 'fas fa-plus down' : 'fas fa-plus rotate'" (click)="cambiarPob()"></i>
+            </div>
+          </div>
+
+          <div *ngIf="poblacion" class="form-row mb-3">
+            <div class="form-group">
+              <label>Seleccione tipo de poblacion:</label>
+              <div id="poblaciones" class="row">
+                <div class="checkbox" formArrayName="poblacion" *ngFor="let pob of arrPoblaciones; let i = index">
+                  <label class="form-check form-check-inline mr-5">
+                    <input class="form-check-input" type="checkbox" [formControlName]="i"> {{pob}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row mb-5">
+            <div class="form-group col-md-6">
+              <h5>Correo:</h5>
+              <input type="email" class="form-control" formControlName="correo">
+              <p *ngIf="perfilForm.controls['correo'].errors?.pattern && perfilForm.controls['correo'].dirty">El campo debe ser un email correcto</p>
+            </div>
+            <div class="form-group col-md-6" *ngIf="perfilForm.controls['correo'].dirty">
+              <label>Repetir correo:</label>
+              <input type="email" class="form-control" formControlName="correo_repeat">
+              <p class="error" *ngIf="perfilForm.errors && perfilForm.errors['correo_repeat'] && perfilForm.controls['correo_repeat'].dirty">El correo no coincide</p>
+            </div>
+          </div>
+
+          <div class="form-row my-5 d-flex justify-content-around">
+            <div class="col-md-4">
+              <button type="submit" class="btn btn-lg btn-block btn-success mb-3">Actualizar</button>
+            </div>
+            <div class="col-md-4">
+              <button type="button" class="btn btn-lg btn-block btn-secondary mb-3" (click)="inicioPsicologo()">Cancelar</button>
+            </div>
+            <div class="col-md-4">
+              <button type="button" class="btn btn-lg btn-block btn-danger mb-3" (click)="deletePsicologo()">Eliminar cuenta</button>
+            </div>
+          </div>
+        </div>
+    </div>
+</form>

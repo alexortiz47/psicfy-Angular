@@ -1,0 +1,53 @@
+.mt-4 {
+  margin-top: 2rem !important;
+}
+span {
+  font-weight: 700;
+}
+.esp {
+  font-weight: normal;
+}
+h5 {
+  font-weight: 700;
+}
+button {
+  padding: 7px;
+}
+button i {
+  width: 20px;
+  height: 20px;
+}
+button:hover i{
+  color: #17a2b8;
+}
+.botones {
+  margin-top: -200px;
+}
+
+.red {
+  color: red;
+}
+.blue {
+  color: #5076ff;
+}
+
+.psico{
+  -webkit-animation-duration: 2s;
+	animation-duration: 2s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+.fade {
+	-webkit-animation-name: fadeIn;
+	animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeIn {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+@keyframes fadeIn {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}

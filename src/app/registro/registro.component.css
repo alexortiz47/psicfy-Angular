@@ -1,0 +1,36 @@
+.btn {
+  border-radius: 0px;
+}
+.registro {
+  height: 100%;
+}
+input.ng-valid.ng-dirty {
+  border: 1px solid #28a745;
+}
+
+.form-control-file {
+  border: none !important;
+}
+
+input.ng-invalid.ng-dirty {
+  border: 1px solid #dc3545;
+}
+
+.error {
+  color: #dc3545;
+}
+
+.verde {
+  color: #28a745;
+}
+
+
+#poblaciones{
+  margin-left: 7rem;
+}
+
+@media (max-width: 767px){
+  #poblaciones{
+    margin-left: 2.4rem;
+  }
+}

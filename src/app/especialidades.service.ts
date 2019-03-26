@@ -11,7 +11,7 @@ export class EspecialidadesService {
 
   constructor(private httpClient: HttpClient) {
     // this.url = 'http://localhost:3000/especialidades'
-    this.url = 'http://back.psicfy.com/especialidades';
+    this.url = 'https://back.psicfy.com/especialidades';
   }
 
   getAllEspecialidades() {

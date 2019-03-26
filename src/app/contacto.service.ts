@@ -10,7 +10,7 @@ export class ContactoService {
 
   constructor(private httpClient: HttpClient) {
     // this.url = 'http://localhost:3000/mail'
-    this.url = 'https://back.psicfy.com/mail';
+    this.url = 'http://back.psicfy.com/mail';
   }
 
   enviarContacto(values) {

@@ -11,7 +11,7 @@ export class PsicologosService {
 
   constructor(private httpClient: HttpClient) {
     // this.url = 'http://localhost:3000/psicologos';
-    this.url = 'http://back.psicfy.com/psicologos';
+    this.url = 'https://back.psicfy.com/psicologos';
   }
 
   doRegistro(value) {

@@ -9,14 +9,6 @@ main .jumbotron {
   margin: 0px;
   position: relative;
 }
-.down {
-  position: absolute;
-  bottom: 320px;
-}
-.down i {
-  font-size: 18px;
-  color: #343a40;
-}
 span {
   color: #17a2b8;
 }
@@ -133,6 +125,4 @@ main .contenedor-images article .velo h3 {
     margin-top: 20px;
     margin-bottom: 50px;
   }
-
 }
-

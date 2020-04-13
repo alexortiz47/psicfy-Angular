@@ -17,7 +17,7 @@ export class CercaComponent implements OnInit {
   psicoSeleccionado: any;
 
   // Creacion de variables para el GOOGLE MAPS
-  @ViewChild("googleMap") gMap: any; // Es el div donde va a estar nuestro mapa
+  @ViewChild("googleMap", { static: true }) gMap: any; // Es el div donde va a estar nuestro mapa
   map: any; // Este será el mapa donde vamos a interactuar
   markers: any[] = []; // Creamos un array donde metemos todos los markers para tenerlos controlados
   directionsService: any;
